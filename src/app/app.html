@@ -1,0 +1,42 @@
+<ion-menu style="color: aquamarine" [content]="content">
+  <ion-content padding style="background-color: #CF7A7A !important">
+    <ion-grid no-padding style="margin-top: 4vh">
+      <ion-row align-center-end class="image_container">
+      <ion-col col-auto>
+        <div class="sliderlogo-cont">
+          <img class="side-img" src="assets/imgs/logo-white-text.png">
+        </div>
+      </ion-col>
+      </ion-row>
+
+      <ion-row align-center-end>
+        <button ion-button clear class="fami"  menuClose *ngFor="let p of pages"  [class.activeHighlight]="checkActive(p)" (click)="openPage(p)">
+            <ion-list>
+          <ion-col col-auto  (click)="dashboard()">
+              <ion-icon class="components" item-start [name]="p.icon" ></ion-icon>
+          </ion-col>
+          {{p.title}}
+          </ion-list>
+        </button>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+</ion-menu>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <ion-nav  [root]="rootPage" #content swipeBackEnabled="false" [class]="selectedTheme"></ion-nav>

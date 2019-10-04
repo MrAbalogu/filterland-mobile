@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-navbar>
+      <div class="title-center" >
+        <ion-title >Log Sale</ion-title>
+      </div>
+      <ion-buttons end>
+        <button ion-button ion-only style="color: #CF7A7A" (click)="logout()" >
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <form>
+      <ion-row>
+        <ion-col>
+          <label class="log_sale_label">Customer First Name:</label>
+          <input class="log_sale_input" placeholder="First Name" type="text" name="firstname"/>
+        </ion-col>
+
+        <ion-col>
+          <label class="log_sale_label">Customer Last Name:</label>
+          <input class="log_sale_input" placeholder="Last Name" type="text" name="firstname"/>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <label class="log_sale_label">Customer Phone Number:</label>
+          <input class="log_sale_input" placeholder="Phone Number" type="text" name="phonenumber"/>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <label class="log_sale_label">Customer Email:</label>
+          <input class="log_sale_input" placeholder="Email Address" type="text" name="emailaddress"/>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <label class="log_sale_label">Customer Address:</label>
+          <textarea class="log_sale_input" placeholder="Address" type="textarea" name="emailaddress">
+          </textarea>
+        </ion-col>
+      </ion-row>
+
+      <div class="sale_item_container">
+        <ion-row>
+          <ion-col size="3">
+            <label class="log_sale_label">Product Name:</label>
+            <input class="log_sale_input" placeholder="Product Name" type="text" name="productname"/>
+          </ion-col>
+
+          <ion-col size="1" size-sm>
+            <label class="log_sale_label">Part Number:</label>
+            <input class="log_sale_input" placeholder="Part Number" type="text" name="partnumber"/>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <label class="log_sale_label">Carton/s:</label>
+            <input class="log_sale_input" type="number" name="carton"/>
+          </ion-col>
+
+          <ion-col>
+            <label class="log_sale_label">Quantity:</label>
+            <input class="log_sale_input" type="number" name="quantity"/>
+          </ion-col>
+
+          <ion-col>
+            <label class="log_sale_label">Price:</label>
+            <input class="log_sale_input" type="number" name="price"/>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <button ion-button size="small">+ Add more items</button>
+
+      <ion-row>
+        <ion-col>
+          <label class="log_sale_label">Paid:</label>
+            <input class="log_sale_input" type="number" name="paid"/>
+        </ion-col>
+
+        <ion-col>
+          <label class="log_sale_label">Total:</label>
+          <h4 style="margin:6px 0">848950</h4>
+        </ion-col>
+      </ion-row>
+
+      <ion-row > 
+        <ion-col>
+        </ion-col>
+        <ion-col>
+          <button ion-button (click)="presentModal()" class="secondary_button"> Save & View Invoice </button>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+
+    </form>
+  </ion-grid>
+
+
+
+ 
+</ion-content>

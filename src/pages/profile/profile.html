@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar>
+      <ion-buttons class="menu-left" start>
+        <button class="start" ion-button ion-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+      <div class="home-title title-center" >
+        <ion-title >My Profile</ion-title>
+      </div>
+      <ion-buttons class="logout-btn" end>
+        <button ion-button ion-only style="color: #CF7A7A"   (click)="logout()" >
+          <ion-icon name="log-out"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="profile-info">
+      <div class="pi-img">
+          <img src="assets/imgs/profile-picture.jpg">
+      </div>
+      <div class="pi-info">
+          <p>Full Name: &nbsp; &nbsp; Stephen Sowole</p>
+          <p>Policy Name: &nbsp;   Bronze Plan</p>
+          <p>ID Number:  &nbsp; &nbsp; AXA9494943N</p>
+          <p>HMO: &nbsp; &nbsp; &nbsp; AXA Mansard</p>
+      </div>
+      <div style="clear: both;"></div>
+  </div>
+  <button ion-button id="dp" class="profile-dependants" >DEPENDANTS</button>
+  <button ion-button id="bf" class="profile-benefits">BENEFITS</button>
+  <div style="clear: both"></div>
+
+  <div id="dependants">
+      <div class="d-listitem">
+
+          <ion-list>
+              <ion-item>
+
+                <h2> Sahamatu Sowole</h2>
+                <p>AXAR9300END-01</p>
+
+                    <ion-icon class="dl-claims" name="ios-paper"></ion-icon> <button ion-button clear item-end  color="cutte">View Claim </button>
+
+              </ion-item>
+              <ion-item>
+
+                  <h2> Sahamatu Sowole</h2>
+                  <p>AXAR9300END-01</p>
+                  <ion-icon class="dl-claims" name="ios-paper"></ion-icon> <button ion-button clear item-end color="cutte">View Claim </button>
+                </ion-item>
+                <ion-item>
+
+                    <h2> Sahamatu Sowole</h2>
+                    <p>AXAR9300END-01</p>
+
+                    <ion-icon class="dl-claims" name="ios-paper"></ion-icon> <button ion-button clear item-end  color="cutte">View Claim </button>
+                  </ion-item>
+            </ion-list>
+
+
+
+
+
+    </div>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,142 @@
+page-login {
+
+    .logo-wrapper{
+      margin-top: 3rem;
+      text-align: center;
+      .loading{
+        height: 5rem;
+        //margin-bottom: 5rem;
+      }
+    }
+
+    .hiis-inputs {
+      margin-top: 3rem;
+      margin-left: auto;
+      margin-right: auto;
+      width: 90%;
+
+      ion-item {
+        margin-bottom: 0.7rem;
+        border: 1.5px solid rgb(146, 142, 142);
+        border-radius: 10px;
+      }
+
+      ion-input {
+        background: #FFF;
+        font-size: 1.5rem;
+        .text-input-md,
+        .text-input-ios{
+          color: black;
+          margin: 0px;
+        }
+      }
+
+
+
+    }
+
+    .button-md,
+    .button-ios{
+      width: 10rem;
+      font-size: 1.2rem;
+      margin-top: 1.2rem;
+      margin-left: 5%;
+      border-radius: 10px;
+      .button-inner{
+        color: #FFF;
+      }
+    }
+
+    .forgot-password{
+      display: block;
+      text-decoration: none;
+      color:rgb(74, 77, 76);
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 2% 5%;
+    }
+
+
+    .native-input .sc-ion-input-ios
+    .native-input .sc-ion-input-md{
+      text-align: left;
+    }
+
+    ion-content {
+      background-image: url('../assets/imgs/auth-bg.jpg');
+      -webkit-background-image: url('../assets/imgs/auth-bg.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+
+
+    .chatbot-button {
+      background: #EAEAEA;
+      color: #4A4A4A;
+      width: 90%;
+      margin: 17% 5%;
+      -webkit-box-shadow: 10px 10px 50px -8px #a6a6a6;
+      -moz-box-shadow: 10px 10px 50px -8px #a6a6a6;
+      box-shadow: 10px 10px 50px -8px #a6a6a6; }
+
+    .chatbot-button-img {
+      float: left;
+      font-size: 12px;
+      width: 50px;
+       }
+      .chatbot-button-img-cont img {
+        padding: 2em;
+        height: 2em; }
+
+    .chatbot-button-text-cont {
+      float: right;
+      word-break: break-all;
+      width: 80%;
+      line-height: 1.2;
+      text-align: left;
+      padding-top: 11px; }
+
+    //   div-left {
+    //     text-align: left !important; }
+    //     .div-left p {
+    //       padding: .4em 0;
+    //       color: gray;
+    //       margin-left: 30px; }
+
+    //       .login-header{
+    //         left: 1em;
+    //         font-size: 12px;
+    //       }
+    .login-footer img {
+
+      height: 20px; }
+
+      .login-header {
+        width: 4em;
+        position: absolute;
+        height: 12em;
+
+      }
+
+  }
+
+md, page-login .button-ios {
+  width: 10rem;
+  font-size: 1.2rem;
+  margin-top: 1.2rem;
+  margin-left: 5%;
+  border-radius: 10px;
+  background-color: #CF7A7A;
+  border-color: transparent;
+}
+md, page-login .button-md {
+  width: 10rem;
+  font-size: 1.2rem;
+  margin-top: 1.2rem;
+  margin-left: 5%;
+  border-radius: 10px;
+  background-color: #CF7A7A;
+  border-color: transparent;
+}
+

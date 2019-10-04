@@ -1,0 +1,54 @@
+orders-page {
+
+  .menu-left{
+    position: absolute;
+    left: 0.3rem;
+  }
+
+  .logout-btn {
+    position: absolute;
+    right: 0.3rem;
+  }
+
+  ion-content {
+    background-image: url('../assets/imgs/auth-bg.jpg');
+    -webkit-background-image: url('../assets/imgs/auth-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .claims-list-cont {
+    overflow: scroll; }
+
+  .cl-summary {
+    text-align: center;
+    padding: 10px 0;
+    // border-bottom: 1px solid #E8E4E4;
+  }
+    .cl-summary p {
+      margin-bottom: 0 !important; }
+
+  .cl-listitem {
+    padding: 10px;
+    // border-bottom: 1px solid #E8E4E4;
+  }
+    .cl-listitem small {
+      color: #50E3C2; }
+    .cl-listitem p {
+      margin-bottom: 0 !important;
+      text-align: right;
+      color: #A93241; }
+
+      .title-center {
+
+        text-align: center;
+      }
+
+      .menu-left{
+      position: absolute;
+      left: 0.3rem;
+    }
+
+
+
+}

@@ -1,0 +1,185 @@
+.log_card {
+  background: #D8D8D8;
+  padding: 10px;
+  p {
+    margin: 0;
+  }
+}
+.log_card_2 {
+  background: #ECECEC;
+  padding: 10px;
+  p {
+    margin: 0;
+  }
+}
+.primary_button {
+  background-color: #CF7A7A !important;
+  color: white !important;
+}
+.secondary_button { 
+  background-color: #A19563 !important;
+  color: white !important;
+}
+.no_internet {
+  background: #E02020;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 2px 5px;
+  font-size: 10px;
+}
+.yes_internet {
+  background: #6DD400;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 10px;
+}
+.tabs-md-toolbar .tabbar {
+  background-color: #cf7a7a !important;
+}
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+  color: #cf7a7a !important;
+}
+.tabs-md[tabsLayout=icon-top] .has-icon .tab-button-text {
+  color: white;
+}
+.bar-buttons-md[end] {
+  right: 0;
+  min-width: 44px;
+  margin: 0 6px;
+}
+.title.title-md span, .title.title-md .toolbar-title-md, .title.title-md .toolbar-title-ios, .title.title-ios span, .title.title-ios .toolbar-title-md, .title.title-ios .toolbar-title-ios {
+  color: black !important;
+}
+.image_container {
+  margin-bottom: 2em;
+  margin-left: 2em;
+}
+.famil {
+    margin-top: -1.5vh;
+    font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
+    font-size: 12px;
+    margin-top: -1vh;
+    margin-left: 3vw;
+  }
+
+  .side-img {
+    height: 50px;
+    float: left; }
+  .imgs {
+    width: 60%;
+    margin-top: 7px;
+    margin-top: 5vh;
+    margin-right: 0.5em;
+
+    top: 2vh;
+  }
+
+  .button-outline-ios-mywhite{
+    background-color: #BEA8F3 !important;
+  }
+
+  //Search button styling
+.search-btn.button-md,
+.search-btn.button-ios {
+  background: $primary;
+  margin-top: 7%;
+  margin-left: 6%;
+  width: 90%;
+  font-size: 1.2rem;
+  border-radius: 10px;
+
+  .button-inner {
+    color: #FFF;
+  }
+}
+  .family {
+    font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif ;
+    letter-spacing: 0px;
+    font-size: 18px;
+    color: #1c252a;
+     margin-top: 2.7vh;
+
+
+  }
+  .components{
+    text-transform: none;
+  }
+
+  .fami {
+    font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
+    letter-spacing: 0px;
+    font-size: 18px;
+    color: #ffffff;
+    margin-top: 2.7vh;
+    margin-right: 21px;
+  }
+
+  .bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default {
+    color: #CF7A7A !important;
+    background-color: transparent;
+  }
+
+  .button-md {
+   text-transform: none;
+  }
+
+  list-ios-md {
+    margin: -1px 0 32px;
+  }
+  
+/* Global style for headers*/
+.header-md::after,
+.header-ios::after {
+  background-image: none;
+}
+
+.toolbar-background-md,
+.toolbar-background-ios {
+  background: #FFF;
+  border-bottom: 1px solid $light;
+}
+
+.toolbar-ios{
+  min-height: 56px;
+}
+
+.title.title-md,
+.title.title-ios{
+  text-align: center;
+  span, .toolbar-title-md, .toolbar-title-ios{
+    color: $medium;
+  }
+  .toolbar-title-md span,
+  .toolbar-title-ios span{
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+}
+
+/* GLobal Input Styling */
+
+.input-md.input-border,
+.input-ios.input-border {
+  background: #FFF;
+  margin-top: 0.5rem;
+  color: $medium;
+  font-size: 1.2rem;
+  border: 1.3px solid $primary;
+  border-radius: 4px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.select-md .select-icon,
+.select-ios .select-icon{
+  width: 22px;
+  .select-icon-inner{
+    color: $primary;
+  }
+}
+
+ion-header {
+  box-shadow: 0 2px 7px 0 rgba(0,0,0,0.30);
+}

@@ -1,0 +1,19 @@
+newsletters-page{
+  
+  .menu-left{
+    position: absolute;
+    left: 0.3rem;
+  }
+  .logout-btn {
+    right: 0.3rem;
+  }
+  .menu-right {
+    text-align: center;
+  }
+  ion-content {
+    background-image: url('../assets/imgs/auth-bg.jpg');
+    -webkit-background-image: url('../assets/imgs/auth-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}

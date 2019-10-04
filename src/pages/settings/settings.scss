@@ -1,0 +1,22 @@
+settings-page {
+
+  .title-center {
+    text-align: center;
+  }
+  .menu-left{
+    position: absolute;
+    left: 0.3rem;
+  }
+  .menu-right{
+    position: absolute;
+    left: 0.3rem;
+  }
+  ion-content {
+    background-image: url('../assets/imgs/auth-bg.jpg');
+    -webkit-background-image: url('../assets/imgs/auth-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+}

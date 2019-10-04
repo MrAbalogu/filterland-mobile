@@ -1,0 +1,105 @@
+profile {
+  ion-content {
+    background-image: url('../assets/imgs/auth-bg.jpg');
+    -webkit-background-image: url('../assets/imgs/auth-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .menu-left{
+    position: absolute;
+    left: 0.3rem;
+  }
+
+  .logout-btn {
+    position: absolute;
+    right: 0.3rem;
+  }
+
+  .profile-info {
+    background-image: linear-gradient(to top, #5d6263, #5d6263, #5d6263, #7E8886, #7E8886); }
+
+  .pi-img {
+    float: left;
+    padding: 3em .5em 3em 2.5em; }
+
+  .pi-info {
+    position: absolute;
+    top: -1.5em;
+  left: 8em;
+    padding: 3.2em 2em 3em 1em; }
+    .pi-info p {
+      margin-bottom: 0;
+      font-size: 12px;
+      color: white;
+      letter-spacing: .8px;
+      margin-bottom: 2px; }
+      .menu-left{
+      position: absolute;
+      left: 0.3rem;
+    }
+
+    .title-center {
+       
+        text-align: center;
+      }
+
+  .profile-dependants {
+    float: left;
+    width: 48%;
+    padding: 10px 0;
+    background: #50E3C2;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    font-size: 13px;
+    cursor: pointer; }
+    .profile-dependants:hover {
+      color: black;
+      text-decoration: underline;
+      background: #C4F2E8; }
+
+  .profile-benefits {
+    float: left;
+    width: 49%;
+    padding: 10px 0;
+    background: #50E3C2;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    font-size: 13px;
+    cursor: pointer; }
+
+
+.dl-info {
+  float: left;
+  width: 60%;
+  text-align: center;
+  color: #9B9B9B;
+  padding: 1em 0; }
+  .dl-info p {
+    font-weight: 200;
+    color: #9B9B9B;
+    margin-bottom: 0; }
+
+.dl-claims {
+  float: right;
+ position: absolute;
+  text-align: center;
+  color: #50E3C2;
+  font-size: 13px;
+  top: 2em;
+  right: 7em;
+}
+
+.b-listitem {
+  width: 100%;
+
+  /*height: 30px;*/
+}
+
+
+}

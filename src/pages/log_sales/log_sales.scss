@@ -1,0 +1,44 @@
+log-sales {
+  ion-content {
+    background-image: url('../assets/imgs/auth-bg.jpg');
+    -webkit-background-image: url('../assets/imgs/auth-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  @mixin placeholder {
+    ::-webkit-input-placeholder {@content}
+    :-moz-placeholder           {@content}
+    ::-moz-placeholder          {@content}
+    :-ms-input-placeholder      {@content}  
+  }
+
+  @include placeholder {
+    color: #DBDBDB;
+    font-weight:100;
+    font-size: 1em;
+  }
+
+  .log_sale_input {
+    border: 1px solid #DBDBDB !important;
+    border-radius: .5em;
+    padding: .7em .5em !important;
+    font-size: 1em; 
+    width: 100%;
+  }
+
+  .log_sale_label {
+    line-height: 1.5;
+  }
+
+  .sale_item_container {
+    padding: 1em 0;
+    background: #F0F0F0;
+    box-shadow: 0 2px 7px 0 rgba(0,0,0,0.30);
+    margin-bottom: 5px;
+  }
+  .submit-cont {
+    text-align: center;
+    margin: 0 31%;
+  }
+}

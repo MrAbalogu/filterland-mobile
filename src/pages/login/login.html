@@ -1,0 +1,29 @@
+
+
+   <ion-header>
+    <ion-navbar>
+
+        <ion-icon style="width:2em" ></ion-icon>
+
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding class="background-image">
+    <div class="logo-wrapper animated fadeInDown">
+      <img src="assets/imgs/logo-small.png">
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+      <div class="hiis-inputs">
+        <ion-item>
+          <ion-input placeholder="Email" type="email" name="email" ngModel #email="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input placeholder="Password" type="password" name="password" ngModel #password="ngModel" required></ion-input>
+        </ion-item>
+      </div>
+      <button  ion-button color="primary" type="submit" round outline >LOGIN</button>
+    </form>
+    <a class="forgot-password" >Forgot Password?</a>
+
+  </ion-content>

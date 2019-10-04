@@ -1,0 +1,101 @@
+page-requests {
+
+
+
+    .circle {
+      position: absolute;
+      width: 30%;
+      top: 6vh;
+      right: 100px;
+      font-size: 80px;
+      color: #00eacb;
+
+    }
+
+    .check {
+      // position: absolute;
+
+      margin-top: 5.5em;
+      right:  19vw;
+      font-size: 1.7em;
+
+      // font-size: 15px;
+      color: black;
+      text-align: center;
+    }
+
+    .check-2 {
+     position: absolute;
+     text-align: center;
+
+     top: 23vh;
+     right:  30vw;
+     font-size: 14px;
+     color: rgb(14, 15, 15);}
+     .check-3 {
+       position: absolute;
+       text-align: center;
+
+       top: 25vh;
+       right:  19vw;
+       font-size: 14px;
+       color: #55909D;
+     }
+
+     .check-4 {
+      position: absolute;
+      text-align: center;
+
+      top: 27vh;
+      right:  32vw;
+      font-size: 14px;
+      color: rgb(14, 15, 15);}
+
+   .modal_content {
+     position: absolute;
+     top: calc(29% - (18%/2));
+     left: 0;
+     right: 0;
+     width: 89%;
+     height: 43%;
+     padding: 10px;
+     z-index: 100;
+     margin-left: 20px;
+     padding: 10px;
+     color: #333;
+     background: #e8e8e8;
+     background: -moz-linear-gradient(top, #fff 0%, #e8e8e8 100%);
+     background: -webkit-linear-gradient(top, #fff 0%, #e8e8e8 100%);
+     background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+     border-radius: 5px;
+     box-shadow: 0 2px 3px rgb(255, 255, 255);
+     box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     -webkit-box-sizing: border-box;
+     overflow: hidden;
+     border: 1px ridge #46dfca
+   }
+   .theroot {
+   height: 100px;
+   background-color: yellow;
+   }
+
+
+   .main-view{
+     background: transparent;
+   }
+   .overlay {
+     position: fixed;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     z-index: 1;
+     opacity: .5;
+     background-color:  rgba(0, 0, 0, 0.8);
+     color: #a4a4a4;
+   }
+
+
+
+
+}

@@ -1,0 +1,65 @@
+page-products {
+
+  .menu-left {
+    position: absolute;
+    left: 0.3rem;
+  }
+
+  .title-center {
+    text-align: center;
+  }
+
+  .h-listitem {
+    width: 100%; 
+  }
+
+  .hl-img {
+    float: left;
+    width: 30%;
+    height: 6.6em;
+  }
+
+  .hl-info {
+    float: left;
+    width: 70%;
+    color: #4A4A4A;
+    font-size: 12px;
+    padding: 3px 10px 0 10px; 
+  }
+
+  .hl-info h5 {
+    margin-bottom: 0; 
+  }
+
+  .hl-info p {
+    margin-bottom: 0; 
+  }
+
+  .hl-info span {
+    color: #CB0C13; 
+  }
+
+  .provider-textfield {
+    border: 1px solid #50E3C2;
+    border-radius: 0 !important;
+    padding: 10px 10px !important;
+    font-size: 1.5em !important; 
+  }
+
+  .provider-textfield:placeholder {
+    font-size: .8em !important; 
+  }
+
+  #searchbox ion-input {
+    margin-right: 0 !important;
+    overflow: auto; 
+  }
+
+  ion-content {
+    background-image: url('../assets/imgs/auth-bg.jpg');
+    -webkit-background-image: url('../assets/imgs/auth-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+}

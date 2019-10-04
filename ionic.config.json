@@ -1,0 +1,7 @@
+{
+  "name": "HIIS Enrollee",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

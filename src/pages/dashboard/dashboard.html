@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+      <ion-buttons class="menu-left" start>
+        <button class="start" ion-button ion-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+      <div class="home-title title-center" >
+        <ion-title >Home</ion-title>
+      </div>
+      <ion-buttons class="logout-btn" end>
+        <button ion-button ion-only style="color: #CF7A7A"   (click)="logout()" >
+          <ion-icon name="log-out"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="home-logo">
+    <img src="assets/imgs/logo-w-text.png">
+  </div>
+
+  <div class="home-cont">
+    <div class="home-box purple" (click)="goToLogSaleModal()">
+      <img class="box-img" src="assets/imgs/tag.png">
+      <p>Log Sale</p>
+    </div>
+    <div class="home-box red" (click)="goToPendingLogsPage()">
+      <img class="box-img" src="assets/imgs/icon.png">
+      <p>Pending Logs</p>
+    </div>
+    <div class="home-box gold" (click)="goToProductsPage()">
+      <img class="box-img" src="assets/imgs/package.png">
+      <p>Products</p>
+    </div>
+    <div class="home-box gray" (click)="goToSalesTodayPage()">
+      <img class="box-img" src="assets/imgs/calendar.png">
+      <p>Sales Today</p>
+    </div>
+  </div>
+
+</ion-content>
