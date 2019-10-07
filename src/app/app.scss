@@ -1,3 +1,6 @@
+.supplied {
+  color: green;
+}
 .log_card {
   background: #D8D8D8;
   padding: 10px;
@@ -179,7 +182,13 @@
     color: $primary;
   }
 }
-
 ion-header {
   box-shadow: 0 2px 7px 0 rgba(0,0,0,0.30);
+}
+.searchinput {
+  border: 1px solid #DBDBDB !important;
+  border-radius: .5em;
+  padding: 1em .5em !important;
+  font-size: 1em; 
+  width: 100%;
 }

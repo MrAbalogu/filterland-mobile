@@ -51440,6 +51440,10 @@ ion-navbar.toolbar {
   min-height: 46px;
 }
 
+.supplied {
+  color: green;
+}
+
 .log_card {
   background: #D8D8D8;
   padding: 10px;
@@ -51648,6 +51652,140 @@ list-ios-md {
 ion-header {
   -webkit-box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.3);
+}
+
+.searchinput {
+  border: 1px solid #DBDBDB !important;
+  border-radius: .5em;
+  padding: 1em .5em !important;
+  font-size: 1em;
+  width: 100%;
+}
+
+add_customer ion-content {
+  background-image: url("../assets/imgs/auth-bg.jpg");
+  -webkit-background-image: url("../assets/imgs/auth-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+add_customer .log_sale_input {
+  border: 1px solid #DBDBDB !important;
+  border-radius: .5em;
+  padding: .7em .5em !important;
+  font-size: 1em;
+  width: 100%;
+}
+
+add_customer .log_sale_label {
+  line-height: 1.5;
+}
+
+add_customer .sale_item_container {
+  padding: 1em 0;
+  background: #F0F0F0;
+  -webkit-box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.3);
+  margin-bottom: 5px;
+}
+
+add_customer .submit-cont {
+  text-align: center;
+  margin: 0 31%;
+}
+
+customers ::-webkit-input-placeholder {
+  color: #DBDBDB;
+  font-weight: 100;
+  font-size: 1em;
+}
+
+customers :-moz-placeholder {
+  color: #DBDBDB;
+  font-weight: 100;
+  font-size: 1em;
+}
+
+customers ::-moz-placeholder {
+  color: #DBDBDB;
+  font-weight: 100;
+  font-size: 1em;
+}
+
+customers :-ms-input-placeholder {
+  color: #DBDBDB;
+  font-weight: 100;
+  font-size: 1em;
+}
+
+customers #hospitals {
+  margin-top: 5px;
+}
+
+customers .menu-left {
+  position: absolute;
+  left: 0.3rem;
+}
+
+customers .title-center {
+  text-align: center;
+}
+
+customers .h-listitem {
+  width: 100%;
+}
+
+customers .hl-img {
+  float: left;
+  width: 30%;
+  height: 6.6em;
+}
+
+customers .hl-info {
+  float: left;
+  width: 70%;
+  color: #4A4A4A;
+  font-size: 12px;
+  padding: 3px 10px 0 10px;
+}
+
+customers .hl-info h4 {
+  font-weight: 700;
+}
+
+customers .hl-info h5 {
+  margin-bottom: 0;
+}
+
+customers .hl-info p {
+  margin-bottom: 0;
+}
+
+customers .hl-info span {
+  color: #CB0C13;
+}
+
+customers .provider-textfield {
+  border: 1px solid #50E3C2;
+  border-radius: 0 !important;
+  padding: 10px 10px !important;
+  font-size: 1.5em !important;
+}
+
+customers .provider-textfield:placeholder {
+  font-size: .8em !important;
+}
+
+customers #searchbox ion-input {
+  margin-right: 0 !important;
+  overflow: auto;
+}
+
+customers ion-content {
+  background-image: url("../assets/imgs/auth-bg.jpg");
+  -webkit-background-image: url("../assets/imgs/auth-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 page-dashboard .dashboard-main {
@@ -52198,6 +52336,34 @@ page-pending_supplies ion-content {
   background-size: cover;
 }
 
+page-products ::-webkit-input-placeholder {
+  color: gray;
+  font-weight: 100;
+  font-size: 1.3em;
+}
+
+page-products :-moz-placeholder {
+  color: gray;
+  font-weight: 100;
+  font-size: 1.3em;
+}
+
+page-products ::-moz-placeholder {
+  color: gray;
+  font-weight: 100;
+  font-size: 1.3em;
+}
+
+page-products :-ms-input-placeholder {
+  color: gray;
+  font-weight: 100;
+  font-size: 1.3em;
+}
+
+page-products #hospitals {
+  margin-top: 5px;
+}
+
 page-products .menu-left {
   position: absolute;
   left: 0.3rem;
@@ -52223,6 +52389,10 @@ page-products .hl-info {
   color: #4A4A4A;
   font-size: 12px;
   padding: 3px 10px 0 10px;
+}
+
+page-products .hl-info h4 {
+  font-weight: 700;
 }
 
 page-products .hl-info h5 {
@@ -52272,6 +52442,10 @@ profile .menu-left {
   left: 0.3rem;
 }
 
+profile #dependants {
+  margin-top: 5px;
+}
+
 profile .logout-btn {
   position: absolute;
   right: 0.3rem;
@@ -52311,11 +52485,10 @@ profile .title-center {
   text-align: center;
 }
 
-profile .profile-dependants {
-  float: left;
-  width: 48%;
+profile .profile-btn {
   padding: 10px 0;
-  background: #50E3C2;
+  width: 100%;
+  background: #CF7A7A;
   border-top: 2px solid white;
   border-right: 2px solid white;
   color: white;
@@ -52325,24 +52498,22 @@ profile .profile-dependants {
   cursor: pointer;
 }
 
-profile .profile-dependants:hover {
+profile .profile-btn:hover {
   color: black;
   text-decoration: underline;
-  background: #C4F2E8;
+  background: #EDACAC;
 }
 
-profile .profile-benefits {
-  float: left;
-  width: 49%;
-  padding: 10px 0;
-  background: #50E3C2;
-  border-top: 2px solid white;
-  border-right: 2px solid white;
-  color: white;
-  font-weight: 700;
-  text-align: center;
-  font-size: 13px;
-  cursor: pointer;
+profile .profile-btn-grid {
+  padding: 0 !important;
+}
+
+profile .profile-btn-grid .col {
+  padding: 0 !important;
+}
+
+profile .profile-btn-grid .button-md {
+  margin: 1px !important;
 }
 
 profile .dl-info {

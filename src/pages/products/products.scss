@@ -1,5 +1,22 @@
 page-products {
 
+  @mixin placeholder {
+    ::-webkit-input-placeholder {@content}
+    :-moz-placeholder           {@content}
+    ::-moz-placeholder          {@content}
+    :-ms-input-placeholder      {@content}  
+  }
+
+  @include placeholder {
+    color: gray;
+    font-weight:100;
+    font-size: 1.3em;
+  }
+
+  #hospitals {
+    margin-top: 5px;
+  }
+
   .menu-left {
     position: absolute;
     left: 0.3rem;
@@ -25,6 +42,10 @@ page-products {
     color: #4A4A4A;
     font-size: 12px;
     padding: 3px 10px 0 10px; 
+
+    h4 {
+      font-weight: 700;
+    }
   }
 
   .hl-info h5 {

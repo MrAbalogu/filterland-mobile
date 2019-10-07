@@ -1,14 +1,14 @@
 webpackJsonp([13],{
 
-/***/ 680:
+/***/ 690:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InvoiceModalModule", function() { return InvoiceModalModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IndexPageModule", function() { return IndexPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__invoice__ = __webpack_require__(695);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(709);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,32 +18,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var InvoiceModalModule = /** @class */ (function () {
-    function InvoiceModalModule() {
+var IndexPageModule = /** @class */ (function () {
+    function IndexPageModule() {
     }
-    InvoiceModalModule = __decorate([
+    IndexPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__invoice__["a" /* InvoiceModal */],
+                __WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__invoice__["a" /* InvoiceModal */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]),
             ],
-            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__invoice__["a" /* InvoiceModal */]]
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]]
         })
-    ], InvoiceModalModule);
-    return InvoiceModalModule;
+    ], IndexPageModule);
+    return IndexPageModule;
 }());
 
-//# sourceMappingURL=invoice.module.js.map
+//# sourceMappingURL=profile.module.js.map
 
 /***/ }),
 
-/***/ 695:
+/***/ 709:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InvoiceModal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57,25 +57,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var InvoiceModal = /** @class */ (function () {
-    function InvoiceModal(navCtrl, navParams, viewCtrl) {
+var ProfilePage = /** @class */ (function () {
+    function ProfilePage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
     }
-    InvoiceModal.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad InvoiceModal');
+    ProfilePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ProfilePage');
     };
-    InvoiceModal = __decorate([
+    ProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'invoice',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/invoice/invoice.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        \n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Invoice</ion-title>\n      </div>\n      <ion-buttons class="" end>\n        <div class=""></div>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-row>\n  	<ion-col>\n  	  <div class="paid">Paid</div>\n  	</ion-col>\n  	<ion-col>\n  	  <div class="paid">Supplied</div>\n  	</ion-col>\n  </ion-row>\n  <div class="invoice-details">\n  	<p>Customer Name: </p>\n  	<p>Customer Address: </p>\n  	<p>Customer Phone: </p>\n  	<p>Customer Email: </p>\n  	<p>Date: </p>\n  </div>\n  <ion-grid>\n	  <div class="log_card">\n	      <ion-row>\n	        <ion-col>\n	          <p>Customer Name: <b>Chinedu Abalogu</b></p>\n	        </ion-col>\n	      </ion-row>\n\n	      <ion-row>\n	        <ion-col>\n	          <p>Carton/s: <b>N45000</b></p>\n	        </ion-col>\n	        <ion-col>\n	          <p>Price: <b>N45000</b></p>\n	        </ion-col>\n	      </ion-row> \n\n	      <ion-row>\n	        <ion-col>\n	          <p>Quantity:</p>\n	        </ion-col>\n	        <ion-col>\n	          <p>Total: <b>N45000</b></p>\n	        </ion-col>\n	      </ion-row>\n	  </div>\n\n	  <ion-row>\n	      <ion-col offset="3">\n	        <p style="text-align: center;">Total: <b>N90000</b></p>\n	      </ion-col>\n	    </ion-row>\n	    <ion-row> \n	      <ion-col>\n	      </ion-col>\n	      <ion-col>\n	        <button ion-button> Send to HQ </button>\n	      </ion-col>\n	      <ion-col>\n	      </ion-col>\n	  </ion-row>\n  </ion-grid>\n\n\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/invoice/invoice.html"*/,
+            selector: 'profile',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/profile/profile.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >My Profile</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <button ion-button ion-only style="color: #CF7A7A"   (click)="logout()" >\n          <ion-icon name="log-out"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <div class="profile-info">\n      <div class="pi-img">\n          <img src="assets/imgs/profile-picture.jpg">\n      </div>\n      <div class="pi-info">\n          <p>Full Name: &nbsp; &nbsp; Stephen Sowole</p>\n          <p>Policy Name: &nbsp;   Bronze Plan</p>\n          <p>ID Number:  &nbsp; &nbsp; AXA9494943N</p>\n          <p>HMO: &nbsp; &nbsp; &nbsp; AXA Mansard</p>\n      </div>\n      <div style="clear: both;"></div>\n  </div>\n\n  <ion-grid class="profile-btn-grid">\n    <ion-row>\n      <ion-col>\n        <button ion-button id="dp" class="profile-btn">MY STATS</button>\n      </ion-col>\n      <ion-col>\n        <button ion-button id="dp" class="profile-btn">EDIT PROFILE</button>\n      </ion-col>\n    </ion-row> \n  </ion-grid>\n\n  <div id="dependants">\n      <div class="d-listitem">\n\n          <ion-list>\n              <ion-item>\n\n                <h2> Total Sales</h2>\n                <p>AXAR9300END-01</p>\n\n                    <ion-icon class="dl-claims" name="ios-paper"></ion-icon> <button ion-button clear item-end  color="cutte">View Claim </button>\n\n              </ion-item>\n              <ion-item>\n\n                  <h2> Awards</h2>\n                  <p>AXAR9300END-01</p>\n                  <ion-icon class="dl-claims" name="ios-paper"></ion-icon> <button ion-button clear item-end color="cutte">View Claim </button>\n                </ion-item>\n                <ion-item>\n\n                    <h2> Tasks</h2>\n                    <p>AXAR9300END-01</p>\n\n                    <ion-icon class="dl-claims" name="ios-paper"></ion-icon> <button ion-button clear item-end  color="cutte">View Claim </button>\n                  </ion-item>\n            </ion-list>\n\n\n\n\n\n    </div>\n  </div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/profile/profile.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]])
-    ], InvoiceModal);
-    return InvoiceModal;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+    ], ProfilePage);
+    return ProfilePage;
 }());
 
-//# sourceMappingURL=invoice.js.map
+//# sourceMappingURL=profile.js.map
 
 /***/ })
 

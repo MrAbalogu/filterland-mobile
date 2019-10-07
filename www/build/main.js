@@ -1,4 +1,4 @@
-webpackJsonp([16],{
+webpackJsonp([18],{
 
 /***/ 115:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -275,69 +275,77 @@ webpackEmptyAsyncContext.id = 164;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"../pages/dashboard/dashboard.module": [
+	"../pages/add_customer/add_customer.module": [
+		680,
+		9
+	],
+	"../pages/customers/customers.module": [
 		678,
-		15
+		8
+	],
+	"../pages/dashboard/dashboard.module": [
+		679,
+		17
 	],
 	"../pages/intro/intro.module": [
-		679,
-		14
+		682,
+		16
 	],
 	"../pages/invoice/invoice.module": [
-		680,
-		13
+		681,
+		15
 	],
 	"../pages/log_sales/log_sales.module": [
-		681,
-		1
-	],
-	"../pages/login/login.module": [
-		682,
+		683,
 		7
 	],
-	"../pages/newsletters/newsletters.module": [
-		683,
+	"../pages/login/login.module": [
+		684,
 		6
 	],
-	"../pages/orders/orders.module": [
-		684,
-		12
-	],
-	"../pages/pending_logs/pending_logs.module": [
+	"../pages/newsletters/newsletters.module": [
 		685,
 		5
 	],
-	"../pages/pending_supplies/pending_supplies.module": [
+	"../pages/orders/orders.module": [
 		686,
+		14
+	],
+	"../pages/pending_logs/pending_logs.module": [
+		687,
 		4
 	],
-	"../pages/products/products.module": [
-		687,
+	"../pages/pending_supplies/pending_supplies.module": [
+		688,
 		3
 	],
+	"../pages/products/products.module": [
+		689,
+		2
+	],
 	"../pages/profile/profile.module": [
-		688,
-		11
+		690,
+		13
 	],
 	"../pages/recent_sales/recent_sales.module": [
-		689,
+		691,
 		0
 	],
 	"../pages/requests/requests.module": [
-		690,
-		10
+		692,
+		12
 	],
 	"../pages/sales_today/sales_today.module": [
-		691,
-		9
+		693,
+		11
 	],
 	"../pages/settings/settings.module": [
-		692,
-		2
+		694,
+		1
 	],
 	"../pages/tabs/tabs.module": [
-		693,
-		8
+		695,
+		10
 	]
 };
 function webpackAsyncContext(req) {
@@ -406,14 +414,14 @@ var DashboardPage = /** @class */ (function () {
         this.navCtrl.push('ProductsPage');
     };
     DashboardPage.prototype.goToSalesTodayPage = function () {
-        this.navCtrl.push('SalesTodayPage');
+        this.navCtrl.push('AddCustomerPage');
     };
     DashboardPage.prototype.logout = function () {
         this.auth.logout(this.navCtrl);
     };
     DashboardPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-dashboard',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/dashboard/dashboard.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Home</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <button ion-button ion-only style="color: #CF7A7A"   (click)="logout()" >\n          <ion-icon name="log-out"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <div class="home-logo">\n    <img src="assets/imgs/logo-w-text.png">\n  </div>\n\n  <div class="home-cont">\n    <div class="home-box purple" (click)="goToLogSaleModal()">\n      <img class="box-img" src="assets/imgs/tag.png">\n      <p>Log Sale</p>\n    </div>\n    <div class="home-box red" (click)="goToPendingLogsPage()">\n      <img class="box-img" src="assets/imgs/icon.png">\n      <p>Pending Logs</p>\n    </div>\n    <div class="home-box gold" (click)="goToProductsPage()">\n      <img class="box-img" src="assets/imgs/package.png">\n      <p>Products</p>\n    </div>\n    <div class="home-box gray" (click)="goToSalesTodayPage()">\n      <img class="box-img" src="assets/imgs/calendar.png">\n      <p>Sales Today</p>\n    </div>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/dashboard/dashboard.html"*/
+            selector: 'page-dashboard',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/dashboard/dashboard.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Home</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <button ion-button ion-only style="color: #CF7A7A"   (click)="logout()" >\n          <ion-icon name="log-out"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <div class="home-logo">\n    <img src="assets/imgs/logo-w-text.png">\n  </div>\n\n  <div class="home-cont">\n    <div class="home-box purple" (click)="goToLogSaleModal()">\n      <img class="box-img" src="assets/imgs/tag.png">\n      <p>Log Sale</p>\n    </div>\n    <div class="home-box red" (click)="goToPendingLogsPage()">\n      <img class="box-img" src="assets/imgs/icon.png">\n      <p>Pending Logs</p>\n    </div>\n    <div class="home-box gold" (click)="goToProductsPage()">\n      <img class="box-img" src="assets/imgs/package.png">\n      <p>Products</p>\n    </div>\n    <div class="home-box gray" (click)="goToSalesTodayPage()">\n      <img class="box-img" src="assets/imgs/plus.png">\n      <p>Add Customer</p>\n    </div>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/dashboard/dashboard.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -489,9 +497,11 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_7__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
+                        { loadChildren: '../pages/customers/customers.module#CustomersPageModule', name: 'CustomersPage', segment: 'customers', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/dashboard/dashboard.module#DashboardPageModule', name: 'DashboardPage', segment: 'dashboard', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/intro/intro.module#IntroPageModule', name: 'IntroPage', segment: 'intro', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/add_customer/add_customer.module#AddCustomerPageModule', name: 'AddCustomerPage', segment: 'add_customer', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/invoice/invoice.module#InvoiceModalModule', name: 'InvoiceModal', segment: 'invoice', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/intro/intro.module#IntroPageModule', name: 'IntroPage', segment: 'intro', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/log_sales/log_sales.module#LogSalesPageModule', name: 'LogSalesPage', segment: 'log_sales', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/newsletters/newsletters.module#NewslettersPageModule', name: 'NewslettersPage', segment: 'newsletters', priority: 'low', defaultHistory: [] },
@@ -578,6 +588,7 @@ var MyApp = /** @class */ (function () {
         this.pages = [
             { title: 'Pending Supplies', component: 'PendingSuppliesPage', icon: 'ios-timer', index: 0.2, },
             { title: 'Recent Sales', component: 'RecentSalesPage', icon: 'ios-list-box', index: 0.2, },
+            { title: 'Customers', component: 'CustomersPage', icon: 'ios-list', index: 0.2, },
             { title: 'Newsletters', component: 'NewslettersPage', icon: 'ios-albums', index: 0.2, },
             { title: 'Spreadsheets', component: '', icon: 'ios-document', index: 0.2, },
             { title: 'Share', component: '', icon: 'ios-share', index: 0.2, },

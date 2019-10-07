@@ -1,14 +1,14 @@
 webpackJsonp([14],{
 
-/***/ 679:
+/***/ 686:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IntroPageModule", function() { return IntroPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrdersPageModule", function() { return OrdersPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__intro__ = __webpack_require__(697);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__orders__ = __webpack_require__(705);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var IntroPageModule = /** @class */ (function () {
-    function IntroPageModule() {
+var OrdersPageModule = /** @class */ (function () {
+    function OrdersPageModule() {
     }
-    IntroPageModule = __decorate([
+    OrdersPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__intro__["a" /* IntroPage */],
+                __WEBPACK_IMPORTED_MODULE_2__orders__["a" /* OrdersPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__intro__["a" /* IntroPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__orders__["a" /* OrdersPage */]),
             ],
-            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__intro__["a" /* IntroPage */]]
         })
-    ], IntroPageModule);
-    return IntroPageModule;
+    ], OrdersPageModule);
+    return OrdersPageModule;
 }());
 
-//# sourceMappingURL=intro.module.js.map
+//# sourceMappingURL=orders.module.js.map
 
 /***/ }),
 
-/***/ 697:
+/***/ 705:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IntroPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrdersPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard_dashboard__ = __webpack_require__(347);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57,31 +57,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
- * Generated class for the IntroPage page.
+ * Generated class for the AbstractPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var IntroPage = /** @class */ (function () {
-    function IntroPage(navCtrl, navParams) {
+var OrdersPage = /** @class */ (function () {
+    function OrdersPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.nextpage = 'LoginPage';
     }
-    IntroPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad IntroPage');
+    OrdersPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad AbstractPage');
     };
-    IntroPage = __decorate([
+    OrdersPage.prototype.goToDashboardPage = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__dashboard_dashboard__["a" /* DashboardPage */]);
+    };
+    OrdersPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-intro',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/intro/intro.html"*/'<ion-slides pager>\n  <ion-slide>\n      <div id="wrapper">\n          <!-- Page Content -->\n          <div class="exp1-wrapper">\n              <div class="exp-header">\n                  <img class="float-right" src="assets/imgs/logo-small.png">\n                  <div style="clear:both"></div>\n              </div>\n              <div class="exp-landing">\n                  <h2 class="exp1-text">Genuine Oil & Gas Filters for Cars</h2>\n              </div>\n\n                  <div class="exp-circles">\n                      <a href="exp1.html"> <div class="circle current-circle float-left"></div> </a>\n                      <a href="exp2.html"> <div class="circle float-left"></div> </a>\n                      <a href="exp3.html"> <div class="circle float-left"></div> </a>\n                  </div>\n              </div>\n          </div>\n          <!-- /#page-content-wrapper -->\n          <div class="skip">\n              <button ion-button color="mywhite" round outline [navPush]="nextpage"> Skip! </button>\n            </div>\n</ion-slide>\n<ion-slide>\n    <div id="wrapper">\n        <!-- Page Content -->\n        <div class="exp2-wrapper">\n            <div class="exp-header">\n                <img class="float-right" src="assets/imgs/logo-small.png">\n                <div style="clear:both"></div>\n            </div>\n            <div class="exp-landing">\n                <h2 class="exp1-text">Genuine Oil, Gas & Air Filters for Trucks</h2>\n            </div>\n\n                <div class="exp-circles">\n                    <a href="exp1.html"> <div class="circle float-left"></div> </a>\n                    <a href="exp2.html"> <div class="circle current-circle float-left"></div> </a>\n                    <a href="exp3.html"> <div class="circle float-left"></div> </a>\n                </div>\n                </div>\n                </div>\n                <div class="skip">\n                    <button ion-button color="mywhite" round outline [navPush]="nextpage"> Skip! </button>\n                  </div>\n\n</ion-slide>\n</ion-slides>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/intro/intro.html"*/,
+            selector: 'orders-page',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/orders/orders.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Recent Orders</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <button ion-button ion-only style="color: #CF7A7A"   (click)="logout()" >\n          <ion-icon name="log-out"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n\n    <ion-list class="claims-list-cont">\n\n      <ion-item class="cl-summary">\n        <p>Total Sales Today: &nbsp;&nbsp;&nbsp;&nbsp; ₦10,900</p>\n        <p>Total Sales October: &nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #50E3C2"> ₦120,000 </span></p>\n      </ion-item>\n\n      <ion-grid>\n\n        <div class="log_card">\n          <ion-row>\n            <ion-col>\n              <p>Customer Name: <b>Chinedu Abalogu</b></p>\n            </ion-col>\n          </ion-row>\n\n          <ion-row>\n            <ion-col>\n              <p>Paid: <b>N45000</b></p>\n            </ion-col>\n          </ion-row> \n\n          <ion-row>\n            <ion-col>\n              <p class="supplied">Supplied</p>\n            </ion-col>\n            <ion-col>\n              <p>Total: <b>N45000</b></p>\n            </ion-col>\n          </ion-row>\n        </div>\n\n        <div class="log_card_2">\n          <ion-row>\n            <ion-col>\n              <p>Customer Name: <b>Chinedu Abalogu</b></p>\n            </ion-col>\n          </ion-row>\n\n          <ion-row>\n            <ion-col>\n              <p>Paid: <b>N45000</b></p>\n            </ion-col>\n          </ion-row> \n\n          <ion-row>\n            <ion-col>\n              <p class="supplied">Supplied</p>\n            </ion-col>\n            <ion-col>\n              <p>Total: <b>N45000</b></p>\n            </ion-col>\n          </ion-row>\n        </div>\n        \n      </ion-grid>\n\n    </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/orders/orders.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
-    ], IntroPage);
-    return IntroPage;
+    ], OrdersPage);
+    return OrdersPage;
 }());
 
-//# sourceMappingURL=intro.js.map
+//# sourceMappingURL=orders.js.map
 
 /***/ })
 

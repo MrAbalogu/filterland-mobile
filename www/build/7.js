@@ -1,14 +1,14 @@
 webpackJsonp([7],{
 
-/***/ 682:
+/***/ 683:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LogSalesPageModule", function() { return LogSalesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(699);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__log_sales__ = __webpack_require__(702);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,27 +18,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LoginPageModule = /** @class */ (function () {
-    function LoginPageModule() {
+var LogSalesPageModule = /** @class */ (function () {
+    function LogSalesPageModule() {
     }
-    LoginPageModule = __decorate([
+    LogSalesPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_2__log_sales__["a" /* LogSalesPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__log_sales__["a" /* LogSalesPage */]),
             ],
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__log_sales__["a" /* LogSalesPage */]]
         })
-    ], LoginPageModule);
-    return LoginPageModule;
+    ], LogSalesPageModule);
+    return LogSalesPageModule;
 }());
 
-//# sourceMappingURL=login.module.js.map
+//# sourceMappingURL=log_sales.module.js.map
 
 /***/ }),
 
-/***/ 694:
+/***/ 696:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77,17 +78,14 @@ var TabsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 699:
+/***/ 702:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LogSalesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_authprovider_authprovider__ = __webpack_require__(152);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__ = __webpack_require__(694);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_util_util__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_tabs__ = __webpack_require__(696);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -100,129 +98,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
-var LoginPage = /** @class */ (function () {
-    function LoginPage(navCtrl, navParams, AuthproviderProvider, loadingCtrl, alertCtrl, utility) {
+var LogSalesPage = /** @class */ (function () {
+    function LogSalesPage(navCtrl, navParams, modalCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.AuthproviderProvider = AuthproviderProvider;
-        this.loadingCtrl = loadingCtrl;
-        this.alertCtrl = alertCtrl;
-        this.utility = utility;
-        this.nextpage = __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__["a" /* TabsPage */];
-        this.userData = {};
+        this.modalCtrl = modalCtrl;
     }
-    LoginPage.prototype.ngOnInit = function () {
-        this.loginForm.resetForm();
+    LogSalesPage.prototype.presentModal = function () {
+        this.navCtrl.push("InvoiceModal");
     };
-    LoginPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad LoginPage');
+    LogSalesPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad LogSalesPage');
     };
-    //Method to handle login
-    LoginPage.prototype.login = function (form) {
-        var _this = this;
-        if (form.invalid) {
-            this.utility.showToast('Login form cannot be empty.', 3000, 'toast-danger');
-            return;
-        }
-        if (!this.utility.validateEmail(form.value.email)) {
-            this.utility.showToast('Please enter a valid email.', 3000, 'toast-danger');
-            return;
-        }
-        this.loading = this.utility.showLoading();
-        this.AuthproviderProvider.login(form.value.email, form.value.password)
-            .then(function () {
-            _this.loading.dismiss();
-            _this.navCtrl.push('TabsPage');
-        })
-            .catch(function (err) {
-            _this.loading.dismiss();
-            if (err === 'Unknown Error') {
-                return _this.utility.showToast('Cannot connect to server. Check network connection.', 3000, 'toast-danger');
-            }
-            _this.utility.showToast('Invalid Login Credentials.', 3000, 'toast-danger');
-        });
+    LogSalesPage.prototype.goToTabsPage = function () {
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__tabs_tabs__["a" /* TabsPage */]);
     };
-    // public forgotPassword(): void{
-    //   this.presentAlertPrompt((data, alert) =>{
-    //     if(this.utility.validateData(data)){
-    //       this.loading = this.utility.showLoading();
-    //       this.authProvider.forgotPassword(data.email)
-    //         .then((res: {success: boolean; message: string}) => {
-    //           if (res.success) {
-    //             this.loading.dismiss();
-    //             this.utility.showToast('A password reset email has been sent to your email. Check your email for further instructions', 4000, 'toast-success');
-    //             alert.dismiss();
-    //           }
-    //         })
-    //         .catch((err: HttpErrorResponse) => {
-    //           if (err.status === 404) {
-    //             this.loading.dismiss();
-    //             this.utility.showToast('A provider associated with such email doesn\'t exist, please check and try again', 3000, 'toast-danger');
-    //           }
-    //         });
-    //     }
-    //     else{
-    //       this.utility.showToast('Field must contain a valid email, and musn\'t be empty', 3000, 'toast-danger');
-    //       return false;
-    //     }~
-    //   });
-    // }
-    LoginPage.prototype.presentAlertPrompt = function (okayCallBack) {
-        console.log('Alert called');
-        var alert = this.alerter.create({
-            subTitle: 'Kindly enter your provider email to reset passsword',
-            cssClass: 'prompt-alert',
-            inputs: [
-                {
-                    name: 'email',
-                    type: 'email',
-                    placeholder: 'Provider Email'
-                }
-            ],
-            buttons: [
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    cssClass: 'secondary-button',
-                    handler: function () {
-                        console.log('Confirm Cancel');
-                    }
-                }, {
-                    text: 'Ok',
-                    cssClass: 'primary-button',
-                    handler: function (data) {
-                        var dataIsValid = okayCallBack(data, alert);
-                        if (!dataIsValid) {
-                            return false;
-                        }
-                    }
-                }
-            ]
-        });
-        alert.present();
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('loginForm'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* NgForm */])
-    ], LoginPage.prototype, "loginForm", void 0);
-    LoginPage = __decorate([
+    LogSalesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/login/login.html"*/'\n\n   <ion-header>\n    <ion-navbar>\n\n        <ion-icon style="width:2em" ></ion-icon>\n\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content padding class="background-image">\n    <div class="logo-wrapper animated fadeInDown">\n      <img src="assets/imgs/logo-small.png">\n    </div>\n    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">\n      <div class="hiis-inputs">\n        <ion-item>\n          <ion-input placeholder="Email" type="email" name="email" ngModel #email="ngModel" required></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input placeholder="Password" type="password" name="password" ngModel #password="ngModel" required></ion-input>\n        </ion-item>\n      </div>\n      <button  ion-button color="primary" type="submit" round outline >LOGIN</button>\n    </form>\n    <a class="forgot-password" >Forgot Password?</a>\n\n  </ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/login/login.html"*/,
+            selector: 'log-sales',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/log_sales/log_sales.html"*/'<ion-header>\n  <ion-navbar>\n      <div class="title-center" >\n        <ion-title >Log Sale</ion-title>\n      </div>\n      <ion-buttons end>\n        <button ion-button ion-only style="color: #CF7A7A" (click)="logout()" >\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <form>\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer First Name:</label>\n          <input class="log_sale_input" placeholder="First Name" type="text" name="firstname"/>\n        </ion-col>\n\n        <ion-col>\n          <label class="log_sale_label">Customer Last Name:</label>\n          <input class="log_sale_input" placeholder="Last Name" type="text" name="firstname"/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Phone Number:</label>\n          <input class="log_sale_input" placeholder="Phone Number" type="text" name="phonenumber"/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Email:</label>\n          <input class="log_sale_input" placeholder="Email Address" type="text" name="emailaddress"/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Address:</label>\n          <textarea class="log_sale_input" placeholder="Address" type="textarea" name="emailaddress">\n          </textarea>\n        </ion-col>\n      </ion-row>\n\n      <div class="sale_item_container">\n        <ion-row>\n          <ion-col size="3">\n            <label class="log_sale_label">Product Name:</label>\n            <input class="log_sale_input" placeholder="Product Name" type="text" name="productname"/>\n          </ion-col>\n\n          <ion-col size="1" size-sm>\n            <label class="log_sale_label">Part Number:</label>\n            <input class="log_sale_input" placeholder="Part Number" type="text" name="partnumber"/>\n          </ion-col>\n        </ion-row>\n\n        <ion-row>\n          <ion-col>\n            <label class="log_sale_label">Carton/s:</label>\n            <input class="log_sale_input" type="number" name="carton"/>\n          </ion-col>\n\n          <ion-col>\n            <label class="log_sale_label">Quantity:</label>\n            <input class="log_sale_input" type="number" name="quantity"/>\n          </ion-col>\n\n          <ion-col>\n            <label class="log_sale_label">Price:</label>\n            <input class="log_sale_input" type="number" name="price"/>\n          </ion-col>\n        </ion-row>\n      </div>\n\n      <button ion-button size="small">+ Add more items</button>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Paid:</label>\n            <input class="log_sale_input" type="number" name="paid"/>\n        </ion-col>\n\n        <ion-col>\n          <label class="log_sale_label">Total:</label>\n          <h4 style="margin:6px 0">848950</h4>\n        </ion-col>\n      </ion-row>\n\n      <ion-row > \n        <ion-col>\n        </ion-col>\n        <ion-col>\n          <button ion-button (click)="presentModal()" class="secondary_button"> Save & View Invoice </button>\n        </ion-col>\n        <ion-col>\n        </ion-col>\n      </ion-row>\n\n    </form>\n  </ion-grid>\n\n\n\n \n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/log_sales/log_sales.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_authprovider_authprovider__["a" /* AuthproviderProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_util_util__["a" /* UtilProvider */]])
-    ], LoginPage);
-    return LoginPage;
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]])
+    ], LogSalesPage);
+    return LogSalesPage;
 }());
 
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=log_sales.js.map
 
 /***/ })
 

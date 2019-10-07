@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar>
+      <div class="title-center" >
+        <ion-title >Add Customer</ion-title>
+      </div>
+      <ion-buttons end>
+        <button ion-button ion-only style="color: #CF7A7A" (click)="logout()" >
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <form>
+      <ion-row>
+        <ion-col>
+          <label class="log_sale_label">Customer First Name:</label>
+          <input class="log_sale_input" placeholder="First Name" type="text" name="firstname"/>
+        </ion-col>
+
+        <ion-col>
+          <label class="log_sale_label">Customer Last Name:</label>
+          <input class="log_sale_input" placeholder="Last Name" type="text" name="firstname"/>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <label class="log_sale_label">Customer Phone Number:</label>
+          <input class="log_sale_input" placeholder="Phone Number" type="text" name="phonenumber"/>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <label class="log_sale_label">Customer Email:</label>
+          <input class="log_sale_input" placeholder="Email Address" type="text" name="emailaddress"/>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <label class="log_sale_label">Customer Address:</label>
+          <textarea class="log_sale_input" placeholder="Address" type="textarea" name="emailaddress">
+          </textarea>
+        </ion-col>
+      </ion-row>
+
+      <ion-row > 
+        <ion-col>
+        </ion-col>
+        <ion-col>
+          <button ion-button (click)="presentModal()" class="secondary_button"> Submit </button>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+
+
+
+ 
+</ion-content>

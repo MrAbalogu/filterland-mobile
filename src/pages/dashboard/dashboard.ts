@@ -4,7 +4,7 @@ import { SettingsProvider } from '../../providers/settings/settings';
 import { PendingLogs } from '../pending_logs/pending_logs';
 import { LogSalesPage } from '../log_sales/log_sales';
 import { ProductsPage } from '../products/products';
-import { SalesTodayPage } from '../sales_today/sales_today';
+import { AddCustomerPage } from '../add_customer/add_customer';
 import { Storage } from '@ionic/storage';
 import { AuthproviderProvider } from './../../providers/authprovider/authprovider';
 
@@ -49,7 +49,7 @@ export class DashboardPage {
   }
 
   goToSalesTodayPage(){
-    this.navCtrl.push('SalesTodayPage');
+    this.navCtrl.push('AddCustomerPage');
   }
 
   public logout(): void {

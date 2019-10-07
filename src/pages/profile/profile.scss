@@ -9,7 +9,9 @@ profile {
     position: absolute;
     left: 0.3rem;
   }
-
+  #dependants {
+    margin-top: 5px;
+  }
   .logout-btn {
     position: absolute;
     right: 0.3rem;
@@ -43,36 +45,34 @@ profile {
         text-align: center;
       }
 
-  .profile-dependants {
-    float: left;
-    width: 48%;
+  .profile-btn {
     padding: 10px 0;
-    background: #50E3C2;
+    width: 100%;
+    background: #CF7A7A;
     border-top: 2px solid white;
     border-right: 2px solid white;
     color: white;
     font-weight: 700;
     text-align: center;
     font-size: 13px;
-    cursor: pointer; }
-    .profile-dependants:hover {
-      color: black;
-      text-decoration: underline;
-      background: #C4F2E8; }
+    cursor: pointer; 
+  }
+  .profile-btn:hover {
+    color: black;
+    text-decoration: underline;
+    background: #EDACAC; 
+  }
 
-  .profile-benefits {
-    float: left;
-    width: 49%;
-    padding: 10px 0;
-    background: #50E3C2;
-    border-top: 2px solid white;
-    border-right: 2px solid white;
-    color: white;
-    font-weight: 700;
-    text-align: center;
-    font-size: 13px;
-    cursor: pointer; }
-
+.profile-btn-grid {
+  padding: 0 !important;
+  .col {
+    padding: 0 !important;
+  }
+  .button-md {
+    margin: 1px !important;
+    // box-shadow: 0 2px 7px 0 rgba(0,0,0,0.30) !important;
+  }
+}
 
 .dl-info {
   float: left;

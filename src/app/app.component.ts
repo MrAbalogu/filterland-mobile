@@ -8,6 +8,7 @@ import { TabsPage } from './../pages/tabs/tabs';
 import { DashboardPage } from './../pages/dashboard/dashboard';
 import { IntroPage } from './../pages/intro/intro';
 import { SettingsPage } from './../pages/settings/settings';
+import { CustomersPage } from './../pages/customers/customers'
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -39,6 +40,7 @@ export class MyApp {
     this.pages =  [
       { title:'Pending Supplies', component:'PendingSuppliesPage',  icon:'ios-timer', index:0.2, },
       { title:'Recent Sales', component:'RecentSalesPage', icon:'ios-list-box', index:0.2, },
+      { title:'Customers', component:'CustomersPage', icon:'ios-list', index:0.2, },
       { title:'Newsletters', component:'NewslettersPage', icon:'ios-albums', index:0.2, },
       { title:'Spreadsheets', component:'', icon:'ios-document', index:0.2, },
       { title:'Share', component:'', icon:'ios-share', index:0.2, },
