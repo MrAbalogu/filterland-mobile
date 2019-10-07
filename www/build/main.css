@@ -51737,8 +51737,10 @@ customers .h-listitem {
 
 customers .hl-img {
   float: left;
-  width: 30%;
-  height: 6.6em;
+  width: 20%;
+  height: 4.4em;
+  margin-top: 1.4em;
+  margin-left: .5em;
 }
 
 customers .hl-info {
@@ -51859,14 +51861,32 @@ page-dashboard .red {
   margin-left: 5%;
 }
 
+page-dashboard .red:hover {
+  background: #A05E5E;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
 page-dashboard .gold {
   background: #A19563;
   margin-left: 2.5%;
 }
 
+page-dashboard .gold:hover {
+  background: #766E49;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
 page-dashboard .gray {
   background: #6D7278;
   margin-left: 5%;
+}
+
+page-dashboard .gray:hover {
+  background: #4A4E52;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 page-dashboard ion-content {

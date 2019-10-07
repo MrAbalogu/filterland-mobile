@@ -36,6 +36,18 @@ export class UtilProvider {
     return loading;
   }
 
+  public presentLoadingDefault(message: string): Loading {
+    let loading = this.loadingCtrl.create({
+      content: message
+    });
+
+    loading.present();
+    return loading;
+    // setTimeout(() => {
+    //   loading.dismiss();
+    // }, 5000);
+  }
+
   public presentAlertConfirm(title:string, message:string, okayCallBack: Function) {
     const alert = this.alerter.create({
       title: title,

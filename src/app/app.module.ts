@@ -9,6 +9,7 @@ import { SettingsProvider } from '../providers/settings/settings';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthproviderProvider } from '../providers/authprovider/authprovider';
 import { UtilProvider } from '../providers/util/util';
+import { CustomerService } from '../providers/customer/customer';
 import { IonicStorageModule } from '@ionic/storage';
 import { IntroPage } from '../pages/intro/intro';
 
@@ -36,6 +37,7 @@ import { IntroPage } from '../pages/intro/intro';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SettingsProvider,
     UtilProvider,
+    CustomerService,
     AuthproviderProvider
   ]
 })

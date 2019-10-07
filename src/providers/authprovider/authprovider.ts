@@ -71,20 +71,4 @@ export class AuthproviderProvider {
         return Promise.reject(err);
       });
   }
-
-  // postData(credentials, type) {
-  //   return new Promise((resolve, reject) => {
-  //     //let headers = new Headers();
-
-  //     this.http.post(apiUrl + type, credentials)
-  //       .subscribe(res => {
-  //         console.log("RESPONSE ",res)
-  //         resolve(res);
-  //       }, (err) => {
-  //         console.log("ERROR", err)
-  //         reject(err);
-  //       });
-  //   });
-  // }
-
 }

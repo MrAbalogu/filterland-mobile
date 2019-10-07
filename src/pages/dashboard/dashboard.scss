@@ -59,14 +59,26 @@ page-dashboard {
   .red {
     background: #CF7A7A;
     margin-left: 5%;
+    &:hover {
+      background: #A05E5E;
+      box-shadow: none !important;
+    }
   }
   .gold {
     background: #A19563;
     margin-left: 2.5%;
+    &:hover {
+      background: #766E49;
+      box-shadow: none !important;
+    }
   }
   .gray {
     background: #6D7278;
     margin-left: 5%;
+    &:hover {
+      background: #4A4E52;
+      box-shadow: none !important;
+    }
   }
 
   ion-content {
