@@ -16,21 +16,21 @@
       <ion-row>
         <ion-col>
           <label class="log_sale_label">Customer Full Name:</label>
-          <input class="log_sale_input" placeholder="Full Name" type="text" name="name" #name ngModel/>
+          <input class="log_sale_input" placeholder="Full Name" type="text" name="name" #name ngModel required/>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col>
           <label class="log_sale_label">Customer Phone Number:</label>
-          <input class="log_sale_input" placeholder="Phone Number" type="text" name="phonenumber" #phone ngModel/>
+          <input class="log_sale_input" placeholder="Phone Number" type="text" name="phone" #phone ngModel />
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col>
           <label class="log_sale_label">Customer Email:</label>
-          <input class="log_sale_input" placeholder="Email Address" type="text" name="emailaddress" #email ngModel/>
+          <input class="log_sale_input" placeholder="Email Address" type="text" name="email" #email ngModel required/>
         </ion-col>
       </ion-row>
 
@@ -46,12 +46,13 @@
         <ion-col>
         </ion-col>
         <ion-col>
-          <button ion-button type="submit" class="secondary_button" full [disabled]="!addCustomerForm.valid"> Submit </button>
+          <button ion-button type="submit" class="secondary_button" full [disabled]> Submit </button>
         </ion-col>
         <ion-col>
         </ion-col>
       </ion-row>
     </form>
+
   </ion-grid>
 
 

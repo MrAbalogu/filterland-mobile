@@ -1,5 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicApp, IonicModule, IonicErrorHandler, } from 'ionic-angular';
 import { MyApp } from './app.component';
 
@@ -22,6 +23,8 @@ import { IntroPage } from '../pages/intro/intro';
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,                               
+    ReactiveFormsModule,
 
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()

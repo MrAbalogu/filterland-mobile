@@ -25,10 +25,16 @@ export class MyApp {
   activepage: any;
 
   pages: Array<{ title: string, component: string, icon: string, index:number }>  ;
-
+  public onlineOffline: boolean = navigator.onLine;
   // navCtrl: any;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private settings: SettingsProvider, private storage: Storage) {
+  constructor(
+    platform: Platform, 
+    statusBar: StatusBar, 
+    splashScreen: SplashScreen, 
+    private settings: SettingsProvider, 
+    private storage: Storage
+    ) {
     this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val);  //Themeoption
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { HttpResponse, HttpErrorResponse } from "@angular/common/http";
 import { NgForm } from "@angular/forms";
 import { IonicPage, NavController, NavParams, TextInput } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
@@ -12,13 +13,10 @@ import { CustomerService } from './../../providers/customer/customer';
   selector: 'add_customer',
   templateUrl: 'add_customer.html',
 })
+
 export class AddCustomerPage {
 
   @ViewChild("addCustomerForm") addCustomerForm: NgForm;
-  @ViewChild("name") name: TextInput;
-  @ViewChild("phone") phone: TextInput;
-  @ViewChild("email") email: TextInput;
-  @ViewChild("address") address: TextInput;
 
   constructor(
     public navCtrl: NavController, 
@@ -38,28 +36,72 @@ export class AddCustomerPage {
 
   addCustomer(form: NgForm): void {
     var customerDetails: AddCustomer = {
-      name: this.name.value || "",
-      phone: this.phone.value || "",
-      email: this.email.value || "",
-      address: this.address.value || ""
+      name: form.value.name || "",
+      phone: form.value.phone || "",
+      email: form.value.email || "",
+      address: form.value.address || ""
     }
     if (form.invalid) {
       this.utility.showToast('Form cannot be empty.', 3000, 'toast-danger');
       return;
     }
-    console.log(customerDetails);
+    console.log("customer details:" + JSON.stringify(customerDetails));
     var loading = this.utility.presentLoadingDefault("Adding Customer Details ...");
     this.customerService.addCustomer(customerDetails)
-      .then(() => {
-        loading.dismiss();
-      })
-      .catch((err) => {
-        loading.dismiss();
-        if (err === 'Unknown Error') {
-            return this.utility.showToast('Cannot connect to server. Check network connection.', 3000, 'toast-danger');
+      .subscribe(
+        //Success
+        (response: HttpResponse<any>) => {
+          if (!navigator.onLine) {
+            //Do task when no internet connection
+            console.log("there is no internet");
+          }
+          else {
+            if (!response.ok) {
+              loading.dismiss();
+              return this.utility.showAlert(
+                "Error",
+                "There were problems logging you in, try again please."
+              );
+            }
+            else if (response.body.status == "error"){
+              loading.dismiss();
+              return this.utility.showAlert(
+                "Error",
+                response.body.errors
+              );
+            }  
+            else if (response.body.status == "success"){
+              console.log(response)
+              var customer_name = response.body.data.name
+              loading.dismiss();
+              return this.utility.showAlert(
+                "Success",
+                 customer_name + " has been added to Filterland Server"
+              );
+            }  
+          }
+          loading.dismiss();
+        },
+        //Error
+        (error: HttpErrorResponse) => {
+          loading.dismiss();
+          console.log(error);
+          let message: string;
+          if(error.status === 500 || !error.error.errors){
+            message = "There were problem, possible network or server errors, try again please.";
+          }
+          else{
+            if(error.error.errors){
+              message = error.error.errors[0]
+            }
+          }
+          this.utilService.showAlert( "Error", message );
+        },
+        //Complete error.error.errors[0] ||
+        () => {
+          console.log("Completed");
         }
-        this.utility.showToast('Invalid Login Credentials.', 3000, 'toast-danger');
-      });
+      );
 
   }
 

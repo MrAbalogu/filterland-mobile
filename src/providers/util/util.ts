@@ -25,6 +25,15 @@ export class UtilProvider {
     toast.present();
   }
 
+  public showAlert(title: string, message: string): void {
+    let alert = this.alerter.create({
+      title: title,
+      subTitle: message,
+      buttons: ["OK"]
+    });
+    alert.present();
+  }
+
   public showLoading(): Loading{
    let loading = this.loadingCtrl.create({
       content: `<div class="spinner">
