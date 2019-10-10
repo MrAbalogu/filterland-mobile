@@ -5,10 +5,10 @@ webpackJsonp([15],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IntroPageModule", function() { return IntroPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InvoiceModalModule", function() { return InvoiceModalModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__intro__ = __webpack_require__(701);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__invoice__ = __webpack_require__(701);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,24 +18,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var IntroPageModule = /** @class */ (function () {
-    function IntroPageModule() {
+var InvoiceModalModule = /** @class */ (function () {
+    function InvoiceModalModule() {
     }
-    IntroPageModule = __decorate([
+    InvoiceModalModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__intro__["a" /* IntroPage */],
+                __WEBPACK_IMPORTED_MODULE_2__invoice__["a" /* InvoiceModal */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__intro__["a" /* IntroPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__invoice__["a" /* InvoiceModal */]),
             ],
-            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__intro__["a" /* IntroPage */]]
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__invoice__["a" /* InvoiceModal */]]
         })
-    ], IntroPageModule);
-    return IntroPageModule;
+    ], InvoiceModalModule);
+    return InvoiceModalModule;
 }());
 
-//# sourceMappingURL=intro.module.js.map
+//# sourceMappingURL=invoice.module.js.map
 
 /***/ }),
 
@@ -43,7 +43,7 @@ var IntroPageModule = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IntroPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InvoiceModal; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57,31 +57,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-/**
- * Generated class for the IntroPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var IntroPage = /** @class */ (function () {
-    function IntroPage(navCtrl, navParams) {
+var InvoiceModal = /** @class */ (function () {
+    function InvoiceModal(navCtrl, navParams, viewCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.nextpage = 'LoginPage';
+        this.viewCtrl = viewCtrl;
     }
-    IntroPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad IntroPage');
+    InvoiceModal.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad InvoiceModal');
     };
-    IntroPage = __decorate([
+    InvoiceModal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-intro',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/intro/intro.html"*/'<ion-slides pager>\n  <ion-slide>\n      <div id="wrapper">\n          <!-- Page Content -->\n          <div class="exp1-wrapper">\n              <div class="exp-header">\n                  <img class="float-right" src="assets/imgs/logo-small.png">\n                  <div style="clear:both"></div>\n              </div>\n              <div class="exp-landing">\n                  <h2 class="exp1-text">Genuine Oil & Gas Filters for Cars</h2>\n              </div>\n\n                  <div class="exp-circles">\n                      <a href="exp1.html"> <div class="circle current-circle float-left"></div> </a>\n                      <a href="exp2.html"> <div class="circle float-left"></div> </a>\n                      <a href="exp3.html"> <div class="circle float-left"></div> </a>\n                  </div>\n              </div>\n          </div>\n          <!-- /#page-content-wrapper -->\n          <div class="skip">\n              <button ion-button color="mywhite" round outline [navPush]="nextpage"> Skip! </button>\n            </div>\n</ion-slide>\n<ion-slide>\n    <div id="wrapper">\n        <!-- Page Content -->\n        <div class="exp2-wrapper">\n            <div class="exp-header">\n                <img class="float-right" src="assets/imgs/logo-small.png">\n                <div style="clear:both"></div>\n            </div>\n            <div class="exp-landing">\n                <h2 class="exp1-text">Genuine Oil, Gas & Air Filters for Trucks</h2>\n            </div>\n\n                <div class="exp-circles">\n                    <a href="exp1.html"> <div class="circle float-left"></div> </a>\n                    <a href="exp2.html"> <div class="circle current-circle float-left"></div> </a>\n                    <a href="exp3.html"> <div class="circle float-left"></div> </a>\n                </div>\n                </div>\n                </div>\n                <div class="skip">\n                    <button ion-button color="mywhite" round outline [navPush]="nextpage"> Skip! </button>\n                  </div>\n\n</ion-slide>\n</ion-slides>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/intro/intro.html"*/,
+            selector: 'invoice',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/invoice/invoice.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        \n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Invoice</ion-title>\n      </div>\n      <ion-buttons class="" end>\n        <div class=""></div>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-row>\n  	<ion-col>\n  	  <div class="paid">Paid</div>\n  	</ion-col>\n  	<ion-col>\n  	  <div class="paid">Supplied</div>\n  	</ion-col>\n  </ion-row>\n  <div class="invoice-details">\n  	<p>Customer Name: </p>\n  	<p>Customer Address: </p>\n  	<p>Customer Phone: </p>\n  	<p>Customer Email: </p>\n  	<p>Date: </p>\n  </div>\n  <ion-grid>\n	  <div class="log_card">\n	      <ion-row>\n	        <ion-col>\n	          <p>Customer Name: <b>Chinedu Abalogu</b></p>\n	        </ion-col>\n	      </ion-row>\n\n	      <ion-row>\n	        <ion-col>\n	          <p>Carton/s: <b>N45000</b></p>\n	        </ion-col>\n	        <ion-col>\n	          <p>Price: <b>N45000</b></p>\n	        </ion-col>\n	      </ion-row> \n\n	      <ion-row>\n	        <ion-col>\n	          <p>Quantity:</p>\n	        </ion-col>\n	        <ion-col>\n	          <p>Total: <b>N45000</b></p>\n	        </ion-col>\n	      </ion-row>\n	  </div>\n\n	  <ion-row>\n	      <ion-col offset="3">\n	        <p style="text-align: center;">Total: <b>N90000</b></p>\n	      </ion-col>\n	    </ion-row>\n	    <ion-row> \n	      <ion-col>\n	      </ion-col>\n	      <ion-col>\n	        <button ion-button> Send to HQ </button>\n	      </ion-col>\n	      <ion-col>\n	      </ion-col>\n	  </ion-row>\n  </ion-grid>\n\n\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/invoice/invoice.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
-    ], IntroPage);
-    return IntroPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]])
+    ], InvoiceModal);
+    return InvoiceModal;
 }());
 
-//# sourceMappingURL=intro.js.map
+//# sourceMappingURL=invoice.js.map
 
 /***/ })
 

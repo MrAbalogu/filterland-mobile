@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from "@angular/common/http";
 import { NgForm } from "@angular/forms";
-import { IonicPage, NavController, NavParams, TextInput } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { TabsPage } from '../tabs/tabs';
 import { Customer } from '../../models/customer';
@@ -57,7 +57,7 @@ export class AddCustomerPage {
     this.navCtrl.setRoot(TabsPage)
   }
 
-  addCustomer(form: NgForm, customer: Customer): Promise<any> {
+  addCustomer(form: NgForm): Promise<any> {
     var customerDetails: AddCustomer = {
       name: form.value.name || "",
       phone: form.value.phone || "",
@@ -73,18 +73,35 @@ export class AddCustomerPage {
     if (!navigator.onLine) {
       // Do task when no internet connection
       console.log("there is no internet");
-      var cus = this.storage.set(CUSTOMERS, []);
-      console.log(JSON.stringify(cus));
-      // return this.storage.get(CUSTOMERS).then((customers: customer[]) => {
-      //   if (customers) {
-      //     customers.push(customer);
-      //     return this.storage.set(CUSTOMERS, customers);
-      //   } else {
-      //     return this.storage.set(CUSTOMERS, [customer]);
-      //   }
-      // });
+      this.storage.get(CUSTOMERS).then((customers) => {
+        if (customers) {
+          var new_data = [];
+          var uniq_arr = [];
+          var old_data = [];
+
+          new_data.push(customerDetails);
+          old_data = customers;
+
+          uniq_arr = old_data.filter(val => !new_data.includes(val));
+
+          this.utility.showAlert(
+            "Success (No Internet)",
+            "Customer will sync to Filterland Server when there is Internet"
+          );
+
+          return this.storage.set(CUSTOMERS, uniq_arr);
+        } else {
+
+          this.utility.showAlert(
+            "Success (No Internet)",
+            "Customer will sync to Filterland Server when there is Internet"
+          );
+
+          return this.storage.set(CUSTOMERS, [customerDetails]);
+        }
+      });
       loading.dismiss();
-      console.log(this.storage.get(CUSTOMERS));
+      console.log(this.storage.get("test"));
     }
     else {
       console.log("there is internet");
@@ -107,7 +124,6 @@ export class AddCustomerPage {
               );
             }  
             else if (response.body.status == "success"){
-              console.log(response)
               var customer_name = response.body.data.name
               loading.dismiss();
               return this.utility.showAlert(

@@ -1,14 +1,14 @@
 webpackJsonp([12],{
 
-/***/ 691:
+/***/ 694:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IndexPageModule", function() { return IndexPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RequestsPageModule", function() { return RequestsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(710);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__requests__ = __webpack_require__(698);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,32 +18,32 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var IndexPageModule = /** @class */ (function () {
-    function IndexPageModule() {
+var RequestsPageModule = /** @class */ (function () {
+    function RequestsPageModule() {
     }
-    IndexPageModule = __decorate([
+    RequestsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */],
+                __WEBPACK_IMPORTED_MODULE_2__requests__["a" /* RequestsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__requests__["a" /* RequestsPage */]),
             ],
-            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]]
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__requests__["a" /* RequestsPage */]]
         })
-    ], IndexPageModule);
-    return IndexPageModule;
+    ], RequestsPageModule);
+    return RequestsPageModule;
 }());
 
-//# sourceMappingURL=profile.module.js.map
+//# sourceMappingURL=requests.module.js.map
 
 /***/ }),
 
-/***/ 710:
+/***/ 698:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RequestsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57,24 +57,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var ProfilePage = /** @class */ (function () {
-    function ProfilePage(navCtrl, navParams) {
+/**
+ * Generated class for the RequestsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var RequestsPage = /** @class */ (function () {
+    function RequestsPage(navCtrl, navParams, viewCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
     }
-    ProfilePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ProfilePage');
+    RequestsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad RequestsPage');
     };
-    ProfilePage = __decorate([
+    RequestsPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    RequestsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'profile',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/profile/profile.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >My Profile</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <button ion-button ion-only style="color: #CF7A7A"   (click)="logout()" >\n          <ion-icon name="log-out"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <div class="profile-info">\n      <div class="pi-img">\n          <img src="assets/imgs/profile-picture.jpg">\n      </div>\n      <div class="pi-info">\n          <p>Full Name: &nbsp; &nbsp; Stephen Sowole</p>\n          <p>Policy Name: &nbsp;   Bronze Plan</p>\n          <p>ID Number:  &nbsp; &nbsp; AXA9494943N</p>\n          <p>HMO: &nbsp; &nbsp; &nbsp; AXA Mansard</p>\n      </div>\n      <div style="clear: both;"></div>\n  </div>\n\n  <ion-grid class="profile-btn-grid">\n    <ion-row>\n      <ion-col>\n        <button ion-button id="dp" class="profile-btn">MY STATS</button>\n      </ion-col>\n      <ion-col>\n        <button ion-button id="dp" class="profile-btn">EDIT PROFILE</button>\n      </ion-col>\n    </ion-row> \n  </ion-grid>\n\n  <div id="dependants">\n      <div class="d-listitem">\n\n          <ion-list>\n              <ion-item>\n\n                <h2> Total Sales</h2>\n                <p>AXAR9300END-01</p>\n\n                    <ion-icon class="dl-claims" name="ios-paper"></ion-icon> <button ion-button clear item-end  color="cutte">View Claim </button>\n\n              </ion-item>\n              <ion-item>\n\n                  <h2> Awards</h2>\n                  <p>AXAR9300END-01</p>\n                  <ion-icon class="dl-claims" name="ios-paper"></ion-icon> <button ion-button clear item-end color="cutte">View Claim </button>\n                </ion-item>\n                <ion-item>\n\n                    <h2> Tasks</h2>\n                    <p>AXAR9300END-01</p>\n\n                    <ion-icon class="dl-claims" name="ios-paper"></ion-icon> <button ion-button clear item-end  color="cutte">View Claim </button>\n                  </ion-item>\n            </ion-list>\n\n\n\n\n\n    </div>\n  </div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/profile/profile.html"*/,
+            selector: 'page-requests',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/requests/requests.html"*/'<ion-content  class="main-view">\n\n    <div class="overlay" (click)="dismiss()"></div>\n  <ion-scroll class="modal_content" scrollY="true">\n\n\n\n       <ion-icon class="circle" name="ios-checkmark-circle-outline"></ion-icon>\n\n\n       <div class="check"><p><strong> Your Reports has been Sent</strong></p></div>\n\n       <div class="check-2"><p>Mail will be Sent to</p></div>\n       <div class="check-3"><p>chineduabalagu@nnpcgroup.com</p></div>\n       <div class="check-4"><p>with your reports</p></div>\n\n\n\n\n\n\n\n\n\n    </ion-scroll>\n\n    </ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/requests/requests.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
-    ], ProfilePage);
-    return ProfilePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]])
+    ], RequestsPage);
+    return RequestsPage;
 }());
 
-//# sourceMappingURL=profile.js.map
+//# sourceMappingURL=requests.js.map
 
 /***/ })
 
