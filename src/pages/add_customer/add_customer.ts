@@ -1,7 +1,7 @@
-import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from "@angular/common/http";
 import { NgForm } from "@angular/forms";
-import { IonicPage, NavController, NavParams, TextInput, Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, TextInput } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { TabsPage } from '../tabs/tabs';
 import { Customer } from '../../models/customer';
@@ -73,16 +73,16 @@ export class AddCustomerPage {
     if (!navigator.onLine) {
       // Do task when no internet connection
       console.log("there is no internet");
-      var cus = this.storage.set(CUSTOMERS, customer[]);
+      var cus = this.storage.set(CUSTOMERS, []);
       console.log(JSON.stringify(cus));
-      return this.storage.get(CUSTOMERS).then((customers: customer[]) => {
-        if (customers) {
-          customers.push(customer);
-          return this.storage.set(CUSTOMERS, customers);
-        } else {
-          return this.storage.set(CUSTOMERS, [customer]);
-        }
-      });
+      // return this.storage.get(CUSTOMERS).then((customers: customer[]) => {
+      //   if (customers) {
+      //     customers.push(customer);
+      //     return this.storage.set(CUSTOMERS, customers);
+      //   } else {
+      //     return this.storage.set(CUSTOMERS, [customer]);
+      //   }
+      // });
       loading.dismiss();
       console.log(this.storage.get(CUSTOMERS));
     }
