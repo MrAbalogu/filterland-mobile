@@ -1,4 +1,4 @@
-import { Component, ViewChild,  } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Platform, Nav, App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -15,6 +15,15 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  @ViewChild('internet_checker_indicator') internet_checker_indicator: ElementRef;
+
+  // ngAfterViewInit() {
+  //   console.log(this.internet_checker_indicator.nativeElement.innerHTML);
+  // }
+  ionViewDidLoad() {
+    console.log('component ts file');
+  }
+
   currentUser = localStorage.getItem('currentuser');
   rootPage:any = this.currentUser
                       ? 'TabsPage'
@@ -54,6 +63,37 @@ export class MyApp {
     ];
     this.activepage = this.pages[0];
   }
+
+  // Run when the device is ready
+  // document.addEventListener('deviceready', function () {
+
+  //     // Android customization
+  //     // To indicate that the app is executing tasks in background and being paused would disrupt the user.
+  //     // The plug-in has to create a notification while in background - like a download progress bar.
+  //     cordova.plugins.backgroundMode.setDefaults({ 
+  //         title:  'CheckInternet',
+  //         text:   'Executing background tasks.'
+  //     });
+
+  //     // Enable background mode
+  //     cordova.plugins.backgroundMode.enable();
+
+  //     // Called when background mode has been activated
+  //     cordova.plugins.backgroundMode.onactivate = function () {
+
+  //         // Set an interval of 30 minutes (1800000 milliseconds)
+  //         setInterval(function () {
+
+  //             // The code that you want to run repeatedly
+  //             if (!navigator.onLine) {
+
+  //             } else {
+
+  //             }
+
+  //         }, 1800000);
+  //     }
+  // }, false);
 
   openPage(page) {
     this.nav.setRoot(page.component);

@@ -1,11 +1,17 @@
 <ion-header>
   <ion-navbar>
-      <div class="title-center" >
+      <ion-buttons class="menu-left" start>
+        <button class="start" ion-button ion-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+      <div class="home-title title-center" >
         <ion-title >Add Customer</ion-title>
       </div>
-      <ion-buttons end>
-        <button ion-button ion-only style="color: #CF7A7A" (click)="logout()" >
-        </button>
+      <ion-buttons class="logout-btn" end>
+        <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>
+          <ion-spinner class="check_network_spinner"></ion-spinner>
+        </div>
       </ion-buttons>
   </ion-navbar>
 </ion-header>
