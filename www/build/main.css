@@ -51717,6 +51717,11 @@ add_customer .check_network_spinner {
   color: white;
 }
 
+add_customer .customercount {
+  font-weight: 700;
+  color: red;
+}
+
 customers ::-webkit-input-placeholder {
   color: #DBDBDB;
   font-weight: 100;

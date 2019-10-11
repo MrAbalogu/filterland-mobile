@@ -118,16 +118,23 @@ var AddCustomerPage = /** @class */ (function () {
             'onlinebg': false,
             'offlinebg': false
         };
+        this.disableSyncButton = true;
     }
     AddCustomerPage.prototype.ionViewDidLoad = function () {
         var _this = this;
         console.log('ionViewDidLoad AddCustomerPage');
+        this.storage.get("user").then(function (u) {
+            _this.user_id = u.data.id;
+        });
+        this.storage.get(CUSTOMERS).then(function (customers) {
+            _this.customers = customers;
+        });
         // Set an interval of 30 minutes (1800000 milliseconds)
         setInterval(function () {
             // The code that you want to run repeatedly
             if (!navigator.onLine) {
                 _this.indicator_classes.offlinebg = true;
-                _this.indicator_classes.onlinebg = true;
+                _this.indicator_classes.onlinebg = false;
                 _this.internetIndicator.nativeElement.innerHTML = "Offline";
             }
             else {
@@ -137,11 +144,23 @@ var AddCustomerPage = /** @class */ (function () {
             }
         }, 2000);
     };
+    AddCustomerPage.prototype.ionViewDidEnter = function () {
+        console.log("entered");
+        console.log(this.customers.length);
+        if (this.customers) {
+            this.disableSyncButton = false;
+            this.customersCount.nativeElement.innerHTML = this.customers.length;
+        }
+        else {
+            this.disableSyncButton = true;
+        }
+    };
     AddCustomerPage.prototype.goToTabsPage = function () {
         this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__tabs_tabs__["a" /* TabsPage */]);
     };
     AddCustomerPage.prototype.addCustomer = function (form) {
         var _this = this;
+        console.log("customers: " + this.customers);
         var customerDetails = {
             name: form.value.name || "",
             phone: form.value.phone || "",
@@ -149,11 +168,14 @@ var AddCustomerPage = /** @class */ (function () {
             address: form.value.address || ""
         };
         if (form.invalid) {
-            this.utility.showToast('Form cannot be empty.', 3000, 'toast-danger');
+            this.utility.showToast("Please fill form completely. You must fill Customer's email to submit", 3000, 'toast-danger');
             return;
         }
-        console.log("customer details:" + JSON.stringify(customerDetails));
+        else {
+            this.disableSubmitButton = false;
+        }
         var loading = this.utility.presentLoadingDefault("Adding Customer Details ...");
+        console.log("new customer details:" + JSON.stringify(customerDetails));
         if (!navigator.onLine) {
             // Do task when no internet connection
             console.log("there is no internet");
@@ -165,6 +187,7 @@ var AddCustomerPage = /** @class */ (function () {
                     new_data.push(customerDetails);
                     old_data = customers;
                     uniq_arr = old_data.filter(function (val) { return !new_data.includes(val); });
+                    uniq_arr.user_id = _this.user_id;
                     _this.utility.showAlert("Success (No Internet)", "Customer will sync to Filterland Server when there is Internet");
                     return _this.storage.set(CUSTOMERS, uniq_arr);
                 }
@@ -174,10 +197,11 @@ var AddCustomerPage = /** @class */ (function () {
                 }
             });
             loading.dismiss();
-            console.log(this.storage.get("test"));
         }
         else {
             console.log("there is internet");
+            customerDetails.user_id = this.user_id;
+            console.log(customerDetails);
             this.customerService.addCustomer(customerDetails)
                 .subscribe(
             //Success
@@ -218,6 +242,19 @@ var AddCustomerPage = /** @class */ (function () {
             });
         }
     };
+    AddCustomerPage.prototype.syncDateFromStorageToServer = function () {
+        console.log(this.customers);
+        // this.customerService.syncCustomersFromStorage(this.customers)
+        //   .subscribe(
+        //     (response: HttpResponse<any>) => {
+        //     },
+        //     (error: HttpErrorResponse) => {
+        //     }
+        //     () => {
+        //       console.log("Completed");
+        //     }
+        //   );
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("addCustomerForm"),
         __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* NgForm */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* NgForm */]) === "function" && _a || Object)
@@ -226,14 +263,18 @@ var AddCustomerPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("internet_checker_indicator"),
         __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _b || Object)
     ], AddCustomerPage.prototype, "internetIndicator", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("customersCount"),
+        __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _c || Object)
+    ], AddCustomerPage.prototype, "customersCount", void 0);
     AddCustomerPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'add_customer',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/add_customer/add_customer.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Add Customer</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n          <ion-spinner class="check_network_spinner"></ion-spinner>\n        </div>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <form #addCustomerForm="ngForm" (ngSubmit)="addCustomer(addCustomerForm)">\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Full Name:</label>\n          <input class="log_sale_input" placeholder="Full Name" type="text" name="name" #name ngModel required/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Phone Number:</label>\n          <input class="log_sale_input" placeholder="Phone Number" type="text" name="phone" #phone ngModel />\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Email:</label>\n          <input class="log_sale_input" placeholder="Email Address" type="text" name="email" #email ngModel required/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Address:</label>\n          <textarea class="log_sale_input" placeholder="Address" type="textarea" name="address" #address ngModel>\n          </textarea>\n        </ion-col>\n      </ion-row>\n\n      <ion-row > \n        <ion-col>\n        </ion-col>\n        <ion-col>\n          <button ion-button type="submit" class="secondary_button" full [disabled]> Submit </button>\n        </ion-col>\n        <ion-col>\n        </ion-col>\n      </ion-row>\n    </form>\n\n  </ion-grid>\n\n\n\n \n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/add_customer/add_customer.html"*/,
+            selector: 'add_customer',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/add_customer/add_customer.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Add Customer</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n          <ion-spinner class="check_network_spinner"></ion-spinner>\n        </div>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <form #addCustomerForm="ngForm" (ngSubmit)="addCustomer(addCustomerForm)">\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Full Name:</label>\n          <input class="log_sale_input" placeholder="Full Name" type="text" name="name" #name ngModel required/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Phone Number:</label>\n          <input class="log_sale_input" placeholder="Phone Number" type="text" name="phone" #phone ngModel />\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Email:</label>\n          <input class="log_sale_input" placeholder="Email Address" type="text" name="email" #email ngModel required/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Address:</label>\n          <textarea class="log_sale_input" placeholder="Address" type="textarea" name="address" #address ngModel>\n          </textarea>\n        </ion-col>\n      </ion-row>\n\n      <ion-row > \n        <ion-col>\n        </ion-col>\n        <ion-col>\n          <button ion-button type="submit" class="secondary_button" full [disabled]="!addCustomerForm.valid" > Submit </button>\n        </ion-col>\n        <ion-col>\n        </ion-col>\n      </ion-row>\n\n      <ion-row > \n        <ion-col>\n          <p><span class="customercount" #customersCount>0</span> Customer/s to Sync</p>\n        </ion-col>\n        <ion-col>\n          <button ion-button type="submit" class="primary_button" full [disabled]="disableSyncButton" > Sync To Filerland Server </button>\n        </ion-col>\n      </ion-row>\n    </form>\n\n  </ion-grid>\n\n\n\n \n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/add_customer/add_customer.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__providers_util_util__["a" /* UtilProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_util_util__["a" /* UtilProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__providers_customer_customer__["a" /* CustomerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_customer_customer__["a" /* CustomerService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]) === "function" && _g || Object])
+        __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__providers_util_util__["a" /* UtilProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_util_util__["a" /* UtilProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_6__providers_customer_customer__["a" /* CustomerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_customer_customer__["a" /* CustomerService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]) === "function" && _h || Object])
     ], AddCustomerPage);
     return AddCustomerPage;
-    var _a, _b, _c, _d, _e, _f, _g;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
 }());
 
 //# sourceMappingURL=add_customer.js.map

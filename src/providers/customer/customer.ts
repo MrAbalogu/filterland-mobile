@@ -18,22 +18,10 @@ export class CustomerService {
 
   public addCustomer(customerDetails: AddCustomer) {
   	return this.http.post(`${this.baseUrl}`, customerDetails, { observe: 'response' });
- //  	.toPromise()
-	// .then((customer) => {
-	//   if (customer) {
-	//   	console.log("response: " + JSON.stringify(customer));
-	//   	// this.storage.set(CUSTOMER, customer);
-	//   }
-	//   return customer;
-	// })
-	// .then((res) => {
-	//   console.log("res: " + JSON.stringify(res));
-	//   return Promise.resolve();  
-	// })
-	// .catch((error: HttpErrorResponse) => {
-	//   console.log(error);
-	//   return Promise.reject(error.statusText);
-	// });
+  }
+
+  public syncCustomersFromStorage(customers) {
+  	return this.http.post(`${this.baseUrl}`, customers, { observe: 'response' })
   }
 
 }

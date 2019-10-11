@@ -52,9 +52,18 @@
         <ion-col>
         </ion-col>
         <ion-col>
-          <button ion-button type="submit" class="secondary_button" full [disabled]> Submit </button>
+          <button ion-button type="submit" class="secondary_button" full [disabled]="!addCustomerForm.valid" > Submit </button>
         </ion-col>
         <ion-col>
+        </ion-col>
+      </ion-row>
+
+      <ion-row > 
+        <ion-col>
+          <p><span class="customercount" #customersCount>0</span> Customer/s to Sync</p>
+        </ion-col>
+        <ion-col>
+          <button ion-button type="submit" class="primary_button" full [disabled]="disableSyncButton" > Sync To Filerland Server </button>
         </ion-col>
       </ion-row>
     </form>

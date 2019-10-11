@@ -21,10 +21,14 @@ export class AddCustomerPage {
 
   @ViewChild("addCustomerForm") addCustomerForm: NgForm;
   @ViewChild("internet_checker_indicator") internetIndicator: ElementRef;
+  @ViewChild("customersCount") customersCount: ElementRef;
   indicator_classes: any = {
     'onlinebg': false,
     'offlinebg': false
-  }
+  };
+  user_id: any;
+  customers: any;
+  disableSyncButton: boolean = true;
 
   constructor(
     public navCtrl: NavController, 
@@ -37,12 +41,19 @@ export class AddCustomerPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddCustomerPage');
+    this.storage.get("user").then((u) => {
+      this.user_id = u.data.id;
+    });
+    this.storage.get(CUSTOMERS).then((customers) => {
+      this.customers = customers;
+    });
+
     // Set an interval of 30 minutes (1800000 milliseconds)
     setInterval(() => { 
       // The code that you want to run repeatedly
       if (!navigator.onLine) {
         this.indicator_classes.offlinebg = true;
-        this.indicator_classes.onlinebg = true;
+        this.indicator_classes.onlinebg = false;
         this.internetIndicator.nativeElement.innerHTML = "Offline";
 
       } else {
@@ -53,11 +64,23 @@ export class AddCustomerPage {
     }, 2000);
   }
 
+  ionViewDidEnter() {
+    console.log("entered");
+    console.log(this.customers.length);
+    if (this.customers){
+      this.disableSyncButton = false;
+      this.customersCount.nativeElement.innerHTML = this.customers.length;
+    } else {
+      this.disableSyncButton = true;
+    }
+  }
+
   goToTabsPage() {
     this.navCtrl.setRoot(TabsPage)
   }
 
   addCustomer(form: NgForm): Promise<any> {
+    console.log("customers: " + this.customers);
     var customerDetails: AddCustomer = {
       name: form.value.name || "",
       phone: form.value.phone || "",
@@ -65,11 +88,14 @@ export class AddCustomerPage {
       address: form.value.address || ""
     }
     if (form.invalid) {
-      this.utility.showToast('Form cannot be empty.', 3000, 'toast-danger');
+      this.utility.showToast("Please fill form completely. You must fill Customer's email to submit", 3000, 'toast-danger');
       return;
+    } else {
+      this.disableSubmitButton = false;
     }
-    console.log("customer details:" + JSON.stringify(customerDetails));
     var loading = this.utility.presentLoadingDefault("Adding Customer Details ...");
+
+    console.log("new customer details:" + JSON.stringify(customerDetails));
     if (!navigator.onLine) {
       // Do task when no internet connection
       console.log("there is no internet");
@@ -83,6 +109,7 @@ export class AddCustomerPage {
           old_data = customers;
 
           uniq_arr = old_data.filter(val => !new_data.includes(val));
+          uniq_arr.user_id = this.user_id;
 
           this.utility.showAlert(
             "Success (No Internet)",
@@ -101,10 +128,11 @@ export class AddCustomerPage {
         }
       });
       loading.dismiss();
-      console.log(this.storage.get("test"));
     }
     else {
       console.log("there is internet");
+      customerDetails.user_id = this.user_id;
+      console.log(customerDetails)
       this.customerService.addCustomer(customerDetails)
         .subscribe(
           //Success
@@ -154,6 +182,23 @@ export class AddCustomerPage {
           }
         );
     }
+  }
+
+  syncDateFromStorageToServer() {
+    console.log(this.customers);
+
+    // this.customerService.syncCustomersFromStorage(this.customers)
+    //   .subscribe(
+    //     (response: HttpResponse<any>) => {
+
+    //     },
+    //     (error: HttpErrorResponse) => {
+
+    //     }
+    //     () => {
+    //       console.log("Completed");
+    //     }
+    //   );
   }
 
 }
