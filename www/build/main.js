@@ -486,7 +486,7 @@ var CustomerService = /** @class */ (function () {
         return this.http.post("" + this.baseUrl, customerDetails, { observe: 'response' });
     };
     CustomerService.prototype.syncCustomersFromStorage = function (customers) {
-        return this.http.post("" + this.baseUrl, customers, { observe: 'response' });
+        return this.http.post(this.baseUrl + "/sync_from_storage", customers, { observe: 'response' });
     };
     CustomerService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),

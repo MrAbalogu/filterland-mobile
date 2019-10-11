@@ -21,7 +21,7 @@ export class CustomerService {
   }
 
   public syncCustomersFromStorage(customers) {
-  	return this.http.post(`${this.baseUrl}`, customers, { observe: 'response' })
+  	return this.http.post(`${this.baseUrl}/sync_from_storage`, customers, { observe: 'response' })
   }
 
 }

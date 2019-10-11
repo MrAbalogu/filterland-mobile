@@ -11,5 +11,6 @@ export interface AddCustomer{
   email: string;
   phone: string;
   address: string;
+  user_id: string;
 }
 

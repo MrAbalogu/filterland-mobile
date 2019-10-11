@@ -66,9 +66,10 @@ export class AddCustomerPage {
 
   ionViewDidEnter() {
     console.log("entered");
-    console.log(this.customers.length);
     if (this.customers){
-      this.disableSyncButton = false;
+      if (navigator.onLine) {
+        this.disableSyncButton = false;
+      }
       this.customersCount.nativeElement.innerHTML = this.customers.length;
     } else {
       this.disableSyncButton = true;
@@ -80,51 +81,68 @@ export class AddCustomerPage {
   }
 
   addCustomer(form: NgForm): Promise<any> {
-    console.log("customers: " + this.customers);
     var customerDetails: AddCustomer = {
       name: form.value.name || "",
       phone: form.value.phone || "",
       email: form.value.email || "",
-      address: form.value.address || ""
+      address: form.value.address || "",
+      user_id: ""
     }
     if (form.invalid) {
       this.utility.showToast("Please fill form completely. You must fill Customer's email to submit", 3000, 'toast-danger');
       return;
-    } else {
-      this.disableSubmitButton = false;
     }
     var loading = this.utility.presentLoadingDefault("Adding Customer Details ...");
 
     console.log("new customer details:" + JSON.stringify(customerDetails));
     if (!navigator.onLine) {
-      // Do task when no internet connection
       console.log("there is no internet");
       this.storage.get(CUSTOMERS).then((customers) => {
         if (customers) {
-          var new_data = [];
+          var new_data;
           var uniq_arr = [];
           var old_data = [];
+          var data_duplicate = false;
 
-          new_data.push(customerDetails);
+          customerDetails.user_id = this.user_id;
+          new_data = customerDetails;
           old_data = customers;
 
-          uniq_arr = old_data.filter(val => !new_data.includes(val));
-          uniq_arr.user_id = this.user_id;
+          console.log("Old data:", old_data);
+          console.log("New data:", new_data);
 
-          this.utility.showAlert(
-            "Success (No Internet)",
-            "Customer will sync to Filterland Server when there is Internet"
-          );
+          old_data.forEach((c) => {
+            console.log("Emails: ", c.email);
+            if(c.email === new_data.email){
+              data_duplicate = true;
+            }
+          })
 
-          return this.storage.set(CUSTOMERS, uniq_arr);
+          if (data_duplicate === false) {
+            console.log('data stored');
+            old_data.push(new_data);
+            this.storage.set(CUSTOMERS, old_data);
+            this.navCtrl.push('AddCustomerPage');
+            this.utility.showAlert(
+              "Success (No Internet)",
+              "Kindly sync to Filterland Server when there is Internet"
+            );
+          } else {
+            this.navCtrl.push('AddCustomerPage');
+            this.utility.showAlert(
+              "Error",
+              "Customer already exist"
+            );
+          }
+
         } else {
-
+          customerDetails.user_id = this.user_id;
+          this.storage.set(CUSTOMERS, [customerDetails]);
           this.utility.showAlert(
             "Success (No Internet)",
             "Customer will sync to Filterland Server when there is Internet"
           );
-
-          return this.storage.set(CUSTOMERS, [customerDetails]);
+          this.navCtrl.push('AddCustomerPage');
         }
       });
       loading.dismiss();
@@ -184,21 +202,46 @@ export class AddCustomerPage {
     }
   }
 
-  syncDateFromStorageToServer() {
-    console.log(this.customers);
-
-    // this.customerService.syncCustomersFromStorage(this.customers)
-    //   .subscribe(
-    //     (response: HttpResponse<any>) => {
-
-    //     },
-    //     (error: HttpErrorResponse) => {
-
-    //     }
-    //     () => {
-    //       console.log("Completed");
-    //     }
-    //   );
+  syncFromStorageToServer() {
+    console.log(JSON.stringify(this.customers));
+    var loading = this.utility.presentLoadingDefault("Syncing Customers to Server ...");
+    this.customerService.syncCustomersFromStorage(this.customers)
+      .subscribe(
+        (response: HttpResponse<any>) => {
+          if (!response.ok) {
+            loading.dismiss();
+            return this.utility.showAlert(
+              "Error",
+              "There were problems syncing to Filterland Server, try again please."
+            );
+          }
+          else {
+            loading.dismiss();
+            return this.utility.showAlert(
+              "Completed with errors:",
+              response.body.errors
+            );
+          }  
+          loading.dismiss();
+        },
+        (error: HttpErrorResponse) => {
+          loading.dismiss();
+            console.log(error);
+            let message: string;
+            if(error.status === 500 || !error.error.errors){
+              message = "There were problem, possible network or server errors, try again please.";
+            }
+            else{
+              if(error.error.errors){
+                message = error.error.errors[0]
+              }
+            }
+            this.utility.showAlert( "Error", message );
+        },
+        () => {
+          console.log("Completed");
+        }
+      );
   }
 
 }
