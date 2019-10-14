@@ -1,14 +1,15 @@
 webpackJsonp([0],{
 
-/***/ 692:
+/***/ 684:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RecentSalesPageModule", function() { return RecentSalesPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LogSalesPageModule", function() { return LogSalesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__recent_sales__ = __webpack_require__(711);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__log_sales__ = __webpack_require__(703);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pipes_pipes_module__ = __webpack_require__(704);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,24 +19,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var RecentSalesPageModule = /** @class */ (function () {
-    function RecentSalesPageModule() {
+
+var LogSalesPageModule = /** @class */ (function () {
+    function LogSalesPageModule() {
     }
-    RecentSalesPageModule = __decorate([
+    LogSalesPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__recent_sales__["a" /* RecentSalesPage */],
+                __WEBPACK_IMPORTED_MODULE_2__log_sales__["a" /* LogSalesPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__recent_sales__["a" /* RecentSalesPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__log_sales__["a" /* LogSalesPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__pipes_pipes_module__["a" /* PipesModule */]
             ],
-            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__recent_sales__["a" /* RecentSalesPage */]]
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__log_sales__["a" /* LogSalesPage */]]
         })
-    ], RecentSalesPageModule);
-    return RecentSalesPageModule;
+    ], LogSalesPageModule);
+    return LogSalesPageModule;
 }());
 
-//# sourceMappingURL=recent_sales.module.js.map
+//# sourceMappingURL=log_sales.module.js.map
 
 /***/ }),
 
@@ -78,62 +81,13 @@ var TabsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 698:
+/***/ 703:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RequestsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LogSalesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the RequestsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var RequestsPage = /** @class */ (function () {
-    function RequestsPage(navCtrl, navParams, viewCtrl) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-    }
-    RequestsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad RequestsPage');
-    };
-    RequestsPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    RequestsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-requests',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/requests/requests.html"*/'<ion-content  class="main-view">\n\n    <div class="overlay" (click)="dismiss()"></div>\n  <ion-scroll class="modal_content" scrollY="true">\n\n\n\n       <ion-icon class="circle" name="ios-checkmark-circle-outline"></ion-icon>\n\n\n       <div class="check"><p><strong> Your Reports has been Sent</strong></p></div>\n\n       <div class="check-2"><p>Mail will be Sent to</p></div>\n       <div class="check-3"><p>chineduabalagu@nnpcgroup.com</p></div>\n       <div class="check-4"><p>with your reports</p></div>\n\n\n\n\n\n\n\n\n\n    </ion-scroll>\n\n    </ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/requests/requests.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]])
-    ], RequestsPage);
-    return RequestsPage;
-}());
-
-//# sourceMappingURL=requests.js.map
-
-/***/ }),
-
-/***/ 711:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecentSalesPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__requests_requests__ = __webpack_require__(698);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs_tabs__ = __webpack_require__(697);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -149,34 +103,163 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var RecentSalesPage = /** @class */ (function () {
-    function RecentSalesPage(navCtrl, navParams, modalCtrl) {
+var LogSalesPage = /** @class */ (function () {
+    function LogSalesPage(navCtrl, navParams, modalCtrl, fb) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.modalCtrl = modalCtrl;
+        this.fb = fb;
+        this.indicator_classes = {
+            'onlinebg': false,
+            'offlinebg': false
+        };
+        this.items = [];
+        this.itemCount = 1;
+        this.logSaleForm = this.fb.group({
+            name: [''],
+            phone: [''],
+            email: [''],
+            address: [''],
+            paid: [''],
+            items: this.fb.array([])
+        });
     }
-    RecentSalesPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad RecentSalesPage');
+    LogSalesPage.prototype.presentModal = function () {
+        this.navCtrl.push("InvoiceModal");
     };
-    RecentSalesPage.prototype.showModal = function () {
-        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_0__requests_requests__["a" /* RequestsPage */]);
-        modal.present();
+    LogSalesPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        console.log('ionViewDidLoad LogSalesPage');
+        // Continously Check for Internet
+        setInterval(function () {
+            // The code that you want to run repeatedly
+            if (!navigator.onLine) {
+                _this.indicator_classes.offlinebg = true;
+                _this.indicator_classes.onlinebg = false;
+                _this.internetIndicator.nativeElement.innerHTML = "Offline";
+            }
+            else {
+                _this.indicator_classes.offlinebg = false;
+                _this.indicator_classes.onlinebg = true;
+                _this.internetIndicator.nativeElement.innerHTML = "Online";
+            }
+        }, 2000);
     };
-    RecentSalesPage.prototype.goToTabsPage = function () {
+    LogSalesPage.prototype.goToTabsPage = function () {
         this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__tabs_tabs__["a" /* TabsPage */]);
     };
-    RecentSalesPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-reports',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/recent_sales/recent_sales.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons class="menu-left" start>\n      <button ion-button (click)="goToTabsPage()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <div class="title-center" >\n      <ion-title >Recent Sales</ion-title>\n    </div>\n    <ion-buttons class="menu-right" end>\n      <button ion-button ion-only style="color: #0decc7">\n        <ion-icon name="search">\n        </ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/recent_sales/recent_sales.html"*/,
+    LogSalesPage.prototype.add_item = function () {
+        var fa = this.logSaleForm.get('items');
+        fa.push(this.fb.group({
+            name: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["g" /* Validators */].required],
+            partnumber: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["g" /* Validators */].required],
+            quantity: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["g" /* Validators */].required],
+            price: ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["g" /* Validators */].required],
+        }));
+        // var add_item = document.getElementById("add_item");
+        // var item = document.getElementById("item");
+        // var clone = item.cloneNode(true);
+        // clone.childNodes[1].className = 'remove showdisplay';
+        // clone.addEventListener('click', this.remove_item.bind(this));
+        // item.parentNode.insertBefore(clone, item.nextSibling);
+    };
+    LogSalesPage.prototype.remove_item = function (event) {
+        console.log(event.target.parentNode);
+        event.target.parentNode.remove();
+    };
+    LogSalesPage.prototype.viewInvoice = function () {
+        console.log(this.logSaleForm.value);
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("internet_checker_indicator"),
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
+    ], LogSalesPage.prototype, "internetIndicator", void 0);
+    LogSalesPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'log-sales',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/log_sales/log_sales.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Log Sale</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n          <ion-spinner class="check_network_spinner"></ion-spinner>\n        </div>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <form [formGroup]="logSaleForm" (ngSubmit)="viewInvoice(logSaleForm)">\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Full Name:</label>\n          <input class="log_sale_input" placeholder="Full Name" type="text" formControlName="name" required/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Phone Number:</label>\n          <input class="log_sale_input" placeholder="Phone Number" type="text" formControlName="phone" required/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Email:</label>\n          <input class="log_sale_input" placeholder="Email Address" type="email" formControlName="email" required/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Address:</label>\n          <textarea class="log_sale_input" placeholder="Address" type="textarea" formControlName="address" required>\n          </textarea>\n        </ion-col>\n      </ion-row>\n\n      <div formArrayName="items" id="item" class="sale_item_container">\n        {{ \'Items \'+items}}\n        <div *ngFor="let control of logSaleForm.get(\'items\').controls | keyvalue">\n          <div class="remove nodisplay" (click)="remove_item($event)">\n            remove\n          </div>\n          <ion-row>\n            <ion-col size="3">\n              <label class="log_sale_label">Product Name:</label>\n              <input class="log_sale_input" placeholder="Product Name" type="text" [formControlName]="control.key" required />\n            </ion-col>\n\n            <ion-col size="1" size-sm>\n              <label class="log_sale_label">Part Number:</label>\n              <input class="log_sale_input" placeholder="Part Number" type="text" [formControlName]="control.key" required />\n            </ion-col>\n          </ion-row>\n\n          <ion-row>\n            <ion-col>\n              <label class="log_sale_label">Quantity:</label>\n              <input class="log_sale_input" type="number" [formControlName]="control.key" required />\n            </ion-col>\n\n            <ion-col>\n              <label class="log_sale_label">Price:</label>\n              <input class="log_sale_input" type="number" [formControlName]="control.key" required />\n            </ion-col>\n          </ion-row>\n        </div>\n      </div>\n\n      <button id="add_item" (click)="add_item()" type="button" ion-button size="small">+ Add more items</button>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Paid:</label>\n            <input class="log_sale_input" type="number" formControlName="paid" required/>\n        </ion-col>\n\n        <ion-col>\n          <label class="log_sale_label">Total:</label>\n          <h4 style="margin:6px 0">848950</h4>\n        </ion-col>\n      </ion-row>\n\n      <ion-row > \n        <ion-col>\n        </ion-col>\n        <ion-col>\n          <button type="submit" ion-button class="secondary_button"> Save & View Invoice </button>\n        </ion-col>\n        <ion-col>\n        </ion-col>\n      </ion-row>\n\n    </form>\n  </ion-grid>\n\n\n\n \n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/log_sales/log_sales.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ModalController */]])
-    ], RecentSalesPage);
-    return RecentSalesPage;
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ModalController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _e || Object])
+    ], LogSalesPage);
+    return LogSalesPage;
+    var _a, _b, _c, _d, _e;
 }());
 
-//# sourceMappingURL=recent_sales.js.map
+//# sourceMappingURL=log_sales.js.map
+
+/***/ }),
+
+/***/ 704:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PipesModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__keyvalue_keyvalue__ = __webpack_require__(705);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var PipesModule = /** @class */ (function () {
+    function PipesModule() {
+    }
+    PipesModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [__WEBPACK_IMPORTED_MODULE_1__keyvalue_keyvalue__["a" /* KeyvaluePipe */]],
+            imports: [],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__keyvalue_keyvalue__["a" /* KeyvaluePipe */]]
+        })
+    ], PipesModule);
+    return PipesModule;
+}());
+
+//# sourceMappingURL=pipes.module.js.map
+
+/***/ }),
+
+/***/ 705:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return KeyvaluePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+/**
+ * Generated class for the KeyvaluePipe pipe.
+ *
+ * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
+ */
+var KeyvaluePipe = /** @class */ (function () {
+    function KeyvaluePipe() {
+    }
+    /**
+     * Takes a value and makes it lowercase.
+     */
+    KeyvaluePipe.prototype.transform = function (value) {
+        var args = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            args[_i - 1] = arguments[_i];
+        }
+        return value;
+    };
+    KeyvaluePipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Pipe */])({
+            name: 'keyvalue',
+        })
+    ], KeyvaluePipe);
+    return KeyvaluePipe;
+}());
+
+//# sourceMappingURL=keyvalue.js.map
 
 /***/ })
 

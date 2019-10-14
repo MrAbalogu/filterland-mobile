@@ -48,7 +48,7 @@ export class AddCustomerPage {
       this.customers = customers;
     });
 
-    // Set an interval of 30 minutes (1800000 milliseconds)
+    // Continously Check for Internet
     setInterval(() => { 
       // The code that you want to run repeatedly
       if (!navigator.onLine) {
@@ -100,7 +100,6 @@ export class AddCustomerPage {
       this.storage.get(CUSTOMERS).then((customers) => {
         if (customers) {
           var new_data;
-          var uniq_arr = [];
           var old_data = [];
           var data_duplicate = false;
 
@@ -125,7 +124,7 @@ export class AddCustomerPage {
             this.navCtrl.push('AddCustomerPage');
             this.utility.showAlert(
               "Success (No Internet)",
-              "Kindly sync to Filterland Server when there is Internet"
+              "Kindly Sync to Filterland Server when there is Internet"
             );
           } else {
             this.navCtrl.push('AddCustomerPage');
@@ -138,11 +137,11 @@ export class AddCustomerPage {
         } else {
           customerDetails.user_id = this.user_id;
           this.storage.set(CUSTOMERS, [customerDetails]);
+          this.navCtrl.push('AddCustomerPage');
           this.utility.showAlert(
             "Success (No Internet)",
-            "Customer will sync to Filterland Server when there is Internet"
+            "Kindly Sync to Filterland Server when there is Internet"
           );
-          this.navCtrl.push('AddCustomerPage');
         }
       });
       loading.dismiss();
@@ -203,30 +202,42 @@ export class AddCustomerPage {
   }
 
   syncFromStorageToServer() {
-    console.log(JSON.stringify(this.customers));
+    // console.log(JSON.stringify(this.customers));
+    let sync_parameters: any;
+    // console.log(sync_parameters);
+    sync_parameters.customers_array = this.customers;
+    // console.log("params: ", JSON.stringify(sync_parameters));
     var loading = this.utility.presentLoadingDefault("Syncing Customers to Server ...");
-    this.customerService.syncCustomersFromStorage(this.customers)
+    this.customerService.syncCustomersFromStorage(JSON.stringify(sync_parameters))
       .subscribe(
         (response: HttpResponse<any>) => {
           if (!response.ok) {
+            let res: any;
+            res = response;
             loading.dismiss();
+            // console.log(response);
+            this.storage.remove(CUSTOMERS);
+            this.navCtrl.push('AddCustomerPage');
             return this.utility.showAlert(
-              "Error",
-              "There were problems syncing to Filterland Server, try again please."
+              "Completed and Saved",
+             res.saved
             );
           }
           else {
+            let res: any;
+            res = response;
             loading.dismiss();
+            this.storage.remove(CUSTOMERS);
+            this.navCtrl.push('AddCustomerPage');
             return this.utility.showAlert(
-              "Completed with errors:",
-              response.body.errors
+              "Completed and saved:",
+              res.saved
             );
           }  
-          loading.dismiss();
         },
         (error: HttpErrorResponse) => {
           loading.dismiss();
-            console.log(error);
+            // console.log(error);
             let message: string;
             if(error.status === 500 || !error.error.errors){
               message = "There were problem, possible network or server errors, try again please.";

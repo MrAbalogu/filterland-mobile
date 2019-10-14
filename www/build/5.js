@@ -1,14 +1,14 @@
 webpackJsonp([5],{
 
-/***/ 686:
+/***/ 687:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewslettersPageModule", function() { return NewslettersPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PendingLogsModule", function() { return PendingLogsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__newsletters__ = __webpack_require__(705);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pending_logs__ = __webpack_require__(708);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var NewslettersPageModule = /** @class */ (function () {
-    function NewslettersPageModule() {
+var PendingLogsModule = /** @class */ (function () {
+    function PendingLogsModule() {
     }
-    NewslettersPageModule = __decorate([
+    PendingLogsModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__newsletters__["a" /* NewslettersPage */],
+                __WEBPACK_IMPORTED_MODULE_2__pending_logs__["a" /* PendingLogs */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__newsletters__["a" /* NewslettersPage */]),
-            ]
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__pending_logs__["a" /* PendingLogs */]),
+            ],
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__pending_logs__["a" /* PendingLogs */]]
         })
-    ], NewslettersPageModule);
-    return NewslettersPageModule;
+    ], PendingLogsModule);
+    return PendingLogsModule;
 }());
 
-//# sourceMappingURL=newsletters.module.js.map
+//# sourceMappingURL=pending_logs.module.js.map
 
 /***/ }),
 
@@ -77,11 +78,11 @@ var TabsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 705:
+/***/ 708:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewslettersPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PendingLogs; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_tabs__ = __webpack_require__(697);
@@ -97,27 +98,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var NewslettersPage = /** @class */ (function () {
-    function NewslettersPage(navCtrl, navParams) {
+var PendingLogs = /** @class */ (function () {
+    function PendingLogs(navCtrl, navParams, toastCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.toastCtrl = toastCtrl;
     }
-    NewslettersPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad NewslettersPage');
+    PendingLogs.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad PendingLogsPage');
     };
-    NewslettersPage.prototype.goToTabsPage = function () {
+    PendingLogs.prototype.goToTabsPage = function () {
         this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__tabs_tabs__["a" /* TabsPage */]);
     };
-    NewslettersPage = __decorate([
+    PendingLogs = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'newsletters-page',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/newsletters/newsletters.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons class="menu-left" start>\n      <button ion-button (click)="goToTabsPage()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <div class="title-center" >\n      <ion-title >Newsletters</ion-title>\n    </div>\n    <ion-buttons class="menu-right" end>\n      <button ion-button ion-only style="color: #0decc7">\n        <ion-icon name="search">\n        </ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/newsletters/newsletters.html"*/,
+            selector: 'pending-logs',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/pending_logs/pending_logs.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Pending Logs</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <div class="no_internet">\n          No Internet\n        </div>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-grid>\n\n    <div class="log_card">\n      <ion-row>\n        <ion-col>\n          <p>Customer Name: <b>Chinedu Abalogu</b></p>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <p>Paid: <b>N45000</b></p>\n        </ion-col>\n      </ion-row> \n\n      <ion-row>\n        <ion-col>\n          <p class="supplied">Supplied</p>\n        </ion-col>\n        <ion-col>\n          <p>Total: <b>N45000</b></p>\n        </ion-col>\n      </ion-row>\n    </div>\n\n    <div class="log_card_2">\n      <ion-row>\n        <ion-col>\n          <p>Customer Name: <b>Chinedu Abalogu</b></p>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <p>Paid: <b>N45000</b></p>\n        </ion-col>\n      </ion-row> \n\n      <ion-row>\n        <ion-col>\n          <p class="supplied">Supplied</p>\n        </ion-col>\n        <ion-col>\n          <p>Total: <b>N45000</b></p>\n        </ion-col>\n      </ion-row>\n    </div>\n\n    <ion-row>\n      <ion-col offset="3">\n        <p style="text-align: center;">Total: <b>N90000</b></p>\n      </ion-col>\n    </ion-row>\n    <ion-row> \n      <ion-col>\n      </ion-col>\n      <ion-col>\n        <button ion-button> Send All to Server </button>\n      </ion-col>\n      <ion-col>\n      </ion-col>\n    </ion-row>\n    \n  </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/pending_logs/pending_logs.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
-    ], NewslettersPage);
-    return NewslettersPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */]])
+    ], PendingLogs);
+    return PendingLogs;
 }());
 
-//# sourceMappingURL=newsletters.js.map
+//# sourceMappingURL=pending_logs.js.map
 
 /***/ })
 

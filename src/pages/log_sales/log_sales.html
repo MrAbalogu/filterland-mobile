@@ -1,89 +1,91 @@
 <ion-header>
   <ion-navbar>
-      <div class="title-center" >
+      <ion-buttons class="menu-left" start>
+        <button class="start" ion-button ion-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+      <div class="home-title title-center" >
         <ion-title >Log Sale</ion-title>
       </div>
-      <ion-buttons end>
-        <button ion-button ion-only style="color: #CF7A7A" (click)="logout()" >
-        </button>
+      <ion-buttons class="logout-btn" end>
+        <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>
+          <ion-spinner class="check_network_spinner"></ion-spinner>
+        </div>
       </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
-    <form>
+    <form [formGroup]="logSaleForm" (ngSubmit)="viewInvoice(logSaleForm)">
       <ion-row>
         <ion-col>
-          <label class="log_sale_label">Customer First Name:</label>
-          <input class="log_sale_input" placeholder="First Name" type="text" name="firstname"/>
-        </ion-col>
-
-        <ion-col>
-          <label class="log_sale_label">Customer Last Name:</label>
-          <input class="log_sale_input" placeholder="Last Name" type="text" name="firstname"/>
+          <label class="log_sale_label">Customer Full Name:</label>
+          <input class="log_sale_input" placeholder="Full Name" type="text" formControlName="name" required/>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col>
           <label class="log_sale_label">Customer Phone Number:</label>
-          <input class="log_sale_input" placeholder="Phone Number" type="text" name="phonenumber"/>
+          <input class="log_sale_input" placeholder="Phone Number" type="text" formControlName="phone" required/>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col>
           <label class="log_sale_label">Customer Email:</label>
-          <input class="log_sale_input" placeholder="Email Address" type="text" name="emailaddress"/>
+          <input class="log_sale_input" placeholder="Email Address" type="email" formControlName="email" required/>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col>
           <label class="log_sale_label">Customer Address:</label>
-          <textarea class="log_sale_input" placeholder="Address" type="textarea" name="emailaddress">
+          <textarea class="log_sale_input" placeholder="Address" type="textarea" formControlName="address" required>
           </textarea>
         </ion-col>
       </ion-row>
 
-      <div class="sale_item_container">
-        <ion-row>
-          <ion-col size="3">
-            <label class="log_sale_label">Product Name:</label>
-            <input class="log_sale_input" placeholder="Product Name" type="text" name="productname"/>
-          </ion-col>
+      <div formArrayName="items" id="item" class="sale_item_container">
+        {{ 'Items '+items}}
+        <div *ngFor="let control of logSaleForm.get('items').controls | keyvalue">
+          <div class="remove nodisplay" (click)="remove_item($event)">
+            remove
+          </div>
+          <ion-row>
+            <ion-col size="3">
+              <label class="log_sale_label">Product Name:</label>
+              <input class="log_sale_input" placeholder="Product Name" type="text" [formControlName]="control.key" required />
+            </ion-col>
 
-          <ion-col size="1" size-sm>
-            <label class="log_sale_label">Part Number:</label>
-            <input class="log_sale_input" placeholder="Part Number" type="text" name="partnumber"/>
-          </ion-col>
-        </ion-row>
+            <ion-col size="1" size-sm>
+              <label class="log_sale_label">Part Number:</label>
+              <input class="log_sale_input" placeholder="Part Number" type="text" [formControlName]="control.key" required />
+            </ion-col>
+          </ion-row>
 
-        <ion-row>
-          <ion-col>
-            <label class="log_sale_label">Carton/s:</label>
-            <input class="log_sale_input" type="number" name="carton"/>
-          </ion-col>
+          <ion-row>
+            <ion-col>
+              <label class="log_sale_label">Quantity:</label>
+              <input class="log_sale_input" type="number" [formControlName]="control.key" required />
+            </ion-col>
 
-          <ion-col>
-            <label class="log_sale_label">Quantity:</label>
-            <input class="log_sale_input" type="number" name="quantity"/>
-          </ion-col>
-
-          <ion-col>
-            <label class="log_sale_label">Price:</label>
-            <input class="log_sale_input" type="number" name="price"/>
-          </ion-col>
-        </ion-row>
+            <ion-col>
+              <label class="log_sale_label">Price:</label>
+              <input class="log_sale_input" type="number" [formControlName]="control.key" required />
+            </ion-col>
+          </ion-row>
+        </div>
       </div>
 
-      <button ion-button size="small">+ Add more items</button>
+      <button id="add_item" (click)="add_item()" type="button" ion-button size="small">+ Add more items</button>
 
       <ion-row>
         <ion-col>
           <label class="log_sale_label">Paid:</label>
-            <input class="log_sale_input" type="number" name="paid"/>
+            <input class="log_sale_input" type="number" formControlName="paid" required/>
         </ion-col>
 
         <ion-col>
@@ -96,7 +98,7 @@
         <ion-col>
         </ion-col>
         <ion-col>
-          <button ion-button (click)="presentModal()" class="secondary_button"> Save & View Invoice </button>
+          <button type="submit" ion-button class="secondary_button"> Save & View Invoice </button>
         </ion-col>
         <ion-col>
         </ion-col>

@@ -19,6 +19,20 @@ log-sales {
     font-size: 1em;
   }
 
+  .remove {
+    text-align: right;
+    text-decoration: underline;
+    color: red;
+    padding-right: 1em;
+  }
+
+  .nodisplay {
+    display: none;
+  }
+  .showdisplay {
+    display: block;
+  }
+
   .log_sale_input {
     border: 1px solid #DBDBDB !important;
     border-radius: .5em;

@@ -315,31 +315,31 @@ var map = {
 	],
 	"../pages/log_sales/log_sales.module": [
 		684,
-		7
+		0
 	],
 	"../pages/login/login.module": [
 		685,
-		6
+		7
 	],
 	"../pages/newsletters/newsletters.module": [
-		686,
-		5
+		689,
+		6
 	],
 	"../pages/orders/orders.module": [
-		687,
+		686,
 		14
 	],
 	"../pages/pending_logs/pending_logs.module": [
+		687,
+		5
+	],
+	"../pages/pending_supplies/pending_supplies.module": [
 		688,
 		4
 	],
-	"../pages/pending_supplies/pending_supplies.module": [
-		689,
-		3
-	],
 	"../pages/products/products.module": [
 		690,
-		2
+		3
 	],
 	"../pages/profile/profile.module": [
 		691,
@@ -347,7 +347,7 @@ var map = {
 	],
 	"../pages/recent_sales/recent_sales.module": [
 		692,
-		0
+		1
 	],
 	"../pages/requests/requests.module": [
 		693,
@@ -358,11 +358,11 @@ var map = {
 		11
 	],
 	"../pages/settings/settings.module": [
-		695,
-		1
+		696,
+		2
 	],
 	"../pages/tabs/tabs.module": [
-		696,
+		695,
 		10
 	]
 };
@@ -486,7 +486,10 @@ var CustomerService = /** @class */ (function () {
         return this.http.post("" + this.baseUrl, customerDetails, { observe: 'response' });
     };
     CustomerService.prototype.syncCustomersFromStorage = function (customers) {
-        return this.http.post(this.baseUrl + "/sync_from_storage", customers, { observe: 'response' });
+        console.log("post request");
+        console.log("main params: ", customers);
+        return this.http.post("http://localhost:4040/api/v1/customers/sync_from_storage", customers, { headers: { 'Content-Type': 'application/json' } });
+        // return this.http.post(`${this.baseUrl}/sync_from_storage`, customers, { observe: 'response' })
     };
     CustomerService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
@@ -562,8 +565,8 @@ var AppModule = /** @class */ (function () {
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_8__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* ReactiveFormsModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* ReactiveFormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/add_customer/add_customer.module#AddCustomerPageModule', name: 'AddCustomerPage', segment: 'add_customer', priority: 'low', defaultHistory: [] },
@@ -573,17 +576,17 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/invoice/invoice.module#InvoiceModalModule', name: 'InvoiceModal', segment: 'invoice', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/log_sales/log_sales.module#LogSalesPageModule', name: 'LogSalesPage', segment: 'log_sales', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/newsletters/newsletters.module#NewslettersPageModule', name: 'NewslettersPage', segment: 'newsletters', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'OrdersPage', segment: 'orders', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pending_logs/pending_logs.module#PendingLogsModule', name: 'PendingLogs', segment: 'pending_logs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pending_supplies/pending_supplies.module#PendingSuppliesPageModule', name: 'PendingSuppliesPage', segment: 'pending_supplies', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/newsletters/newsletters.module#NewslettersPageModule', name: 'NewslettersPage', segment: 'newsletters', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/products/products.module#ProductsPageModule', name: 'ProductsPage', segment: 'products', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#IndexPageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/recent_sales/recent_sales.module#RecentSalesPageModule', name: 'RecentSalesPage', segment: 'recent_sales', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/requests/requests.module#RequestsPageModule', name: 'RequestsPage', segment: 'requests', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/sales_today/sales_today.module#SalesTodayPageModule', name: 'SalesTodayPage', segment: 'sales_today', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_12__ionic_storage__["a" /* IonicStorageModule */].forRoot()

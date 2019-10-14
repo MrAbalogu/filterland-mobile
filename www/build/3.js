@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 689:
+/***/ 690:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PendingSuppliesPageModule", function() { return PendingSuppliesPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductsPageModule", function() { return ProductsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pending_supplies__ = __webpack_require__(708);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__products__ = __webpack_require__(711);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var PendingSuppliesPageModule = /** @class */ (function () {
-    function PendingSuppliesPageModule() {
+var ProductsPageModule = /** @class */ (function () {
+    function ProductsPageModule() {
     }
-    PendingSuppliesPageModule = __decorate([
+    ProductsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__pending_supplies__["a" /* PendingSuppliesPage */],
+                __WEBPACK_IMPORTED_MODULE_2__products__["a" /* ProductsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__pending_supplies__["a" /* PendingSuppliesPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__products__["a" /* ProductsPage */]),
             ],
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__products__["a" /* ProductsPage */]]
         })
-    ], PendingSuppliesPageModule);
-    return PendingSuppliesPageModule;
+    ], ProductsPageModule);
+    return ProductsPageModule;
 }());
 
-//# sourceMappingURL=pending_supplies.module.js.map
+//# sourceMappingURL=products.module.js.map
 
 /***/ }),
 
@@ -77,11 +78,11 @@ var TabsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 708:
+/***/ 711:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PendingSuppliesPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_tabs__ = __webpack_require__(697);
@@ -97,33 +98,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the BenefPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var PendingSuppliesPage = /** @class */ (function () {
-    function PendingSuppliesPage(navCtrl, navParams) {
+var ProductsPage = /** @class */ (function () {
+    function ProductsPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
     }
-    PendingSuppliesPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad PendingSuppliesPage');
+    ProductsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ProductsPage');
+        var nav = document.getElementById("searchNav");
+        nav.style.display = "none";
     };
-    PendingSuppliesPage.prototype.goToTabsPage = function () {
+    ProductsPage.prototype.goToTabsPage = function () {
         this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__tabs_tabs__["a" /* TabsPage */]);
     };
-    PendingSuppliesPage = __decorate([
+    ProductsPage.prototype.searchProducts = function () {
+        var nav = document.getElementById("searchNav");
+        var mainnav = document.getElementById("mainNav");
+        mainnav.style.display = "none";
+        nav.style.display = "block";
+    };
+    ProductsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-pending_supplies',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/pending_supplies/pending_supplies.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons class="menu-left" start>\n      <button ion-button (click)="goToTabsPage()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <div class="title-center" >\n      <ion-title >Pending Supplies</ion-title>\n    </div>\n    <ion-buttons class="menu-right" end>\n      <button ion-button ion-only style="color: #0decc7">\n        <ion-icon name="search">\n        </ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/pending_supplies/pending_supplies.html"*/,
+            selector: 'page-products',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/products/products.html"*/'<ion-header>\n  <ion-navbar id="mainNav">\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Products</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <button ion-button ion-only style="color: #CF7A7A" (click)="searchProducts()" >\n          <ion-icon name="search"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n  <ion-navbar id="searchNav">\n      <input class="searchinput" placeholder="Search Products" type="search" name="searchProducts">\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-list id="hospitals" class="hospitals">\n        <div class="h-listitem">\n\n          <img  class="hl-img" src="assets/imgs/oilfilter.png">\n\n          <ion-item  class="hl-info"><h4>Toyota Oil Filter</h4>\n            <span style="color: #50E3C2;">N1500</span>\n            <p>Toyota | Lexus</p>\n            <p><span> Oil Filter </span> <span style="float: right">AE80</span></p>\n          </ion-item>\n          <div style="clear: both"></div>\n\n        </div>\n\n        <div class="h-listitem">\n\n          <img  class="hl-img" src="assets/imgs/oilfilter.png">\n\n          <ion-item  class="hl-info"><h4>Toyota Oil Filter</h4>\n            <span style="color: #50E3C2;">N1500</span>\n            <p>Toyota | Lexus</p>\n            <p><span> Oil Filter </span> <span style="float: right">AE80</span></p>\n          </ion-item>\n          <div style="clear: both"></div>\n\n        </div>\n\n        <div class="h-listitem">\n\n          <img  class="hl-img" src="assets/imgs/oilfilter.png">\n\n          <ion-item  class="hl-info"><h4>Toyota Oil Filter</h4>\n            <span style="color: #50E3C2;">N1500</span>\n            <p>Toyota | Lexus</p>\n            <p><span> Oil Filter </span> <span style="float: right">AE80</span></p>\n          </ion-item>\n          <div style="clear: both"></div>\n\n        </div>\n\n        <div class="h-listitem">\n\n          <img  class="hl-img" src="assets/imgs/oilfilter.png">\n\n          <ion-item  class="hl-info"><h4>Toyota Oil Filter</h4>\n            <span style="color: #50E3C2;">N1500</span>\n            <p>Toyota | Lexus</p>\n            <p><span> Oil Filter </span> <span style="float: right">AE80</span></p>\n          </ion-item>\n          <div style="clear: both"></div>\n\n        </div>\n      </ion-list>\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/products/products.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
-    ], PendingSuppliesPage);
-    return PendingSuppliesPage;
+    ], ProductsPage);
+    return ProductsPage;
 }());
 
-//# sourceMappingURL=pending_supplies.js.map
+//# sourceMappingURL=products.js.map
 
 /***/ })
 

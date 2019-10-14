@@ -27,28 +27,6 @@ add_customer {
     text-align: center;
     margin: 0 31%;
   }
-
-  .onlinebg {
-    background: green !important;
-    padding: 5px 10px;
-  }
-
-  .offlinebg {
-    background: red !important;
-    padding: 5px 10px;
-  }
-
-  .indicator {
-    background: #A19563;
-    color: white;
-    border-radius: 2px 5px;
-    font-size: 10px;
-    text-align: center;
-  }
-  .check_network_spinner {
-    width: 10px;
-    color: white
-  }
   .customercount {
     font-weight: 700;
     color: red;

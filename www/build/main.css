@@ -51440,6 +51440,29 @@ ion-navbar.toolbar {
   min-height: 46px;
 }
 
+.onlinebg {
+  background: green !important;
+  padding: 5px 10px;
+}
+
+.offlinebg {
+  background: red !important;
+  padding: 5px 10px;
+}
+
+.indicator {
+  background: #A19563;
+  color: white;
+  border-radius: 2px 5px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.check_network_spinner {
+  width: 10px;
+  color: white;
+}
+
 .supplied {
   color: green;
 }
@@ -51692,29 +51715,6 @@ add_customer .sale_item_container {
 add_customer .submit-cont {
   text-align: center;
   margin: 0 31%;
-}
-
-add_customer .onlinebg {
-  background: green !important;
-  padding: 5px 10px;
-}
-
-add_customer .offlinebg {
-  background: red !important;
-  padding: 5px 10px;
-}
-
-add_customer .indicator {
-  background: #A19563;
-  color: white;
-  border-radius: 2px 5px;
-  font-size: 10px;
-  text-align: center;
-}
-
-add_customer .check_network_spinner {
-  width: 10px;
-  color: white;
 }
 
 add_customer .customercount {
@@ -52112,6 +52112,21 @@ log-sales :-ms-input-placeholder {
   color: #DBDBDB;
   font-weight: 100;
   font-size: 1em;
+}
+
+log-sales .remove {
+  text-align: right;
+  text-decoration: underline;
+  color: red;
+  padding-right: 1em;
+}
+
+log-sales .nodisplay {
+  display: none;
+}
+
+log-sales .showdisplay {
+  display: block;
 }
 
 log-sales .log_sale_input {

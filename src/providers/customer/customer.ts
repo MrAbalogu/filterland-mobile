@@ -21,7 +21,10 @@ export class CustomerService {
   }
 
   public syncCustomersFromStorage(customers) {
-  	return this.http.post(`${this.baseUrl}/sync_from_storage`, customers, { observe: 'response' })
+  	console.log("post request");
+  	console.log("main params: ", customers);
+  	return this.http.post(`http://localhost:4040/api/v1/customers/sync_from_storage`, customers, { headers: { 'Content-Type': 'application/json' }})
+  	// return this.http.post(`${this.baseUrl}/sync_from_storage`, customers, { observe: 'response' })
   }
 
 }
