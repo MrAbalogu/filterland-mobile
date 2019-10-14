@@ -37,10 +37,11 @@ export class LogSalesPage {
       email: [''],
       address: [''],
       paid: [''],
-      items: this.fb.array([
-      ])
+      items: this.fb.array([])
     });
 
+    // const fa = (this.logSaleForm.get('items')as FormArray);
+    // this.add_item();
   }
 
   presentModal() {
@@ -70,24 +71,20 @@ export class LogSalesPage {
   }
 
   add_item() {
-    const fa = (this.logSaleForm.get('items')as FormArray);
+    const fa = (this.logSaleForm.get('items') as FormArray);
     fa.push(this.fb.group({
       name: ['', Validators.required],
       partnumber: ['', Validators.required],
       quantity: ['', Validators.required],
       price: ['', Validators.required],
     }));
-    // var add_item = document.getElementById("add_item");
-    // var item = document.getElementById("item");
-    // var clone = item.cloneNode(true);
-    // clone.childNodes[1].className = 'remove showdisplay';
-    // clone.addEventListener('click', this.remove_item.bind(this));
-    // item.parentNode.insertBefore(clone, item.nextSibling);
+    console.log("items ", this.logSaleForm.get('items').value)
   }
 
-  remove_item(event: any) {
-    console.log(event.target.parentNode);
-    event.target.parentNode.remove();
+  remove_item(i:number){
+    const fa = (this.logSaleForm.get('items') as FormArray);
+    fa.removeAt(i);
+    if(fa.length===0) this.add_item();
   }
 
   viewInvoice() {

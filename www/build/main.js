@@ -318,23 +318,23 @@ var map = {
 		0
 	],
 	"../pages/login/login.module": [
-		685,
+		686,
 		7
 	],
 	"../pages/newsletters/newsletters.module": [
-		689,
+		685,
 		6
 	],
 	"../pages/orders/orders.module": [
-		686,
+		687,
 		14
 	],
 	"../pages/pending_logs/pending_logs.module": [
-		687,
+		688,
 		5
 	],
 	"../pages/pending_supplies/pending_supplies.module": [
-		688,
+		689,
 		4
 	],
 	"../pages/products/products.module": [
@@ -358,11 +358,11 @@ var map = {
 		11
 	],
 	"../pages/settings/settings.module": [
-		696,
+		695,
 		2
 	],
 	"../pages/tabs/tabs.module": [
-		695,
+		696,
 		10
 	]
 };
@@ -575,18 +575,18 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/intro/intro.module#IntroPageModule', name: 'IntroPage', segment: 'intro', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/invoice/invoice.module#InvoiceModalModule', name: 'InvoiceModal', segment: 'invoice', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/log_sales/log_sales.module#LogSalesPageModule', name: 'LogSalesPage', segment: 'log_sales', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/newsletters/newsletters.module#NewslettersPageModule', name: 'NewslettersPage', segment: 'newsletters', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'OrdersPage', segment: 'orders', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pending_logs/pending_logs.module#PendingLogsModule', name: 'PendingLogs', segment: 'pending_logs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pending_supplies/pending_supplies.module#PendingSuppliesPageModule', name: 'PendingSuppliesPage', segment: 'pending_supplies', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/newsletters/newsletters.module#NewslettersPageModule', name: 'NewslettersPage', segment: 'newsletters', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/products/products.module#ProductsPageModule', name: 'ProductsPage', segment: 'products', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#IndexPageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/recent_sales/recent_sales.module#RecentSalesPageModule', name: 'RecentSalesPage', segment: 'recent_sales', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/requests/requests.module#RequestsPageModule', name: 'RequestsPage', segment: 'requests', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/sales_today/sales_today.module#SalesTodayPageModule', name: 'SalesTodayPage', segment: 'sales_today', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_12__ionic_storage__["a" /* IonicStorageModule */].forRoot()

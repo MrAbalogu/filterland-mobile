@@ -48,33 +48,32 @@
         </ion-col>
       </ion-row>
 
-      <div formArrayName="items" id="item" class="sale_item_container">
-        {{ 'Items '+items}}
-        <div *ngFor="let control of logSaleForm.get('items').controls | keyvalue">
-          <div class="remove nodisplay" (click)="remove_item($event)">
+      <div formArrayName="items" id="item" class="sale_item_container" *ngFor="let control of logSaleForm.get('items')?.controls; let i = index">
+        <div formGroupName={{i}}>
+          <div class="remove" (click)="remove_item(i)">
             remove
           </div>
           <ion-row>
             <ion-col size="3">
               <label class="log_sale_label">Product Name:</label>
-              <input class="log_sale_input" placeholder="Product Name" type="text" [formControlName]="control.key" required />
+              <input class="log_sale_input" placeholder="Product Name" formControlName="name" />
             </ion-col>
 
             <ion-col size="1" size-sm>
               <label class="log_sale_label">Part Number:</label>
-              <input class="log_sale_input" placeholder="Part Number" type="text" [formControlName]="control.key" required />
+              <input class="log_sale_input" placeholder="Part Number" formControlName="partnumber" />
             </ion-col>
           </ion-row>
 
           <ion-row>
             <ion-col>
               <label class="log_sale_label">Quantity:</label>
-              <input class="log_sale_input" type="number" [formControlName]="control.key" required />
+              <input class="log_sale_input" type="number" formControlName="quantity" />
             </ion-col>
 
             <ion-col>
               <label class="log_sale_label">Price:</label>
-              <input class="log_sale_input" type="number" [formControlName]="control.key" required />
+              <input class="log_sale_input" type="number" formControlName="price" />
             </ion-col>
           </ion-row>
         </div>
