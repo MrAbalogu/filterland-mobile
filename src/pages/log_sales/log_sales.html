@@ -68,12 +68,12 @@
           <ion-row>
             <ion-col>
               <label class="log_sale_label">Quantity:</label>
-              <input class="log_sale_input" type="number" formControlName="quantity" />
+              <input class="log_sale_input" type="number" formControlName="quantity" (input)="calculateTotal()" />
             </ion-col>
 
             <ion-col>
               <label class="log_sale_label">Price:</label>
-              <input class="log_sale_input" type="number" formControlName="price" />
+              <input class="log_sale_input" type="number" formControlName="price" (input)="calculateTotal()" />
             </ion-col>
           </ion-row>
         </div>
@@ -89,7 +89,7 @@
 
         <ion-col>
           <label class="log_sale_label">Total:</label>
-          <h4 style="margin:6px 0">848950</h4>
+          <h4 style="margin:6px 0">{{ total }}</h4>
         </ion-col>
       </ion-row>
 

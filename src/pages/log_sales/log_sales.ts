@@ -14,11 +14,13 @@ export class LogSalesPage {
   @ViewChild("internet_checker_indicator") internetIndicator: ElementRef;
   gender: string;
   netResponse: string;
+  total: any;
   indicator_classes: any = {
     'onlinebg': false,
     'offlinebg': false
   };
   items: any = [];
+  myitems: any = [];
 
   public logSaleForm: FormGroup;
   public itemForm: FormGroup;
@@ -37,11 +39,9 @@ export class LogSalesPage {
       email: [''],
       address: [''],
       paid: [''],
-      items: this.fb.array([])
+      items: this.fb.array([
+      ])
     });
-
-    // const fa = (this.logSaleForm.get('items')as FormArray);
-    // this.add_item();
   }
 
   presentModal() {
@@ -66,11 +66,28 @@ export class LogSalesPage {
     }, 2000);
   }
 
+  calculateTotal() {
+    this.items = this.logSaleForm.get('items').value;
+    this.items.forEach((item) => {
+      let itemtotal = item.price * item.quantity;
+      item.total = itemtotal;
+    });
+
+    // this.total = this.items.reduce((a, b) => a + b.total, 0);
+
+    this.total = this.items.reduce(function(prev, cur) {
+      return prev + cur.total;
+    }, 0);
+    console.log(this.total);
+  }
+
   goToTabsPage() {
     this.navCtrl.setRoot(TabsPage)
   }
 
   add_item() {
+    console.log(this.total);
+    console.log(this.myitems);
     const fa = (this.logSaleForm.get('items') as FormArray);
     fa.push(this.fb.group({
       name: ['', Validators.required],
