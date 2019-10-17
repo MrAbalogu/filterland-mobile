@@ -294,15 +294,15 @@ var LogSaleService = /** @class */ (function () {
     LogSaleService.prototype.syncSalesFromStorage = function (sales) {
         console.log("post request");
         console.log("main params: ", sales);
-        return this.http.post("http://localhost:4040/api/v1/sales_invoice", sales, { headers: { 'Content-Type': 'application/json' } });
+        return this.http.post("http://localhost:4040/api/v1/sales_invoice/sync_from_storage", sales, { headers: { 'Content-Type': 'application/json' } });
         // return this.http.post(`${this.baseUrl}/sync_from_storage`, customers, { observe: 'response' })
     };
     LogSaleService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _b || Object])
     ], LogSaleService);
     return LogSaleService;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=log_sale.js.map
@@ -461,13 +461,15 @@ var InvoiceModal = /** @class */ (function () {
                     old_data = logs;
                     console.log("Old data:", old_data);
                     console.log("New data:", new_data);
-                    old_data.push(new_data);
+                    old_data.push(JSON.stringify(new_data));
                     _this.storage.set(SALELOGS, old_data);
+                    _this.saveBtnDisabled = true;
                     _this.utility.showAlert("Success (No Internet)", "Kindly Sync to Filterland Server when there is Internet");
                 }
                 else {
                     _this.params.user_id = _this.user_id;
-                    _this.storage.set(SALELOGS, [_this.params]);
+                    _this.storage.set(SALELOGS, [JSON.stringify(_this.params)]);
+                    _this.saveBtnDisabled = true;
                     _this.utility.showAlert("Success (No Internet)", "Kindly Sync to Filterland Server when there is Internet");
                 }
             });
@@ -515,13 +517,57 @@ var InvoiceModal = /** @class */ (function () {
             });
         }
     };
+    InvoiceModal.prototype.syncFromStorageToServer = function () {
+        var _this = this;
+        // console.log(JSON.stringify(this.customers));
+        var sync_parameters;
+        // console.log(sync_parameters);
+        sync_parameters.customers_array = this.params;
+        // console.log("params: ", JSON.stringify(sync_parameters));
+        var loading = this.utility.presentLoadingDefault("Syncing Customers to Server ...");
+        this.logSaleService.syncCustomersFromStorage(JSON.stringify(sync_parameters))
+            .subscribe(function (response) {
+            if (!response.ok) {
+                var res = void 0;
+                res = response;
+                loading.dismiss();
+                // console.log(response);
+                _this.storage.remove(CUSTOMERS);
+                _this.navCtrl.push('AddCustomerPage');
+                return _this.utility.showAlert("Completed and Saved", res.saved);
+            }
+            else {
+                var res = void 0;
+                res = response;
+                loading.dismiss();
+                _this.storage.remove(CUSTOMERS);
+                _this.navCtrl.push('AddCustomerPage');
+                return _this.utility.showAlert("Completed and saved:", res.saved);
+            }
+        }, function (error) {
+            loading.dismiss();
+            // console.log(error);
+            var message;
+            if (error.status === 500 || !error.error.errors) {
+                message = "There were problem, possible network or server errors, try again please.";
+            }
+            else {
+                if (error.error.errors) {
+                    message = error.error.errors[0];
+                }
+            }
+            _this.utility.showAlert("Error", message);
+        }, function () {
+            console.log("Completed");
+        });
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("internet_checker_indicator"),
         __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
     ], InvoiceModal.prototype, "internetIndicator", void 0);
     InvoiceModal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'invoice',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/invoice/invoice.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons class="menu-left" start>\n      <button ion-button (click)="dismiss()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <div class="title-center" >\n      <ion-title >Invoice</ion-title>\n    </div>\n    <ion-buttons class="logout-btn" end>\n        <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n          <ion-spinner class="check_network_spinner"></ion-spinner>\n        </div>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-row>\n  	<ion-col>\n  	  <div class="paid">Paid: {{ params.paid }}</div>\n  	</ion-col>\n  	<ion-col>\n  	  <div class="left">left: {{ params.total - params.paid }} </div>\n  	</ion-col>\n  </ion-row>\n  <div class="invoice-details">\n  	<p>Customer Name: {{ params.name }}</p>\n  	<p>Customer Address: {{ params.address }} </p>\n  	<p>Customer Phone: {{ params.phone }}</p>\n  	<p>Customer Email: {{ params.email }}</p>\n  	<p>Date: {{ params.date }}</p>\n  </div>\n  <ion-grid *ngFor="let item of params.items">\n	  <div class="log_card">\n	      <ion-row>\n	        <ion-col>\n	          <p>Product Name/#: <b>{{ item.name }} - {{ item.partnumber }}</b></p>\n	        </ion-col>\n	      </ion-row>\n\n	      <ion-row>\n	        <ion-col>\n	          <p>Quantity: <b>{{ item.quantity }}</b></p>\n	        </ion-col>\n	        <ion-col>\n	          <p>Price: <b>{{ item.price }}</b></p>\n	        </ion-col>\n	      </ion-row> \n\n	      <ion-row>\n	        <ion-col>\n	          <p>Total: <b>{{ item.quantity * item.price }}</b></p>\n	        </ion-col>\n	      </ion-row>\n	  </div>\n  </ion-grid>\n  <ion-grid>\n  	<ion-row>\n      <ion-col offset="3">\n        <p style="text-align: center;">Total: <b>{{ params.total }}</b></p>\n      </ion-col>\n    </ion-row>\n    <ion-row> \n      <ion-col>\n      </ion-col>\n      <ion-col>\n        <button ion-button class="save-btn" [disabled]="saveBtnDisabled" (click)="saveLog()"> Save </button>\n      </ion-col>\n      <ion-col>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/invoice/invoice.html"*/,
+            selector: 'invoice',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/invoice/invoice.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons class="menu-left" start>\n      <button ion-button (click)="dismiss()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <div class="title-center" >\n      <ion-title >Invoice</ion-title>\n    </div>\n    <ion-buttons class="logout-btn" end>\n      <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n        <ion-spinner class="check_network_spinner"></ion-spinner>\n      </div>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-row>\n  	<ion-col>\n  	  <div class="paid">Paid: {{ params.paid }}</div>\n  	</ion-col>\n  	<ion-col>\n  	  <div class="left">left: {{ params.total - params.paid }} </div>\n  	</ion-col>\n  </ion-row>\n  <div class="invoice-details">\n  	<p>Customer Name: {{ params.name }}</p>\n  	<p>Customer Address: {{ params.address }} </p>\n  	<p>Customer Phone: {{ params.phone }}</p>\n  	<p>Customer Email: {{ params.email }}</p>\n  	<p>Date: {{ params.date }}</p>\n  </div>\n  <ion-grid *ngFor="let item of params.items">\n	  <div class="log_card">\n	      <ion-row>\n	        <ion-col>\n	          <p>Product Name/#: <b>{{ item.name }} - {{ item.partnumber }}</b></p>\n	        </ion-col>\n	      </ion-row>\n\n	      <ion-row>\n	        <ion-col>\n	          <p>Quantity: <b>{{ item.quantity }}</b></p>\n	        </ion-col>\n	        <ion-col>\n	          <p>Price: <b>{{ item.price }}</b></p>\n	        </ion-col>\n	      </ion-row> \n\n	      <ion-row>\n	        <ion-col>\n	          <p>Total: <b>{{ item.quantity * item.price }}</b></p>\n	        </ion-col>\n	      </ion-row>\n	  </div>\n  </ion-grid>\n  <ion-grid>\n  	<ion-row>\n      <ion-col offset="3">\n        <p style="text-align: center;">Total: <b>{{ params.total }}</b></p>\n      </ion-col>\n    </ion-row>\n    <ion-row> \n      <ion-col>\n      </ion-col>\n      <ion-col>\n        <button ion-button class="save-btn" [disabled]="saveBtnDisabled" (click)="saveLog()"> Save </button>\n      </ion-col>\n      <ion-col>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/invoice/invoice.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_util_util__["a" /* UtilProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_util_util__["a" /* UtilProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_log_sale_log_sale__["a" /* LogSaleService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_log_sale_log_sale__["a" /* LogSaleService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _f || Object])
     ], InvoiceModal);

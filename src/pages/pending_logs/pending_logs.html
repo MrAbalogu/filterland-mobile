@@ -9,8 +9,8 @@
         <ion-title >Pending Logs</ion-title>
       </div>
       <ion-buttons class="logout-btn" end>
-        <div class="no_internet">
-          No Internet
+        <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>
+          <ion-spinner class="check_network_spinner"></ion-spinner>
         </div>
       </ion-buttons>
   </ion-navbar>
