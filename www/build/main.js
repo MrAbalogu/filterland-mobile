@@ -148,117 +148,7 @@ var AuthproviderProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 164:
-/***/ (function(module, exports) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncatched exception popping up in devtools
-	return Promise.resolve().then(function() {
-		throw new Error("Cannot find module '" + req + "'.");
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 164;
-
-/***/ }),
-
-/***/ 208:
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"../pages/add_customer/add_customer.module": [
-		681,
-		9
-	],
-	"../pages/customers/customers.module": [
-		682,
-		8
-	],
-	"../pages/dashboard/dashboard.module": [
-		683,
-		17
-	],
-	"../pages/intro/intro.module": [
-		685,
-		15
-	],
-	"../pages/invoice/invoice.module": [
-		684,
-		16
-	],
-	"../pages/log_sales/log_sales.module": [
-		686,
-		0
-	],
-	"../pages/login/login.module": [
-		688,
-		7
-	],
-	"../pages/newsletters/newsletters.module": [
-		687,
-		6
-	],
-	"../pages/orders/orders.module": [
-		689,
-		14
-	],
-	"../pages/pending_logs/pending_logs.module": [
-		690,
-		5
-	],
-	"../pages/pending_supplies/pending_supplies.module": [
-		692,
-		4
-	],
-	"../pages/products/products.module": [
-		691,
-		3
-	],
-	"../pages/profile/profile.module": [
-		693,
-		13
-	],
-	"../pages/recent_sales/recent_sales.module": [
-		694,
-		1
-	],
-	"../pages/requests/requests.module": [
-		696,
-		12
-	],
-	"../pages/sales_today/sales_today.module": [
-		695,
-		11
-	],
-	"../pages/settings/settings.module": [
-		698,
-		2
-	],
-	"../pages/tabs/tabs.module": [
-		697,
-		10
-	]
-};
-function webpackAsyncContext(req) {
-	var ids = map[req];
-	if(!ids)
-		return Promise.reject(new Error("Cannot find module '" + req + "'."));
-	return __webpack_require__.e(ids[1]).then(function() {
-		return __webpack_require__(ids[0]);
-	});
-};
-webpackAsyncContext.keys = function webpackAsyncContextKeys() {
-	return Object.keys(map);
-};
-webpackAsyncContext.id = 208;
-module.exports = webpackAsyncContext;
-
-/***/ }),
-
-/***/ 304:
+/***/ 154:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -299,13 +189,123 @@ var LogSaleService = /** @class */ (function () {
     };
     LogSaleService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
     ], LogSaleService);
     return LogSaleService;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=log_sale.js.map
+
+/***/ }),
+
+/***/ 165:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 165;
+
+/***/ }),
+
+/***/ 209:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"../pages/add_customer/add_customer.module": [
+		681,
+		9
+	],
+	"../pages/customers/customers.module": [
+		682,
+		8
+	],
+	"../pages/dashboard/dashboard.module": [
+		683,
+		17
+	],
+	"../pages/intro/intro.module": [
+		684,
+		15
+	],
+	"../pages/invoice/invoice.module": [
+		685,
+		16
+	],
+	"../pages/log_sales/log_sales.module": [
+		686,
+		0
+	],
+	"../pages/login/login.module": [
+		687,
+		7
+	],
+	"../pages/newsletters/newsletters.module": [
+		688,
+		6
+	],
+	"../pages/orders/orders.module": [
+		689,
+		14
+	],
+	"../pages/pending_logs/pending_logs.module": [
+		690,
+		5
+	],
+	"../pages/pending_supplies/pending_supplies.module": [
+		691,
+		4
+	],
+	"../pages/products/products.module": [
+		692,
+		3
+	],
+	"../pages/profile/profile.module": [
+		693,
+		13
+	],
+	"../pages/recent_sales/recent_sales.module": [
+		694,
+		1
+	],
+	"../pages/requests/requests.module": [
+		695,
+		12
+	],
+	"../pages/sales_today/sales_today.module": [
+		696,
+		11
+	],
+	"../pages/settings/settings.module": [
+		697,
+		2
+	],
+	"../pages/tabs/tabs.module": [
+		698,
+		10
+	]
+};
+function webpackAsyncContext(req) {
+	var ids = map[req];
+	if(!ids)
+		return Promise.reject(new Error("Cannot find module '" + req + "'."));
+	return __webpack_require__.e(ids[1]).then(function() {
+		return __webpack_require__(ids[0]);
+	});
+};
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+webpackAsyncContext.id = 209;
+module.exports = webpackAsyncContext;
 
 /***/ }),
 
@@ -390,7 +390,7 @@ var DashboardPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_log_sale_log_sale__ = __webpack_require__(304);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_log_sale_log_sale__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_util_util__ = __webpack_require__(87);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -517,62 +517,21 @@ var InvoiceModal = /** @class */ (function () {
             });
         }
     };
-    InvoiceModal.prototype.syncFromStorageToServer = function () {
-        var _this = this;
-        // console.log(JSON.stringify(this.customers));
-        var sync_parameters;
-        // console.log(sync_parameters);
-        sync_parameters.customers_array = this.params;
-        // console.log("params: ", JSON.stringify(sync_parameters));
-        var loading = this.utility.presentLoadingDefault("Syncing Customers to Server ...");
-        this.logSaleService.syncCustomersFromStorage(JSON.stringify(sync_parameters))
-            .subscribe(function (response) {
-            if (!response.ok) {
-                var res = void 0;
-                res = response;
-                loading.dismiss();
-                // console.log(response);
-                _this.storage.remove(CUSTOMERS);
-                _this.navCtrl.push('AddCustomerPage');
-                return _this.utility.showAlert("Completed and Saved", res.saved);
-            }
-            else {
-                var res = void 0;
-                res = response;
-                loading.dismiss();
-                _this.storage.remove(CUSTOMERS);
-                _this.navCtrl.push('AddCustomerPage');
-                return _this.utility.showAlert("Completed and saved:", res.saved);
-            }
-        }, function (error) {
-            loading.dismiss();
-            // console.log(error);
-            var message;
-            if (error.status === 500 || !error.error.errors) {
-                message = "There were problem, possible network or server errors, try again please.";
-            }
-            else {
-                if (error.error.errors) {
-                    message = error.error.errors[0];
-                }
-            }
-            _this.utility.showAlert("Error", message);
-        }, function () {
-            console.log("Completed");
-        });
-    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("internet_checker_indicator"),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
     ], InvoiceModal.prototype, "internetIndicator", void 0);
     InvoiceModal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'invoice',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/invoice/invoice.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons class="menu-left" start>\n      <button ion-button (click)="dismiss()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <div class="title-center" >\n      <ion-title >Invoice</ion-title>\n    </div>\n    <ion-buttons class="logout-btn" end>\n      <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n        <ion-spinner class="check_network_spinner"></ion-spinner>\n      </div>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-row>\n  	<ion-col>\n  	  <div class="paid">Paid: {{ params.paid }}</div>\n  	</ion-col>\n  	<ion-col>\n  	  <div class="left">left: {{ params.total - params.paid }} </div>\n  	</ion-col>\n  </ion-row>\n  <div class="invoice-details">\n  	<p>Customer Name: {{ params.name }}</p>\n  	<p>Customer Address: {{ params.address }} </p>\n  	<p>Customer Phone: {{ params.phone }}</p>\n  	<p>Customer Email: {{ params.email }}</p>\n  	<p>Date: {{ params.date }}</p>\n  </div>\n  <ion-grid *ngFor="let item of params.items">\n	  <div class="log_card">\n	      <ion-row>\n	        <ion-col>\n	          <p>Product Name/#: <b>{{ item.name }} - {{ item.partnumber }}</b></p>\n	        </ion-col>\n	      </ion-row>\n\n	      <ion-row>\n	        <ion-col>\n	          <p>Quantity: <b>{{ item.quantity }}</b></p>\n	        </ion-col>\n	        <ion-col>\n	          <p>Price: <b>{{ item.price }}</b></p>\n	        </ion-col>\n	      </ion-row> \n\n	      <ion-row>\n	        <ion-col>\n	          <p>Total: <b>{{ item.quantity * item.price }}</b></p>\n	        </ion-col>\n	      </ion-row>\n	  </div>\n  </ion-grid>\n  <ion-grid>\n  	<ion-row>\n      <ion-col offset="3">\n        <p style="text-align: center;">Total: <b>{{ params.total }}</b></p>\n      </ion-col>\n    </ion-row>\n    <ion-row> \n      <ion-col>\n      </ion-col>\n      <ion-col>\n        <button ion-button class="save-btn" [disabled]="saveBtnDisabled" (click)="saveLog()"> Save </button>\n      </ion-col>\n      <ion-col>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/invoice/invoice.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_util_util__["a" /* UtilProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_util_util__["a" /* UtilProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_log_sale_log_sale__["a" /* LogSaleService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_log_sale_log_sale__["a" /* LogSaleService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_util_util__["a" /* UtilProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_log_sale_log_sale__["a" /* LogSaleService */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
     ], InvoiceModal);
     return InvoiceModal;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=invoice.js.map
@@ -658,7 +617,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_authprovider_authprovider__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_util_util__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_customer_customer__ = __webpack_require__(350);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_log_sale_log_sale__ = __webpack_require__(304);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_log_sale_log_sale__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_storage__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_invoice_invoice__ = __webpack_require__(349);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -701,21 +660,21 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/add_customer/add_customer.module#AddCustomerPageModule', name: 'AddCustomerPage', segment: 'add_customer', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customers/customers.module#CustomersPageModule', name: 'CustomersPage', segment: 'customers', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/dashboard/dashboard.module#DashboardPageModule', name: 'DashboardPage', segment: 'dashboard', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/invoice/invoice.module#InvoiceModalModule', name: 'InvoiceModal', segment: 'invoice', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/intro/intro.module#IntroPageModule', name: 'IntroPage', segment: 'intro', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/invoice/invoice.module#InvoiceModalModule', name: 'InvoiceModal', segment: 'invoice', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/log_sales/log_sales.module#LogSalesPageModule', name: 'LogSalesPage', segment: 'log_sales', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/newsletters/newsletters.module#NewslettersPageModule', name: 'NewslettersPage', segment: 'newsletters', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/newsletters/newsletters.module#NewslettersPageModule', name: 'NewslettersPage', segment: 'newsletters', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'OrdersPage', segment: 'orders', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pending_logs/pending_logs.module#PendingLogsModule', name: 'PendingLogs', segment: 'pending_logs', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/products/products.module#ProductsPageModule', name: 'ProductsPage', segment: 'products', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pending_supplies/pending_supplies.module#PendingSuppliesPageModule', name: 'PendingSuppliesPage', segment: 'pending_supplies', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/products/products.module#ProductsPageModule', name: 'ProductsPage', segment: 'products', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#IndexPageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/recent_sales/recent_sales.module#RecentSalesPageModule', name: 'RecentSalesPage', segment: 'recent_sales', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/sales_today/sales_today.module#SalesTodayPageModule', name: 'SalesTodayPage', segment: 'sales_today', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/requests/requests.module#RequestsPageModule', name: 'RequestsPage', segment: 'requests', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/sales_today/sales_today.module#SalesTodayPageModule', name: 'SalesTodayPage', segment: 'sales_today', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_13__ionic_storage__["a" /* IonicStorageModule */].forRoot()

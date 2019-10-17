@@ -52384,6 +52384,10 @@ pending-logs .supplied {
   color: green;
 }
 
+pending-logs .back-button-icon-md, pending-logs .back-button-icon-ios {
+  display: none;
+}
+
 pending-logs ion-content {
   background-image: url("../assets/imgs/auth-bg.jpg");
   -webkit-background-image: url("../assets/imgs/auth-bg.jpg");

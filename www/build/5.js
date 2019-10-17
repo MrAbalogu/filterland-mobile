@@ -85,7 +85,10 @@ var TabsPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PendingLogs; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs_tabs__ = __webpack_require__(699);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs_tabs__ = __webpack_require__(699);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_log_sale_log_sale__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_util_util__ = __webpack_require__(87);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -98,25 +101,138 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+var SALELOGS = "salelogs";
 var PendingLogs = /** @class */ (function () {
-    function PendingLogs(navCtrl, navParams, toastCtrl) {
+    function PendingLogs(navCtrl, navParams, viewCtrl, utility, storage, logSaleService) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.toastCtrl = toastCtrl;
+        this.viewCtrl = viewCtrl;
+        this.utility = utility;
+        this.storage = storage;
+        this.logSaleService = logSaleService;
+        this.indicator_classes = {
+            'onlinebg': false,
+            'offlinebg': false
+        };
+        this.card_styles = {
+            'log_card': false,
+            'log_card_2': false
+        };
+        this.disableSyncButton = true;
     }
     PendingLogs.prototype.ionViewDidLoad = function () {
+        var _this = this;
         console.log('ionViewDidLoad PendingLogsPage');
+        this.storage.get("user").then(function (u) {
+            _this.user_id = u.data.id;
+        });
+        this.storage.get(SALELOGS).then(function (logs) {
+            _this.logs = logs;
+            console.log(logs);
+        });
+        setInterval(function () {
+            // The code that you want to run repeatedly
+            if (!navigator.onLine) {
+                _this.indicator_classes.offlinebg = true;
+                _this.indicator_classes.onlinebg = false;
+                _this.internetIndicator.nativeElement.innerHTML = "Offline";
+            }
+            else {
+                _this.indicator_classes.offlinebg = false;
+                _this.indicator_classes.onlinebg = true;
+                _this.internetIndicator.nativeElement.innerHTML = "Online";
+            }
+        }, 2000);
+    };
+    PendingLogs.prototype.ionViewDidEnter = function () {
+        console.log("entered");
+        if (this.logs) {
+            if (navigator.onLine) {
+                this.disableSyncButton = false;
+            }
+            this.logsCount.nativeElement.innerHTML = this.logs.length;
+        }
+        else {
+            this.disableSyncButton = true;
+        }
+    };
+    PendingLogs.prototype.getClass = function (i) {
+        if (i % 2 === 0) {
+            return 'log_card';
+        }
+        else {
+            return 'log_card_2';
+        }
+    };
+    PendingLogs.prototype.sendToServer = function () {
+        console.log(this.logs);
     };
     PendingLogs.prototype.goToTabsPage = function () {
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__tabs_tabs__["a" /* TabsPage */]);
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__tabs_tabs__["a" /* TabsPage */]);
     };
+    PendingLogs.prototype.syncFromStorageToServer = function () {
+        var _this = this;
+        // console.log(JSON.stringify(this.customers));
+        var sync_parameters;
+        // console.log(sync_parameters);
+        sync_parameters.logs_array = this.logs;
+        // console.log("params: ", JSON.stringify(sync_parameters));
+        var loading = this.utility.presentLoadingDefault("Syncing Customers to Server ...");
+        this.logSaleService.syncCustomersFromStorage(sync_parameters)
+            .subscribe(function (response) {
+            if (!response.ok) {
+                var res = void 0;
+                res = response;
+                loading.dismiss();
+                // console.log(response);
+                _this.storage.remove(CUSTOMERS);
+                _this.navCtrl.push('AddCustomerPage');
+                return _this.utility.showAlert("Completed and Saved", res.saved);
+            }
+            else {
+                var res = void 0;
+                res = response;
+                loading.dismiss();
+                _this.storage.remove(CUSTOMERS);
+                _this.navCtrl.push('AddCustomerPage');
+                return _this.utility.showAlert("Completed and saved:", res.saved);
+            }
+        }, function (error) {
+            loading.dismiss();
+            // console.log(error);
+            var message;
+            if (error.status === 500 || !error.error.errors) {
+                message = "There were problem, possible network or server errors, try again please.";
+            }
+            else {
+                if (error.error.errors) {
+                    message = error.error.errors[0];
+                }
+            }
+            _this.utility.showAlert("Error", message);
+        }, function () {
+            console.log("Completed");
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("internet_checker_indicator"),
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
+    ], PendingLogs.prototype, "internetIndicator", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("logsCount"),
+        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _b || Object)
+    ], PendingLogs.prototype, "logsCount", void 0);
     PendingLogs = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'pending-logs',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/pending_logs/pending_logs.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Pending Logs</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n          <ion-spinner class="check_network_spinner"></ion-spinner>\n        </div>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-grid>\n\n    <div class="log_card">\n      <ion-row>\n        <ion-col>\n          <p>Customer Name: <b>Chinedu Abalogu</b></p>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <p>Paid: <b>N45000</b></p>\n        </ion-col>\n      </ion-row> \n\n      <ion-row>\n        <ion-col>\n          <p class="supplied">Supplied</p>\n        </ion-col>\n        <ion-col>\n          <p>Total: <b>N45000</b></p>\n        </ion-col>\n      </ion-row>\n    </div>\n\n    <div class="log_card_2">\n      <ion-row>\n        <ion-col>\n          <p>Customer Name: <b>Chinedu Abalogu</b></p>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <p>Paid: <b>N45000</b></p>\n        </ion-col>\n      </ion-row> \n\n      <ion-row>\n        <ion-col>\n          <p class="supplied">Supplied</p>\n        </ion-col>\n        <ion-col>\n          <p>Total: <b>N45000</b></p>\n        </ion-col>\n      </ion-row>\n    </div>\n\n    <ion-row>\n      <ion-col offset="3">\n        <p style="text-align: center;">Total: <b>N90000</b></p>\n      </ion-col>\n    </ion-row>\n    <ion-row> \n      <ion-col>\n      </ion-col>\n      <ion-col>\n        <button ion-button> Send All to Server </button>\n      </ion-col>\n      <ion-col>\n      </ion-col>\n    </ion-row>\n    \n  </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/pending_logs/pending_logs.html"*/
+            selector: 'pending-logs',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/pending_logs/pending_logs.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button ion-button (click)="goToTabsPage()">\n          <ion-icon name="arrow-back"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Pending Logs</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n          <ion-spinner class="check_network_spinner"></ion-spinner>\n        </div>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-grid>\n\n    <div *ngFor="let log of this.logs; index as i;">\n      <div [ngClass]="getClass(i)">\n        <ion-row>\n          <ion-col>\n            <p>Customer Name: <b>{{ log["name"] }}</b></p>\n          </ion-col>\n        </ion-row>\n\n        <ion-row>\n          <ion-col>\n            <p>Paid: <b>N45000</b></p>\n          </ion-col>\n        </ion-row> \n\n        <ion-row>\n          <ion-col>\n            <p class="supplied">Supplied</p>\n          </ion-col>\n          <ion-col>\n            <p>Total: <b>N45000</b></p>\n          </ion-col>\n        </ion-row>\n      </div>\n    </div>\n\n    <ion-row>\n      <ion-col offset="3">\n        <p style="text-align: center;">Total: <b>N90000</b></p>\n      </ion-col>\n    </ion-row>\n    <ion-row> \n      <ion-col>\n      </ion-col>\n      <ion-col>\n        <p style="text-align: center;"> <span #logsCount></span> Pending Logs to Sync </p>\n        <button ion-button [disabled]="disableSyncButton" (click)="sendToServer()"> Send All to Server </button>\n      </ion-col>\n      <ion-col>\n      </ion-col>\n    </ion-row>\n    \n  </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/pending_logs/pending_logs.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */]])
+        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__providers_util_util__["a" /* UtilProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_util_util__["a" /* UtilProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_4__providers_log_sale_log_sale__["a" /* LogSaleService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_log_sale_log_sale__["a" /* LogSaleService */]) === "function" && _h || Object])
     ], PendingLogs);
     return PendingLogs;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
 }());
 
 //# sourceMappingURL=pending_logs.js.map
