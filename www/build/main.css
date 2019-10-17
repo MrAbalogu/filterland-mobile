@@ -52076,6 +52076,18 @@ invoice .paid {
   padding: 2px 0;
 }
 
+invoice .left {
+  border: 1px solid red;
+  color: red;
+  border-radius: 5px;
+  text-align: center;
+  padding: 2px 0;
+}
+
+invoice .save-btn {
+  width: 100%;
+}
+
 invoice ion-content {
   background-image: url("../assets/imgs/auth-bg.jpg");
   -webkit-background-image: url("../assets/imgs/auth-bg.jpg");

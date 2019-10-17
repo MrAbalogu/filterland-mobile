@@ -11,14 +11,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthproviderProvider } from '../providers/authprovider/authprovider';
 import { UtilProvider } from '../providers/util/util';
 import { CustomerService } from '../providers/customer/customer';
+import { LogSaleService } from '../providers/log_sale/log_sale';
 import { IonicStorageModule } from '@ionic/storage';
 import { IntroPage } from '../pages/intro/intro';
+import { InvoiceModal } from '../pages/invoice/invoice';
 
 
 @NgModule({
   declarations: [
     MyApp,
-
+    InvoiceModal
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { IntroPage } from '../pages/intro/intro';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-
+    InvoiceModal
   ],
   providers: [
     StatusBar,
@@ -41,6 +43,7 @@ import { IntroPage } from '../pages/intro/intro';
     SettingsProvider,
     UtilProvider,
     CustomerService,
+    LogSaleService,
     AuthproviderProvider
   ]
 })

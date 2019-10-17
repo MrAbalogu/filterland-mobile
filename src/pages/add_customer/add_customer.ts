@@ -95,6 +95,7 @@ export class AddCustomerPage {
     var loading = this.utility.presentLoadingDefault("Adding Customer Details ...");
 
     console.log("new customer details:" + JSON.stringify(customerDetails));
+
     if (!navigator.onLine) {
       console.log("there is no internet");
       this.storage.get(CUSTOMERS).then((customers) => {
@@ -158,7 +159,7 @@ export class AddCustomerPage {
               loading.dismiss();
               return this.utility.showAlert(
                 "Error",
-                "There were problems logging you in, try again please."
+                "There were problems sending data to server, try again please."
               );
             }
             else if (response.body.status == "error"){

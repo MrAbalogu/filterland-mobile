@@ -1,13 +1,17 @@
 <ion-header>
   <ion-navbar>
-      <ion-buttons class="menu-left" start>
-        
-      </ion-buttons>
-      <div class="home-title title-center" >
-        <ion-title >Invoice</ion-title>
-      </div>
-      <ion-buttons class="" end>
-        <div class=""></div>
+    <ion-buttons class="menu-left" start>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <div class="title-center" >
+      <ion-title >Invoice</ion-title>
+    </div>
+    <ion-buttons class="logout-btn" end>
+        <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>
+          <ion-spinner class="check_network_spinner"></ion-spinner>
+        </div>
       </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -15,60 +19,58 @@
 <ion-content>
   <ion-row>
   	<ion-col>
-  	  <div class="paid">Paid</div>
+  	  <div class="paid">Paid: {{ params.paid }}</div>
   	</ion-col>
   	<ion-col>
-  	  <div class="paid">Supplied</div>
+  	  <div class="left">left: {{ params.total - params.paid }} </div>
   	</ion-col>
   </ion-row>
   <div class="invoice-details">
-  	<p>Customer Name: </p>
-  	<p>Customer Address: </p>
-  	<p>Customer Phone: </p>
-  	<p>Customer Email: </p>
-  	<p>Date: </p>
+  	<p>Customer Name: {{ params.name }}</p>
+  	<p>Customer Address: {{ params.address }} </p>
+  	<p>Customer Phone: {{ params.phone }}</p>
+  	<p>Customer Email: {{ params.email }}</p>
+  	<p>Date: {{ params.date }}</p>
   </div>
-  <ion-grid>
+  <ion-grid *ngFor="let item of params.items">
 	  <div class="log_card">
 	      <ion-row>
 	        <ion-col>
-	          <p>Customer Name: <b>Chinedu Abalogu</b></p>
+	          <p>Product Name/#: <b>{{ item.name }} - {{ item.partnumber }}</b></p>
 	        </ion-col>
 	      </ion-row>
 
 	      <ion-row>
 	        <ion-col>
-	          <p>Carton/s: <b>N45000</b></p>
+	          <p>Quantity: <b>{{ item.quantity }}</b></p>
 	        </ion-col>
 	        <ion-col>
-	          <p>Price: <b>N45000</b></p>
+	          <p>Price: <b>{{ item.price }}</b></p>
 	        </ion-col>
 	      </ion-row> 
 
 	      <ion-row>
 	        <ion-col>
-	          <p>Quantity:</p>
-	        </ion-col>
-	        <ion-col>
-	          <p>Total: <b>N45000</b></p>
+	          <p>Total: <b>{{ item.quantity * item.price }}</b></p>
 	        </ion-col>
 	      </ion-row>
 	  </div>
-
-	  <ion-row>
-	      <ion-col offset="3">
-	        <p style="text-align: center;">Total: <b>N90000</b></p>
-	      </ion-col>
-	    </ion-row>
-	    <ion-row> 
-	      <ion-col>
-	      </ion-col>
-	      <ion-col>
-	        <button ion-button> Send to HQ </button>
-	      </ion-col>
-	      <ion-col>
-	      </ion-col>
-	  </ion-row>
+  </ion-grid>
+  <ion-grid>
+  	<ion-row>
+      <ion-col offset="3">
+        <p style="text-align: center;">Total: <b>{{ params.total }}</b></p>
+      </ion-col>
+    </ion-row>
+    <ion-row> 
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <button ion-button class="save-btn" [disabled]="saveBtnDisabled" (click)="saveLog()"> Save </button>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 
 

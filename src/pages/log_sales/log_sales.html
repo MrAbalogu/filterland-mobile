@@ -9,9 +9,7 @@
         <ion-title >Log Sale</ion-title>
       </div>
       <ion-buttons class="logout-btn" end>
-        <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>
-          <ion-spinner class="check_network_spinner"></ion-spinner>
-        </div>
+        
       </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -28,7 +26,11 @@
 
       <ion-row>
         <ion-col>
-          <label class="log_sale_label">Customer Phone Number:</label>
+          <label class="log_sale_label">Invoice Number:</label>
+          <input class="log_sale_input" placeholder="Phone Number" type="text" formControlName="invoicenumber" required/>
+        </ion-col>
+        <ion-col>
+          <label class="log_sale_label">Customer Phone:</label>
           <input class="log_sale_input" placeholder="Phone Number" type="text" formControlName="phone" required/>
         </ion-col>
       </ion-row>
@@ -37,6 +39,10 @@
         <ion-col>
           <label class="log_sale_label">Customer Email:</label>
           <input class="log_sale_input" placeholder="Email Address" type="email" formControlName="email" required/>
+        </ion-col>
+        <ion-col>
+          <label class="log_sale_label">Date:</label>
+          <input class="log_sale_input" placeholder="date" type="date" formControlName="date" required />
         </ion-col>
       </ion-row>
 
@@ -97,7 +103,7 @@
         <ion-col>
         </ion-col>
         <ion-col>
-          <button type="submit" ion-button class="secondary_button"> Save & View Invoice </button>
+          <button type="submit" ion-button class="secondary_button" [disabled]="!logSaleForm.valid"> Save & View Invoice </button>
         </ion-col>
         <ion-col>
         </ion-col>

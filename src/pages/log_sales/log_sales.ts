@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, Pipe, PipeTransform } from '@angular/core';
+import { Component, Pipe, PipeTransform } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
@@ -11,7 +11,6 @@ import { InvoiceModal } from '../invoice/invoice';
 })
 export class LogSalesPage {
 
-  @ViewChild("internet_checker_indicator") internetIndicator: ElementRef;
   gender: string;
   netResponse: string;
   total: any;
@@ -24,7 +23,6 @@ export class LogSalesPage {
 
   public logSaleForm: FormGroup;
   public itemForm: FormGroup;
-  private itemCount: number = 1;
 
   constructor(
     public navCtrl: NavController, 
@@ -35,35 +33,19 @@ export class LogSalesPage {
 
     this.logSaleForm = this.fb.group({
       name: [''],
+      invoicenumber: [''],
       phone: [''],
       email: [''],
       address: [''],
       paid: [''],
+      date: [''],
       items: this.fb.array([
       ])
     });
   }
 
-  presentModal() {
-    this.navCtrl.push("InvoiceModal");
-  }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad LogSalesPage');
-    // Continously Check for Internet
-    setInterval(() => { 
-      // The code that you want to run repeatedly
-      if (!navigator.onLine) {
-        this.indicator_classes.offlinebg = true;
-        this.indicator_classes.onlinebg = false;
-        this.internetIndicator.nativeElement.innerHTML = "Offline";
-
-      } else {
-        this.indicator_classes.offlinebg = false;
-        this.indicator_classes.onlinebg = true;
-        this.internetIndicator.nativeElement.innerHTML = "Online";
-      }
-    }, 2000);
   }
 
   calculateTotal() {
@@ -72,8 +54,6 @@ export class LogSalesPage {
       let itemtotal = item.price * item.quantity;
       item.total = itemtotal;
     });
-
-    // this.total = this.items.reduce((a, b) => a + b.total, 0);
 
     this.total = this.items.reduce(function(prev, cur) {
       return prev + cur.total;
@@ -105,7 +85,16 @@ export class LogSalesPage {
   }
 
   viewInvoice() {
+    let formData = this.logSaleForm.value;
+    formData.total = this.total;
+    let invoiceModal = this.modalCtrl.create(InvoiceModal, formData);
+    invoiceModal.present();
     console.log(this.logSaleForm.value);
   }
+
+  presentModal() {
+    this.navCtrl.push("InvoiceModal");
+  }
+
 
 }

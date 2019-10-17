@@ -1,15 +1,15 @@
 webpackJsonp([0],{
 
-/***/ 684:
+/***/ 686:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LogSalesPageModule", function() { return LogSalesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__log_sales__ = __webpack_require__(703);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pipes_pipes_module__ = __webpack_require__(704);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__log_sales__ = __webpack_require__(704);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pipes_pipes_module__ = __webpack_require__(705);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -42,13 +42,13 @@ var LogSalesPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 697:
+/***/ 699:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -81,15 +81,16 @@ var TabsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 703:
+/***/ 704:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LogSalesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs_tabs__ = __webpack_require__(697);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs_tabs__ = __webpack_require__(699);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__invoice_invoice__ = __webpack_require__(349);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -99,6 +100,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -115,36 +117,19 @@ var LogSalesPage = /** @class */ (function () {
         };
         this.items = [];
         this.myitems = [];
-        this.itemCount = 1;
         this.logSaleForm = this.fb.group({
             name: [''],
+            invoicenumber: [''],
             phone: [''],
             email: [''],
             address: [''],
             paid: [''],
+            date: [''],
             items: this.fb.array([])
         });
     }
-    LogSalesPage.prototype.presentModal = function () {
-        this.navCtrl.push("InvoiceModal");
-    };
     LogSalesPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
         console.log('ionViewDidLoad LogSalesPage');
-        // Continously Check for Internet
-        setInterval(function () {
-            // The code that you want to run repeatedly
-            if (!navigator.onLine) {
-                _this.indicator_classes.offlinebg = true;
-                _this.indicator_classes.onlinebg = false;
-                _this.internetIndicator.nativeElement.innerHTML = "Offline";
-            }
-            else {
-                _this.indicator_classes.offlinebg = false;
-                _this.indicator_classes.onlinebg = true;
-                _this.internetIndicator.nativeElement.innerHTML = "Online";
-            }
-        }, 2000);
     };
     LogSalesPage.prototype.calculateTotal = function () {
         this.items = this.logSaleForm.get('items').value;
@@ -152,7 +137,6 @@ var LogSalesPage = /** @class */ (function () {
             var itemtotal = item.price * item.quantity;
             item.total = itemtotal;
         });
-        // this.total = this.items.reduce((a, b) => a + b.total, 0);
         this.total = this.items.reduce(function (prev, cur) {
             return prev + cur.total;
         }, 0);
@@ -180,33 +164,38 @@ var LogSalesPage = /** @class */ (function () {
             this.add_item();
     };
     LogSalesPage.prototype.viewInvoice = function () {
+        var formData = this.logSaleForm.value;
+        formData.total = this.total;
+        var invoiceModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__invoice_invoice__["a" /* InvoiceModal */], formData);
+        invoiceModal.present();
         console.log(this.logSaleForm.value);
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("internet_checker_indicator"),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
-    ], LogSalesPage.prototype, "internetIndicator", void 0);
+    LogSalesPage.prototype.presentModal = function () {
+        this.navCtrl.push("InvoiceModal");
+    };
     LogSalesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'log-sales',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/log_sales/log_sales.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Log Sale</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n          <ion-spinner class="check_network_spinner"></ion-spinner>\n        </div>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <form [formGroup]="logSaleForm" (ngSubmit)="viewInvoice(logSaleForm)">\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Full Name:</label>\n          <input class="log_sale_input" placeholder="Full Name" type="text" formControlName="name" required/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Phone Number:</label>\n          <input class="log_sale_input" placeholder="Phone Number" type="text" formControlName="phone" required/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Email:</label>\n          <input class="log_sale_input" placeholder="Email Address" type="email" formControlName="email" required/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Address:</label>\n          <textarea class="log_sale_input" placeholder="Address" type="textarea" formControlName="address" required>\n          </textarea>\n        </ion-col>\n      </ion-row>\n\n      <div formArrayName="items" id="item" class="sale_item_container" *ngFor="let control of logSaleForm.get(\'items\')?.controls; let i = index">\n        <div formGroupName={{i}}>\n          <div class="remove" (click)="remove_item(i)">\n            remove\n          </div>\n          <ion-row>\n            <ion-col size="3">\n              <label class="log_sale_label">Product Name:</label>\n              <input class="log_sale_input" placeholder="Product Name" formControlName="name" />\n            </ion-col>\n\n            <ion-col size="1" size-sm>\n              <label class="log_sale_label">Part Number:</label>\n              <input class="log_sale_input" placeholder="Part Number" formControlName="partnumber" />\n            </ion-col>\n          </ion-row>\n\n          <ion-row>\n            <ion-col>\n              <label class="log_sale_label">Quantity:</label>\n              <input class="log_sale_input" type="number" formControlName="quantity" (input)="calculateTotal()" />\n            </ion-col>\n\n            <ion-col>\n              <label class="log_sale_label">Price:</label>\n              <input class="log_sale_input" type="number" formControlName="price" (input)="calculateTotal()" />\n            </ion-col>\n          </ion-row>\n        </div>\n      </div>\n\n      <button id="add_item" (click)="add_item()" type="button" ion-button size="small">+ Add more items</button>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Paid:</label>\n            <input class="log_sale_input" type="number" formControlName="paid" required/>\n        </ion-col>\n\n        <ion-col>\n          <label class="log_sale_label">Total:</label>\n          <h4 style="margin:6px 0">{{ total }}</h4>\n        </ion-col>\n      </ion-row>\n\n      <ion-row > \n        <ion-col>\n        </ion-col>\n        <ion-col>\n          <button type="submit" ion-button class="secondary_button"> Save & View Invoice </button>\n        </ion-col>\n        <ion-col>\n        </ion-col>\n      </ion-row>\n\n    </form>\n  </ion-grid>\n\n\n\n \n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/log_sales/log_sales.html"*/,
+            selector: 'log-sales',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/log_sales/log_sales.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Log Sale</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        \n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-grid>\n    <form [formGroup]="logSaleForm" (ngSubmit)="viewInvoice(logSaleForm)">\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Full Name:</label>\n          <input class="log_sale_input" placeholder="Full Name" type="text" formControlName="name" required/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Invoice Number:</label>\n          <input class="log_sale_input" placeholder="Phone Number" type="text" formControlName="invoicenumber" required/>\n        </ion-col>\n        <ion-col>\n          <label class="log_sale_label">Customer Phone:</label>\n          <input class="log_sale_input" placeholder="Phone Number" type="text" formControlName="phone" required/>\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Email:</label>\n          <input class="log_sale_input" placeholder="Email Address" type="email" formControlName="email" required/>\n        </ion-col>\n        <ion-col>\n          <label class="log_sale_label">Date:</label>\n          <input class="log_sale_input" placeholder="date" type="date" formControlName="date" required />\n        </ion-col>\n      </ion-row>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Customer Address:</label>\n          <textarea class="log_sale_input" placeholder="Address" type="textarea" formControlName="address" required>\n          </textarea>\n        </ion-col>\n      </ion-row>\n\n      <div formArrayName="items" id="item" class="sale_item_container" *ngFor="let control of logSaleForm.get(\'items\')?.controls; let i = index">\n        <div formGroupName={{i}}>\n          <div class="remove" (click)="remove_item(i)">\n            remove\n          </div>\n          <ion-row>\n            <ion-col size="3">\n              <label class="log_sale_label">Product Name:</label>\n              <input class="log_sale_input" placeholder="Product Name" formControlName="name" />\n            </ion-col>\n\n            <ion-col size="1" size-sm>\n              <label class="log_sale_label">Part Number:</label>\n              <input class="log_sale_input" placeholder="Part Number" formControlName="partnumber" />\n            </ion-col>\n          </ion-row>\n\n          <ion-row>\n            <ion-col>\n              <label class="log_sale_label">Quantity:</label>\n              <input class="log_sale_input" type="number" formControlName="quantity" (input)="calculateTotal()" />\n            </ion-col>\n\n            <ion-col>\n              <label class="log_sale_label">Price:</label>\n              <input class="log_sale_input" type="number" formControlName="price" (input)="calculateTotal()" />\n            </ion-col>\n          </ion-row>\n        </div>\n      </div>\n\n      <button id="add_item" (click)="add_item()" type="button" ion-button size="small">+ Add more items</button>\n\n      <ion-row>\n        <ion-col>\n          <label class="log_sale_label">Paid:</label>\n            <input class="log_sale_input" type="number" formControlName="paid" required/>\n        </ion-col>\n\n        <ion-col>\n          <label class="log_sale_label">Total:</label>\n          <h4 style="margin:6px 0">{{ total }}</h4>\n        </ion-col>\n      </ion-row>\n\n      <ion-row > \n        <ion-col>\n        </ion-col>\n        <ion-col>\n          <button type="submit" ion-button class="secondary_button" [disabled]="!logSaleForm.valid"> Save & View Invoice </button>\n        </ion-col>\n        <ion-col>\n        </ion-col>\n      </ion-row>\n\n    </form>\n  </ion-grid>\n\n\n\n \n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/log_sales/log_sales.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ModalController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormBuilder */]])
     ], LogSalesPage);
     return LogSalesPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=log_sales.js.map
 
 /***/ }),
 
-/***/ 704:
+/***/ 705:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PipesModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__keyvalue_keyvalue__ = __webpack_require__(705);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__keyvalue_keyvalue__ = __webpack_require__(706);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -232,7 +221,7 @@ var PipesModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 705:
+/***/ 706:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
