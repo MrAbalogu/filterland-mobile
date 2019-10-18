@@ -1,15 +1,13 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Customer } from "../../models/customer";
-import { AddCustomer } from "../../models/customer";
 import { Storage } from '@ionic/storage';
 
 const CUSTOMER = 'customer';
 
 @Injectable()
-export class CustomerService {
+export class ProductService {
 
-  private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/customers";
+  private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/products";
 
   constructor(
     private http: HttpClient,

@@ -9,7 +9,7 @@
         <ion-title >Products</ion-title>
       </div>
       <ion-buttons class="logout-btn" end>
-        <button ion-button ion-only style="color: #CF7A7A" (click)="searchProducts()" >
+        <button ion-button ion-only style="color: #CF7A7A" (click)="openSearchInput()" >
           <ion-icon name="search"></ion-icon>
         </button>
       </ion-buttons>
@@ -21,12 +21,14 @@
 
 <ion-content>
     <ion-list id="hospitals" class="hospitals">
-      <div *ngFor="let products of this.products;">
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+      <div *ngFor="let product of this.products;">
         <div class="h-listitem">
-
           <img  class="hl-img" src="assets/imgs/oilfilter.png">
 
-          <ion-item  class="hl-info"><h4>Toyota Oil Filter</h4>
+          <ion-item  class="hl-info"><h4> {{ product.name }} </h4>
             <span style="color: #50E3C2;">N1500</span>
             <p>Toyota | Lexus</p>
             <p><span> Oil Filter </span> <span style="float: right">AE80</span></p>

@@ -12,6 +12,7 @@ import { AuthproviderProvider } from '../providers/authprovider/authprovider';
 import { UtilProvider } from '../providers/util/util';
 import { CustomerService } from '../providers/customer/customer';
 import { LogSaleService } from '../providers/log_sale/log_sale';
+import { ProductService } from '../providers/product/product';
 import { IonicStorageModule } from '@ionic/storage';
 import { IntroPage } from '../pages/intro/intro';
 import { InvoiceModal } from '../pages/invoice/invoice';
@@ -46,6 +47,7 @@ import { ViewInvoiceModal } from '../pages/view_invoice/view_invoice';
     UtilProvider,
     CustomerService,
     LogSaleService,
+    ProductService,
     AuthproviderProvider
   ]
 })

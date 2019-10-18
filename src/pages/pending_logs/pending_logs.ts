@@ -140,17 +140,17 @@ export class PendingLogs {
         },
         (error: HttpErrorResponse) => {
           loading.dismiss();
-            // console.log(error);
-            let message: string;
-            if(error.status === 500 || !error.error.errors){
-              message = "There were problem, possible network or server errors, try again please.";
+          // console.log(error);
+          let message: string;
+          if(error.status === 500 || !error.error.errors){
+            message = "There were problem, possible network or server errors, try again please.";
+          }
+          else{
+            if(error.error.errors){
+              message = error.error.errors[0]
             }
-            else{
-              if(error.error.errors){
-                message = error.error.errors[0]
-              }
-            }
-            this.utility.showAlert( "Error", message );
+          }
+          this.utility.showAlert( "Error", message );
         },
         () => {
           console.log("Completed");

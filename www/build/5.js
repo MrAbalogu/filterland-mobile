@@ -1,6 +1,6 @@
 webpackJsonp([5],{
 
-/***/ 691:
+/***/ 692:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PendingLogsModule", function() { return PendingLogsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pending_logs__ = __webpack_require__(712);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pending_logs__ = __webpack_require__(713);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -39,7 +39,7 @@ var PendingLogsModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 701:
+/***/ 702:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78,15 +78,15 @@ var TabsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 712:
+/***/ 713:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PendingLogs; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs_tabs__ = __webpack_require__(701);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs_tabs__ = __webpack_require__(702);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_log_sale_log_sale__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_util_util__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__view_invoice_view_invoice__ = __webpack_require__(350);
@@ -117,6 +117,7 @@ var PendingLogs = /** @class */ (function () {
         this.modalCtrl = modalCtrl;
         this.logSaleService = logSaleService;
         this.pending_logs = [];
+        this.parameters = {};
         this.indicator_classes = {
             'onlinebg': false,
             'offlinebg': false
@@ -155,6 +156,10 @@ var PendingLogs = /** @class */ (function () {
         var _this = this;
         console.log("entered");
         if (this.logs) {
+            this.logs.forEach(function (l) {
+                console.log(JSON.parse(l));
+                _this.pending_logs.push(JSON.parse(l));
+            });
             if (navigator.onLine) {
                 this.disableSyncButton = false;
             }
@@ -163,10 +168,6 @@ var PendingLogs = /** @class */ (function () {
         else {
             this.disableSyncButton = true;
         }
-        this.logs.forEach(function (l) {
-            console.log(JSON.parse(l));
-            _this.pending_logs.push(JSON.parse(l));
-        });
     };
     PendingLogs.prototype.viewInvoice = function (logDetails) {
         var invoiceModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__view_invoice_view_invoice__["a" /* ViewInvoiceModal */], logDetails);
@@ -189,10 +190,10 @@ var PendingLogs = /** @class */ (function () {
     };
     PendingLogs.prototype.syncFromStorageToServer = function () {
         var _this = this;
-        this.sync_parameters.logs_array = this.pending_logs;
+        this.parameters.logs_array = this.pending_logs;
         // console.log("params: ", JSON.stringify(sync_parameters));
         var loading = this.utility.presentLoadingDefault("Syncing Logs to Server ...");
-        this.logSaleService.syncSalesFromStorage(this.sync_parameters)
+        this.logSaleService.syncSalesFromStorage(this.parameters)
             .subscribe(function (response) {
             if (!response.ok) {
                 var res = void 0;
@@ -201,7 +202,7 @@ var PendingLogs = /** @class */ (function () {
                 // console.log(response);
                 _this.storage.remove(SALELOGS);
                 _this.navCtrl.push('AddCustomerPage');
-                return _this.utility.showAlert("Completed and Saved", res.saved);
+                return _this.utility.showAlert("Completed and Saved", res.saved.length + "Logs saved");
             }
             else {
                 var res = void 0;
@@ -209,7 +210,7 @@ var PendingLogs = /** @class */ (function () {
                 loading.dismiss();
                 _this.storage.remove(SALELOGS);
                 _this.navCtrl.push('AddCustomerPage');
-                return _this.utility.showAlert("Completed and saved:", res.saved);
+                return _this.utility.showAlert("Completed and saved:", res.saved.length + "Logs saved");
             }
         }, function (error) {
             loading.dismiss();
