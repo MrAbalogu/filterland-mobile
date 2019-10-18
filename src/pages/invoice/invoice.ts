@@ -63,7 +63,7 @@ export class InvoiceModal {
   saveLog() {
   	console.log("saving....");
     var loading = this.utility.presentLoadingDefault("Adding Sale Details ...");
-  	if (!navigator.onLine) {
+  	if (navigator.onLine) {
       console.log("there is no internet");
       this.storage.get(SALELOGS).then((logs) => {
         if (logs) {
@@ -105,15 +105,17 @@ export class InvoiceModal {
         .subscribe(
           //Success
           (response: HttpResponse<any>) => {
-            if (response.status == "error"){
-              console.log(response)
+            let res: any;
+            res = response;
+            if (res.status == "error"){
+              console.log(res);
               loading.dismiss();
               return this.utility.showAlert(
                 "Error",
-                response.errors
+                res.errors
               );
             }  
-            else if (response.status == "success"){
+            else if (res.status == "success"){
               loading.dismiss();
               this.saveBtnDisabled = true;
               return this.utility.showAlert(
@@ -125,16 +127,17 @@ export class InvoiceModal {
           },
           //Error
           (error: HttpErrorResponse) => {
+            let err: any;
+            err = error;
             loading.dismiss();
-            console.log("error ", error);
-            console.log("response ", response);
+            console.log("error ", err);
             let message: string;
-            if(error.status === 500 || !error.error.errors){
+            if(err.status === 500 || !err.error.errors){
               message = "There were problem, possible network/internet or server errors, try again.";
             }
             else{
-              if(error.error.errors){
-                message = error.error.errors[0]
+              if(err.error.errors){
+                message = err.error.errors[0]
               }
             }
             this.utility.showAlert( "Error", message );

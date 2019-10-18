@@ -20,17 +20,17 @@
 
   <ion-grid>
 
-    <div *ngFor="let log of this.logs; index as i;">
-      <div [ngClass]="getClass(i)">
+    <div *ngFor="let log of this.pending_logs; index as i;">
+      <div [ngClass]="getClass(i)" (click)="viewInvoice(log)">
         <ion-row>
           <ion-col>
-            <p>Customer Name: <b>{{ log["name"] }}</b></p>
+            <p>Customer Name: <b>{{ log.name }}</b></p>
           </ion-col>
         </ion-row>
 
         <ion-row>
           <ion-col>
-            <p>Paid: <b>N45000</b></p>
+            <p>Paid: <b>N{{ log.paid }}</b></p>
           </ion-col>
         </ion-row> 
 
@@ -39,23 +39,18 @@
             <p class="supplied">Supplied</p>
           </ion-col>
           <ion-col>
-            <p>Total: <b>N45000</b></p>
+            <p>Total: <b>N{{ log.total }}</b></p>
           </ion-col>
         </ion-row>
       </div>
     </div>
-
-    <ion-row>
-      <ion-col offset="3">
-        <p style="text-align: center;">Total: <b>N90000</b></p>
-      </ion-col>
-    </ion-row>
+    
     <ion-row> 
       <ion-col>
       </ion-col>
       <ion-col>
         <p style="text-align: center;"> <span #logsCount></span> Pending Logs to Sync </p>
-        <button ion-button [disabled]="disableSyncButton" (click)="sendToServer()"> Send All to Server </button>
+        <button ion-button [disabled]="disableSyncButton" (click)="syncFromStorageToServer()"> Send All to Server </button>
       </ion-col>
       <ion-col>
       </ion-col>

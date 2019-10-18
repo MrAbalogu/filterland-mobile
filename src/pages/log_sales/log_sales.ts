@@ -92,9 +92,4 @@ export class LogSalesPage {
     console.log(this.logSaleForm.value);
   }
 
-  presentModal() {
-    this.navCtrl.push("InvoiceModal");
-  }
-
-
 }

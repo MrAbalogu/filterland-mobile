@@ -15,12 +15,13 @@ import { LogSaleService } from '../providers/log_sale/log_sale';
 import { IonicStorageModule } from '@ionic/storage';
 import { IntroPage } from '../pages/intro/intro';
 import { InvoiceModal } from '../pages/invoice/invoice';
-
+import { ViewInvoiceModal } from '../pages/view_invoice/view_invoice';
 
 @NgModule({
   declarations: [
     MyApp,
-    InvoiceModal
+    InvoiceModal,
+    ViewInvoiceModal
   ],
   imports: [
     BrowserModule,
@@ -34,7 +35,8 @@ import { InvoiceModal } from '../pages/invoice/invoice';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    InvoiceModal
+    InvoiceModal,
+    ViewInvoiceModal
   ],
   providers: [
     StatusBar,

@@ -1,10 +1,11 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from "@angular/common/http";
-import { NavController, IonicPage, NavParams, ViewController } from 'ionic-angular';
+import { NavController, IonicPage, NavParams, ViewController, ModalController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { TabsPage } from '../tabs/tabs';
 import { LogSaleService } from './../../providers/log_sale/log_sale'; 
 import { UtilProvider } from './../../providers/util/util';
+import { ViewInvoiceModal } from '../view_invoice/view_invoice';
 
 const SALELOGS = "salelogs";
 
@@ -18,6 +19,8 @@ export class PendingLogs {
   @ViewChild("logsCount") logsCount: ElementRef;
   user_id: any;
   logs: any;
+  pending_logs: any = [];
+  parameters: any = {};
   indicator_classes: any = {
     'onlinebg': false,
     'offlinebg': false
@@ -34,7 +37,8 @@ export class PendingLogs {
     public viewCtrl: ViewController,
     private utility: UtilProvider,
     private storage: Storage,
-    private logSaleService: LogSaleService,
+    private modalCtrl: ModalController,
+    private logSaleService: LogSaleService
     ) {}
 
   ionViewDidLoad() {
@@ -75,6 +79,17 @@ export class PendingLogs {
     } else {
       this.disableSyncButton = true;
     }
+
+    this.logs.forEach((l) => {
+      console.log(JSON.parse(l));
+      this.pending_logs.push(JSON.parse(l));
+    })
+  }
+
+  viewInvoice(logDetails) {
+    let invoiceModal = this.modalCtrl.create(ViewInvoiceModal, logDetails);
+    invoiceModal.present();
+    console.log(logDetails);
   }
 
   getClass(i) {
@@ -86,21 +101,18 @@ export class PendingLogs {
   }
 
   sendToServer(){
-  	console.log(this.logs);
+  	console.log(this.pending_logs);
   }
 
   goToTabsPage() {
-    this.navCtrl.setRoot(TabsPage)
+    this.navCtrl.setRoot(TabsPage);
   }
 
   syncFromStorageToServer() {
-    // console.log(JSON.stringify(this.customers));
-    let sync_parameters: any;
-    // console.log(sync_parameters);
-    sync_parameters.logs_array = this.logs;
+    this.parameters.logs_array = this.pending_logs;
     // console.log("params: ", JSON.stringify(sync_parameters));
-    var loading = this.utility.presentLoadingDefault("Syncing Customers to Server ...");
-    this.logSaleService.syncCustomersFromStorage(sync_parameters)
+    var loading = this.utility.presentLoadingDefault("Syncing Logs to Server ...");
+    this.logSaleService.syncSalesFromStorage(this.parameters)
       .subscribe(
         (response: HttpResponse<any>) => {
           if (!response.ok) {
@@ -108,22 +120,22 @@ export class PendingLogs {
             res = response;
             loading.dismiss();
             // console.log(response);
-            this.storage.remove(CUSTOMERS);
+            this.storage.remove(SALELOGS);
             this.navCtrl.push('AddCustomerPage');
             return this.utility.showAlert(
               "Completed and Saved",
-             res.saved
+              res.saved.length + "Logs saved"
             );
           }
           else {
             let res: any;
             res = response;
             loading.dismiss();
-            this.storage.remove(CUSTOMERS);
+            this.storage.remove(SALELOGS);
             this.navCtrl.push('AddCustomerPage');
             return this.utility.showAlert(
               "Completed and saved:",
-              res.saved
+              res.saved.length + "Logs saved"
             );
           }  
         },

@@ -52755,3 +52755,54 @@ settings-page ion-content {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+view_invoice .lc-textarea {
+  margin: 12px auto;
+  width: 86%;
+  height: 10em;
+  color: white;
+  border: 1px solid #50E3C2;
+  background-color: white;
+  padding: 0.7rem .95rem;
+}
+
+view_invoice .menu-left {
+  position: absolute;
+  left: 0.3rem;
+}
+
+view_invoice .title-center {
+  text-align: center;
+}
+
+view_invoice .invoice-details {
+  padding: 10px;
+}
+
+view_invoice .paid {
+  border: 1px solid #6DD400;
+  color: #6DD400;
+  border-radius: 5px;
+  text-align: center;
+  padding: 2px 0;
+}
+
+view_invoice .left {
+  border: 1px solid red;
+  color: red;
+  border-radius: 5px;
+  text-align: center;
+  padding: 2px 0;
+  font-weight: 700;
+}
+
+view_invoice .save-btn {
+  width: 100%;
+}
+
+view_invoice ion-content {
+  background-image: url("../assets/imgs/auth-bg.jpg");
+  -webkit-background-image: url("../assets/imgs/auth-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
