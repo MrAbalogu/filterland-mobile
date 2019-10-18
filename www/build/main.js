@@ -1031,15 +1031,15 @@ var LogSaleService = /** @class */ (function () {
     LogSaleService.prototype.syncSalesFromStorage = function (sales) {
         console.log("post request");
         console.log("main params: ", sales);
-        return this.http.post("http://localhost:4040/api/v1/sales_invoices/sync_from_storage", sales, { headers: { 'Content-Type': 'application/json' } });
+        return this.http.post("http://localhost:4040/api/v1/sales_invoice/sync_from_storage", sales, { headers: { 'Content-Type': 'application/json' } });
         // return this.http.post(`${this.baseUrl}/sync_from_storage`, customers, { observe: 'response' })
     };
     LogSaleService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
     ], LogSaleService);
     return LogSaleService;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=log_sale.js.map

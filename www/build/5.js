@@ -117,7 +117,6 @@ var PendingLogs = /** @class */ (function () {
         this.modalCtrl = modalCtrl;
         this.logSaleService = logSaleService;
         this.pending_logs = [];
-        this.parameters = {};
         this.indicator_classes = {
             'onlinebg': false,
             'offlinebg': false
@@ -190,10 +189,10 @@ var PendingLogs = /** @class */ (function () {
     };
     PendingLogs.prototype.syncFromStorageToServer = function () {
         var _this = this;
-        this.parameters.logs_array = this.pending_logs;
+        this.sync_parameters.logs_array = this.pending_logs;
         // console.log("params: ", JSON.stringify(sync_parameters));
         var loading = this.utility.presentLoadingDefault("Syncing Logs to Server ...");
-        this.logSaleService.syncSalesFromStorage(this.parameters)
+        this.logSaleService.syncSalesFromStorage(this.sync_parameters)
             .subscribe(function (response) {
             if (!response.ok) {
                 var res = void 0;
@@ -202,7 +201,7 @@ var PendingLogs = /** @class */ (function () {
                 // console.log(response);
                 _this.storage.remove(SALELOGS);
                 _this.navCtrl.push('AddCustomerPage');
-                return _this.utility.showAlert("Completed and Saved", res.saved.length + "Logs saved");
+                return _this.utility.showAlert("Completed and Saved", res.saved);
             }
             else {
                 var res = void 0;
@@ -210,7 +209,7 @@ var PendingLogs = /** @class */ (function () {
                 loading.dismiss();
                 _this.storage.remove(SALELOGS);
                 _this.navCtrl.push('AddCustomerPage');
-                return _this.utility.showAlert("Completed and saved:", res.saved.length + "Logs saved");
+                return _this.utility.showAlert("Completed and saved:", res.saved);
             }
         }, function (error) {
             loading.dismiss();
@@ -231,20 +230,25 @@ var PendingLogs = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("internet_checker_indicator"),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
     ], PendingLogs.prototype, "internetIndicator", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("logsCount"),
-        __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _b || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
     ], PendingLogs.prototype, "logsCount", void 0);
     PendingLogs = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'pending-logs',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/pending_logs/pending_logs.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button ion-button (click)="goToTabsPage()">\n          <ion-icon name="arrow-back"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Pending Logs</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n          <ion-spinner class="check_network_spinner"></ion-spinner>\n        </div>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-grid>\n\n    <div *ngFor="let log of this.pending_logs; index as i;">\n      <div [ngClass]="getClass(i)" (click)="viewInvoice(log)">\n        <ion-row>\n          <ion-col>\n            <p>Customer Name: <b>{{ log.name }}</b></p>\n          </ion-col>\n        </ion-row>\n\n        <ion-row>\n          <ion-col>\n            <p>Paid: <b>N{{ log.paid }}</b></p>\n          </ion-col>\n        </ion-row> \n\n        <ion-row>\n          <ion-col>\n            <p class="supplied">Supplied</p>\n          </ion-col>\n          <ion-col>\n            <p>Total: <b>N{{ log.total }}</b></p>\n          </ion-col>\n        </ion-row>\n      </div>\n    </div>\n    \n    <ion-row> \n      <ion-col>\n      </ion-col>\n      <ion-col>\n        <p style="text-align: center;"> <span #logsCount></span> Pending Logs to Sync </p>\n        <button ion-button [disabled]="disableSyncButton" (click)="syncFromStorageToServer()"> Send All to Server </button>\n      </ion-col>\n      <ion-col>\n      </ion-col>\n    </ion-row>\n    \n  </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/pending_logs/pending_logs.html"*/
+            selector: 'pending-logs',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/pending_logs/pending_logs.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button ion-button (click)="goToTabsPage()">\n          <ion-icon name="arrow-back"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Pending Logs</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n          <ion-spinner class="check_network_spinner"></ion-spinner>\n        </div>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-grid>\n\n    <div *ngFor="let log of this.pending_logs; index as i;">\n      <div [ngClass]="getClass(i)" (click)="viewInvoice(log)">\n        <ion-row>\n          <ion-col>\n            <p>Customer Name: <b>{{ log.name }}</b></p>\n          </ion-col>\n        </ion-row>\n\n        <ion-row>\n          <ion-col>\n            <p>Paid: <b>N{{ log.paid }}</b></p>\n          </ion-col>\n        </ion-row> \n\n        <ion-row>\n          <ion-col>\n            <p class="supplied">Supplied</p>\n          </ion-col>\n          <ion-col>\n            <p>Total: <b>N{{ log.total }}</b></p>\n          </ion-col>\n        </ion-row>\n      </div>\n    </div>\n    \n    <ion-row> \n      <ion-col>\n      </ion-col>\n      <ion-col>\n        <p style="text-align: center;"> <span #logsCount>0</span> Pending Logs to Sync </p>\n        <button ion-button [disabled]="disableSyncButton" (click)="syncFromStorageToServer()"> Send All to Server </button>\n      </ion-col>\n      <ion-col>\n      </ion-col>\n    </ion-row>\n    \n  </ion-grid>\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/pending_logs/pending_logs.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__providers_util_util__["a" /* UtilProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_util_util__["a" /* UtilProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_4__providers_log_sale_log_sale__["a" /* LogSaleService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_log_sale_log_sale__["a" /* LogSaleService */]) === "function" && _j || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_util_util__["a" /* UtilProvider */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_log_sale_log_sale__["a" /* LogSaleService */]])
     ], PendingLogs);
     return PendingLogs;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 }());
 
 //# sourceMappingURL=pending_logs.js.map

@@ -72,6 +72,10 @@ export class PendingLogs {
   ionViewDidEnter() {
     console.log("entered");
     if (this.logs){
+      this.logs.forEach((l) => {
+        console.log(JSON.parse(l));
+        this.pending_logs.push(JSON.parse(l));
+      });
       if (navigator.onLine) {
         this.disableSyncButton = false;
       }
@@ -79,11 +83,6 @@ export class PendingLogs {
     } else {
       this.disableSyncButton = true;
     }
-
-    this.logs.forEach((l) => {
-      console.log(JSON.parse(l));
-      this.pending_logs.push(JSON.parse(l));
-    })
   }
 
   viewInvoice(logDetails) {

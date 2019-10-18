@@ -21,6 +21,7 @@
 
 <ion-content>
     <ion-list id="hospitals" class="hospitals">
+      <div *ngFor="let products of this.products;">
         <div class="h-listitem">
 
           <img  class="hl-img" src="assets/imgs/oilfilter.png">
@@ -33,47 +34,7 @@
           <div style="clear: both"></div>
 
         </div>
+      </div>
 
-        <div class="h-listitem">
-
-          <img  class="hl-img" src="assets/imgs/oilfilter.png">
-
-          <ion-item  class="hl-info"><h4>Toyota Oil Filter</h4>
-            <span style="color: #50E3C2;">N1500</span>
-            <p>Toyota | Lexus</p>
-            <p><span> Oil Filter </span> <span style="float: right">AE80</span></p>
-          </ion-item>
-          <div style="clear: both"></div>
-
-        </div>
-
-        <div class="h-listitem">
-
-          <img  class="hl-img" src="assets/imgs/oilfilter.png">
-
-          <ion-item  class="hl-info"><h4>Toyota Oil Filter</h4>
-            <span style="color: #50E3C2;">N1500</span>
-            <p>Toyota | Lexus</p>
-            <p><span> Oil Filter </span> <span style="float: right">AE80</span></p>
-          </ion-item>
-          <div style="clear: both"></div>
-
-        </div>
-
-        <div class="h-listitem">
-
-          <img  class="hl-img" src="assets/imgs/oilfilter.png">
-
-          <ion-item  class="hl-info"><h4>Toyota Oil Filter</h4>
-            <span style="color: #50E3C2;">N1500</span>
-            <p>Toyota | Lexus</p>
-            <p><span> Oil Filter </span> <span style="float: right">AE80</span></p>
-          </ion-item>
-          <div style="clear: both"></div>
-
-        </div>
-      </ion-list>
-
-
-
+    </ion-list>
 </ion-content>
