@@ -9,7 +9,7 @@ import { AddCustomer } from '../../models/customer';
 import { UtilProvider } from './../../providers/util/util';
 import { CustomerService } from './../../providers/customer/customer'; 
 
-const CUSTOMERS = 'customers';
+const CUSTOMERS = 'unsynced_customers';
 
 @IonicPage()
 @Component({

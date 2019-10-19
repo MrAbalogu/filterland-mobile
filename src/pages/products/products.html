@@ -15,7 +15,7 @@
       </ion-buttons>
   </ion-navbar>
   <ion-navbar id="searchNav">
-      <input class="searchinput" placeholder="Search Products" type="search" name="searchProducts">
+      <input class="searchinput" placeholder="Search Products" type="search" name="searchProducts" [(ngModel)]="searchTerm" (input)="setFilteredItems()">
   </ion-navbar>
 </ion-header>
 
@@ -29,9 +29,9 @@
           <img  class="hl-img" src="assets/imgs/oilfilter.png">
 
           <ion-item  class="hl-info"><h4> {{ product.name }} </h4>
-            <span style="color: #50E3C2;">N1500</span>
-            <p>Toyota | Lexus</p>
-            <p><span> Oil Filter </span> <span style="float: right">AE80</span></p>
+            <span style="color: #50E3C2;">N{{ product.price }}</span>
+            <p>{{ product.description }}</p>
+            <p><span> Oil Filter </span> <span style="float: right">{{ product.partnumber }}</span></p>
           </ion-item>
           <div style="clear: both"></div>
 

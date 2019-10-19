@@ -8,6 +8,7 @@ import { TabsPage } from './../pages/tabs/tabs';
 import { DashboardPage } from './../pages/dashboard/dashboard';
 import { IntroPage } from './../pages/intro/intro';
 import { SettingsPage } from './../pages/settings/settings';
+import { RecentSalesPage } from './../pages/recent_sales/recent_sales';
 import { CustomersPage } from './../pages/customers/customers'
 import { Storage } from '@ionic/storage';
 

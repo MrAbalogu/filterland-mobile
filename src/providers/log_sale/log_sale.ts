@@ -20,6 +20,10 @@ export class LogSaleService {
   	// return this.http.post(`${this.baseUrl}`, customerDetails, { observe: 'response' });
   }
 
+  public getRecentSales(user_id) {
+    return this.http.get(`http://localhost:4040/api/v1/sales_invoices/recent_sales/${user_id}`);
+  }
+
   public syncSalesFromStorage(sales) {
   	console.log("post request");
   	console.log("main params: ", sales);

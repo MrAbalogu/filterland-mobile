@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar id="mainNav">
     <ion-buttons class="menu-left" start>
       <button ion-button (click)="goToTabsPage()">
         <ion-icon name="arrow-back"></ion-icon>
@@ -8,15 +8,48 @@
     <div class="title-center" >
       <ion-title >Recent Sales</ion-title>
     </div>
-    <ion-buttons class="menu-right" end>
-      <button ion-button ion-only style="color: #0decc7">
-        <ion-icon name="search">
-        </ion-icon>
+    <ion-buttons class="logout-btn" end>
+      <button ion-button ion-only style="color: #CF7A7A" (click)="openSearchInput()" >
+        <ion-icon name="search"></ion-icon>
       </button>
     </ion-buttons>
+  </ion-navbar>
+  <ion-navbar id="searchNav">
+      <input class="searchinput" placeholder="Search Products" type="search" name="searchProducts" [(ngModel)]="searchTerm" (input)="setFilteredItems()">
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
+  <ion-grid>
+
+    <div *ngFor="let sale of this.sales; index as i;">
+      <div [ngClass]="getClass(i)" (click)="viewInvoice(sale)">
+        <ion-row>
+          <ion-col>
+            <p>Customer Name: <b>{{ sale.name }}</b></p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <p>Paid: <b>N{{ sale.paid }}</b></p>
+          </ion-col>
+        </ion-row> 
+
+        <ion-row>
+          <ion-col>
+            <p class="supplied">Supplied</p>
+          </ion-col>
+          <ion-col>
+            <p>Total: <b>N{{ sale.total }}</b></p>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  
+  </ion-grid>
 </ion-content>

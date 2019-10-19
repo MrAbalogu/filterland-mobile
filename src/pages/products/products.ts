@@ -16,6 +16,7 @@ const PRODUCTS = "products";
 export class ProductsPage {
   products: any;
   products_in_storage: any;
+  searchTerm: string = "";
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -37,12 +38,21 @@ export class ProductsPage {
     this.navCtrl.setRoot(TabsPage)
   }
 
+  setFilteredItems(searchTerm) {
+    console.log(this.searchTerm);
+    this.products = this.products_in_storage.filter((product) => {
+      console.log(product)
+      return product.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
+    });
+  }
+
   getProductsFromStorage() {
     var loading = this.utility.presentLoadingDefault("Fetching products from Server ...");
     this.storage.get(PRODUCTS).then((products) => {
       if(products){
         loading.dismiss();
         this.products = products;
+        this.products_in_storage = products;
       } else {
         loading.dismiss();
         this.getProductsFromServer();
@@ -66,25 +76,24 @@ export class ProductsPage {
     this.productService.getProducts()
       .subscribe(
         (response: HttpResponse<any>) => {
-          var res = response
+          var res = response;
           if (res == "error") {
             console.log("error: ", res);
             loading.dismiss();
             return this.utility.showAlert(
               "Error",
-              "Something went wrong, Products didnt fetch from server"
+              "Something went wrong, Products did not fetch from server"
             );
           }
           else {
             console.log("response: ", res);
             loading.dismiss();
             this.storage.set(PRODUCTS, res.data);
-            // this.products = res.data;
+            this.navCtrl.push('ProductsPage');
           } 
         },
         (error: HttpErrorResponse) => {
           loading.dismiss();
-          // console.log(error);
           let message: string;
           if(error.status === 500 || !error.error.errors){
             message = "There were problem, possible network or server errors, try again please.";

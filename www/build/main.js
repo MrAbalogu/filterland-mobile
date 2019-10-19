@@ -170,79 +170,79 @@ webpackEmptyAsyncContext.id = 165;
 
 var map = {
 	"../pages/add_customer/add_customer.module": [
-		683,
-		9
-	],
-	"../pages/customers/customers.module": [
-		684,
+		701,
 		8
 	],
+	"../pages/customers/customers.module": [
+		683,
+		7
+	],
 	"../pages/dashboard/dashboard.module": [
-		685,
+		692,
 		18
 	],
 	"../pages/intro/intro.module": [
-		686,
+		684,
 		15
 	],
 	"../pages/invoice/invoice.module": [
-		687,
+		685,
 		17
 	],
 	"../pages/log_sales/log_sales.module": [
-		688,
+		686,
 		0
 	],
 	"../pages/login/login.module": [
-		689,
-		7
-	],
-	"../pages/newsletters/newsletters.module": [
-		690,
+		687,
 		6
 	],
+	"../pages/newsletters/newsletters.module": [
+		688,
+		5
+	],
 	"../pages/orders/orders.module": [
-		691,
+		689,
 		14
 	],
 	"../pages/pending_logs/pending_logs.module": [
-		692,
-		5
-	],
-	"../pages/pending_supplies/pending_supplies.module": [
-		693,
+		690,
 		4
 	],
-	"../pages/products/products.module": [
-		694,
+	"../pages/pending_supplies/pending_supplies.module": [
+		691,
 		3
 	],
+	"../pages/products/products.module": [
+		693,
+		2
+	],
 	"../pages/profile/profile.module": [
-		695,
+		694,
 		13
 	],
 	"../pages/recent_sales/recent_sales.module": [
-		696,
-		1
-	],
-	"../pages/requests/requests.module": [
-		697,
+		695,
 		12
 	],
-	"../pages/sales_today/sales_today.module": [
-		698,
+	"../pages/requests/requests.module": [
+		696,
 		11
 	],
+	"../pages/sales_today/sales_today.module": [
+		697,
+		10
+	],
 	"../pages/settings/settings.module": [
-		700,
-		2
+		698,
+		1
 	],
 	"../pages/tabs/tabs.module": [
 		699,
-		10
+		9
 	],
 	"../pages/view_invoice/view_invoice.module": [
-		701,
+		700,
 		16
 	]
 };
@@ -263,79 +263,6 @@ module.exports = webpackAsyncContext;
 /***/ }),
 
 /***/ 348:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_settings_settings__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_authprovider_authprovider__ = __webpack_require__(154);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var DashboardPage = /** @class */ (function () {
-    function DashboardPage(navCtrl, navParams, settings, storage, auth, AlertController) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.settings = settings;
-        this.storage = storage;
-        this.auth = auth;
-        this.AlertController = AlertController;
-        this.nextPage = 'AboutPage';
-    }
-    DashboardPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad DashboardPage');
-    };
-    DashboardPage.prototype.goToAbstractPage = function () {
-        this.navCtrl.push('AbstractPage');
-    };
-    DashboardPage.prototype.goToLogSaleModal = function () {
-        this.navCtrl.push('LogSalesPage');
-    };
-    DashboardPage.prototype.goToPendingLogsPage = function () {
-        this.navCtrl.push('PendingLogs');
-    };
-    DashboardPage.prototype.goToProductsPage = function () {
-        this.navCtrl.push('ProductsPage');
-    };
-    DashboardPage.prototype.goToSalesTodayPage = function () {
-        this.navCtrl.push('AddCustomerPage');
-    };
-    DashboardPage.prototype.logout = function () {
-        this.auth.logout(this.navCtrl);
-    };
-    DashboardPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-dashboard',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/dashboard/dashboard.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Home</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <button ion-button ion-only style="color: #CF7A7A"   (click)="logout()" >\n          <ion-icon name="log-out"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <div class="home-logo">\n    <img src="assets/imgs/logo-w-text.png">\n  </div>\n\n  <div class="home-cont">\n    <div class="home-box purple" (click)="goToLogSaleModal()">\n      <img class="box-img" src="assets/imgs/tag.png">\n      <p>Log Sale</p>\n    </div>\n    <div class="home-box red" (click)="goToPendingLogsPage()">\n      <img class="box-img" src="assets/imgs/icon.png">\n      <p>Pending Logs</p>\n    </div>\n    <div class="home-box gold" (click)="goToProductsPage()">\n      <img class="box-img" src="assets/imgs/package.png">\n      <p>Products</p>\n    </div>\n    <div class="home-box gray" (click)="goToSalesTodayPage()">\n      <img class="box-img" src="assets/imgs/plus.png">\n      <p>Add Customer</p>\n    </div>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/dashboard/dashboard.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_settings_settings__["a" /* SettingsProvider */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_authprovider_authprovider__["a" /* AuthproviderProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
-    ], DashboardPage);
-    return DashboardPage;
-}());
-
-//# sourceMappingURL=dashboard.js.map
-
-/***/ }),
-
-/***/ 349:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -494,6 +421,79 @@ var InvoiceModal = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 349:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_settings_settings__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_authprovider_authprovider__ = __webpack_require__(154);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var DashboardPage = /** @class */ (function () {
+    function DashboardPage(navCtrl, navParams, settings, storage, auth, AlertController) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.settings = settings;
+        this.storage = storage;
+        this.auth = auth;
+        this.AlertController = AlertController;
+        this.nextPage = 'AboutPage';
+    }
+    DashboardPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad DashboardPage');
+    };
+    DashboardPage.prototype.goToAbstractPage = function () {
+        this.navCtrl.push('AbstractPage');
+    };
+    DashboardPage.prototype.goToLogSaleModal = function () {
+        this.navCtrl.push('LogSalesPage');
+    };
+    DashboardPage.prototype.goToPendingLogsPage = function () {
+        this.navCtrl.push('PendingLogs');
+    };
+    DashboardPage.prototype.goToProductsPage = function () {
+        this.navCtrl.push('ProductsPage');
+    };
+    DashboardPage.prototype.goToSalesTodayPage = function () {
+        this.navCtrl.push('AddCustomerPage');
+    };
+    DashboardPage.prototype.logout = function () {
+        this.auth.logout(this.navCtrl);
+    };
+    DashboardPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-dashboard',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/dashboard/dashboard.html"*/'<ion-header>\n  <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Home</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <button ion-button ion-only style="color: #CF7A7A"   (click)="logout()" >\n          <ion-icon name="log-out"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <div class="home-logo">\n    <img src="assets/imgs/logo-w-text.png">\n  </div>\n\n  <div class="home-cont">\n    <div class="home-box purple" (click)="goToLogSaleModal()">\n      <img class="box-img" src="assets/imgs/tag.png">\n      <p>Log Sale</p>\n    </div>\n    <div class="home-box red" (click)="goToPendingLogsPage()">\n      <img class="box-img" src="assets/imgs/icon.png">\n      <p>Pending Logs</p>\n    </div>\n    <div class="home-box gold" (click)="goToProductsPage()">\n      <img class="box-img" src="assets/imgs/package.png">\n      <p>Products</p>\n    </div>\n    <div class="home-box gray" (click)="goToSalesTodayPage()">\n      <img class="box-img" src="assets/imgs/plus.png">\n      <p>Add Customer</p>\n    </div>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/dashboard/dashboard.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_settings_settings__["a" /* SettingsProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_authprovider_authprovider__["a" /* AuthproviderProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+    ], DashboardPage);
+    return DashboardPage;
+}());
+
+//# sourceMappingURL=dashboard.js.map
+
+/***/ }),
+
 /***/ 350:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -583,54 +583,6 @@ var ViewInvoiceModal = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(29);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var CUSTOMER = 'customer';
-var CustomerService = /** @class */ (function () {
-    function CustomerService(http, storage) {
-        this.http = http;
-        this.storage = storage;
-        this.baseUrl = "https://filterland-api.herokuapp.com/api/v1/customers";
-    }
-    CustomerService.prototype.addCustomer = function (customerDetails) {
-        return this.http.post("" + this.baseUrl, customerDetails, { observe: 'response' });
-    };
-    CustomerService.prototype.syncCustomersFromStorage = function (customers) {
-        console.log("post request");
-        console.log("main params: ", customers);
-        return this.http.post("http://localhost:4040/api/v1/customers/sync_from_storage", customers, { headers: { 'Content-Type': 'application/json' } });
-        // return this.http.post(`${this.baseUrl}/sync_from_storage`, customers, { observe: 'response' })
-    };
-    CustomerService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
-    ], CustomerService);
-    return CustomerService;
-}());
-
-//# sourceMappingURL=customer.js.map
-
-/***/ }),
-
-/***/ 352:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
@@ -670,6 +622,57 @@ var ProductService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 352:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(29);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CUSTOMER = 'customer';
+var CustomerService = /** @class */ (function () {
+    function CustomerService(http, storage) {
+        this.http = http;
+        this.storage = storage;
+        this.baseUrl = "https://filterland-api.herokuapp.com/api/v1/customers";
+    }
+    CustomerService.prototype.addCustomer = function (customerDetails) {
+        return this.http.post("" + this.baseUrl, customerDetails, { observe: 'response' });
+    };
+    CustomerService.prototype.fetchCustomers = function (user_id) {
+        return this.http.get(this.baseUrl + "/" + user_id);
+    };
+    CustomerService.prototype.syncCustomersFromStorage = function (customers) {
+        console.log("post request");
+        console.log("main params: ", customers);
+        return this.http.post("http://localhost:4040/api/v1/customers/sync_from_storage", customers, { headers: { 'Content-Type': 'application/json' } });
+        // return this.http.post(`${this.baseUrl}/sync_from_storage`, customers, { observe: 'response' })
+    };
+    CustomerService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
+    ], CustomerService);
+    return CustomerService;
+}());
+
+//# sourceMappingURL=customer.js.map
+
+/***/ }),
+
 /***/ 353:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -700,11 +703,11 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common_http__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_authprovider_authprovider__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_util_util__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_customer_customer__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_customer_customer__ = __webpack_require__(352);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_log_sale_log_sale__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_product_product__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_product_product__ = __webpack_require__(351);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_storage__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_invoice_invoice__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_invoice_invoice__ = __webpack_require__(348);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_view_invoice_view_invoice__ = __webpack_require__(350);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -746,9 +749,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* ReactiveFormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/add_customer/add_customer.module#AddCustomerPageModule', name: 'AddCustomerPage', segment: 'add_customer', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/customers/customers.module#CustomersPageModule', name: 'CustomersPage', segment: 'customers', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/dashboard/dashboard.module#DashboardPageModule', name: 'DashboardPage', segment: 'dashboard', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/intro/intro.module#IntroPageModule', name: 'IntroPage', segment: 'intro', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/invoice/invoice.module#InvoiceModalModule', name: 'InvoiceModal', segment: 'invoice', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/log_sales/log_sales.module#LogSalesPageModule', name: 'LogSalesPage', segment: 'log_sales', priority: 'low', defaultHistory: [] },
@@ -757,14 +758,16 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/orders/orders.module#OrdersPageModule', name: 'OrdersPage', segment: 'orders', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pending_logs/pending_logs.module#PendingLogsModule', name: 'PendingLogs', segment: 'pending_logs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pending_supplies/pending_supplies.module#PendingSuppliesPageModule', name: 'PendingSuppliesPage', segment: 'pending_supplies', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/dashboard/dashboard.module#DashboardPageModule', name: 'DashboardPage', segment: 'dashboard', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/products/products.module#ProductsPageModule', name: 'ProductsPage', segment: 'products', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#IndexPageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/recent_sales/recent_sales.module#RecentSalesPageModule', name: 'RecentSalesPage', segment: 'recent_sales', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/requests/requests.module#RequestsPageModule', name: 'RequestsPage', segment: 'requests', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/sales_today/sales_today.module#SalesTodayPageModule', name: 'SalesTodayPage', segment: 'sales_today', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/view_invoice/view_invoice.module#ViewInvoiceModalModule', name: 'ViewInvoiceModal', segment: 'view_invoice', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/view_invoice/view_invoice.module#ViewInvoiceModalModule', name: 'ViewInvoiceModal', segment: 'view_invoice', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/add_customer/add_customer.module#AddCustomerPageModule', name: 'AddCustomerPage', segment: 'add_customer', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_14__ionic_storage__["a" /* IonicStorageModule */].forRoot()
@@ -929,7 +932,7 @@ var UtilProvider = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(344);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(347);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_settings_settings__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_dashboard_dashboard__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_dashboard_dashboard__ = __webpack_require__(349);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(29);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1073,6 +1076,9 @@ var LogSaleService = /** @class */ (function () {
         console.log("posting to server....");
         return this.http.post("http://localhost:4040/api/v1/sales_invoices", sale, { headers: { 'Content-Type': 'application/json' } });
         // return this.http.post(`${this.baseUrl}`, customerDetails, { observe: 'response' });
+    };
+    LogSaleService.prototype.getRecentSales = function (user_id) {
+        return this.http.get("http://localhost:4040/api/v1/sales_invoices/recent_sales/" + user_id);
     };
     LogSaleService.prototype.syncSalesFromStorage = function (sales) {
         console.log("post request");

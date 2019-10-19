@@ -52625,21 +52625,21 @@ profile .b-listitem {
   /*height: 30px;*/
 }
 
-page-reports .title-center {
+recent-sales .title-center {
   text-align: center;
 }
 
-page-reports .menu-left {
+recent-sales .menu-left {
   position: absolute;
   left: 0.3rem;
 }
 
-page-reports .menu-right {
+recent-sales .menu-right {
   position: absolute;
   left: 0.3rem;
 }
 
-page-reports ion-content {
+recent-sales ion-content {
   background-image: url("../assets/imgs/auth-bg.jpg");
   -webkit-background-image: url("../assets/imgs/auth-bg.jpg");
   background-repeat: no-repeat;

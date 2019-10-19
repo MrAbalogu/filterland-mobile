@@ -20,6 +20,10 @@ export class CustomerService {
   	return this.http.post(`${this.baseUrl}`, customerDetails, { observe: 'response' });
   }
 
+  public fetchCustomers(user_id) {
+    return this.http.get(`${this.baseUrl}/${user_id}`);
+  }
+
   public syncCustomersFromStorage(customers) {
   	console.log("post request");
   	console.log("main params: ", customers);

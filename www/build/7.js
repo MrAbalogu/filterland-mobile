@@ -1,14 +1,14 @@
 webpackJsonp([7],{
 
-/***/ 689:
+/***/ 683:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomersPageModule", function() { return CustomersPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(710);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customers__ = __webpack_require__(703);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LoginPageModule = /** @class */ (function () {
-    function LoginPageModule() {
+var CustomersPageModule = /** @class */ (function () {
+    function CustomersPageModule() {
     }
-    LoginPageModule = __decorate([
+    CustomersPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_2__customers__["a" /* CustomersPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__customers__["a" /* CustomersPage */]),
             ],
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__customers__["a" /* CustomersPage */]]
         })
-    ], LoginPageModule);
-    return LoginPageModule;
+    ], CustomersPageModule);
+    return CustomersPageModule;
 }());
 
-//# sourceMappingURL=login.module.js.map
+//# sourceMappingURL=customers.module.js.map
 
 /***/ }),
 
@@ -77,17 +78,17 @@ var TabsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 710:
+/***/ 703:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomersPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_authprovider_authprovider__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__ = __webpack_require__(702);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_util_util__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_customer_customer__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_util_util__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__tabs_tabs__ = __webpack_require__(702);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -103,126 +104,107 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var LoginPage = /** @class */ (function () {
-    function LoginPage(navCtrl, navParams, AuthproviderProvider, loadingCtrl, alertCtrl, utility) {
+var CUSTOMERS = "customers";
+var CustomersPage = /** @class */ (function () {
+    function CustomersPage(navCtrl, navParams, utility, storage, customerService) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.AuthproviderProvider = AuthproviderProvider;
-        this.loadingCtrl = loadingCtrl;
-        this.alertCtrl = alertCtrl;
         this.utility = utility;
-        this.nextpage = __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__["a" /* TabsPage */];
-        this.userData = {};
+        this.storage = storage;
+        this.customerService = customerService;
+        this.searchTerm = "";
     }
-    LoginPage.prototype.ngOnInit = function () {
-        this.loginForm.resetForm();
-    };
-    LoginPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad LoginPage');
-    };
-    //Method to handle login
-    LoginPage.prototype.login = function (form) {
+    CustomersPage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        if (form.invalid) {
-            this.utility.showToast('Login form cannot be empty.', 3000, 'toast-danger');
-            return;
-        }
-        if (!this.utility.validateEmail(form.value.email)) {
-            this.utility.showToast('Please enter a valid email.', 3000, 'toast-danger');
-            return;
-        }
-        this.loading = this.utility.showLoading();
-        this.AuthproviderProvider.login(form.value.email, form.value.password)
-            .then(function () {
-            _this.loading.dismiss();
-            _this.navCtrl.push('TabsPage');
-        })
-            .catch(function (err) {
-            _this.loading.dismiss();
-            if (err === 'Unknown Error') {
-                return _this.utility.showToast('Cannot connect to server. Check network connection.', 3000, 'toast-danger');
+        console.log('ionViewDidLoad CustomersPage');
+        this.storage.get("user").then(function (u) {
+            _this.user_id = u.data.id;
+        });
+        this.getCustomersFromStorage();
+    };
+    CustomersPage.prototype.goToTabsPage = function () {
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__tabs_tabs__["a" /* TabsPage */]);
+    };
+    CustomersPage.prototype.setFilteredItems = function (searchTerm) {
+        var _this = this;
+        console.log(this.searchTerm);
+        this.customers = this.customers_in_storage.filter(function (customer) {
+            console.log(customer);
+            return customer.name.toLowerCase().indexOf(_this.searchTerm.toLowerCase()) > -1;
+        });
+    };
+    CustomersPage.prototype.getCustomersFromStorage = function () {
+        var _this = this;
+        var loading = this.utility.presentLoadingDefault("Fetching Customers from Server ...");
+        this.storage.get(CUSTOMERS).then(function (customers) {
+            if (customers) {
+                loading.dismiss();
+                _this.customers = customers;
+                _this.customers_in_storage = customers;
             }
-            _this.utility.showToast('Invalid Login Credentials.', 3000, 'toast-danger');
+            else {
+                loading.dismiss();
+                _this.getCustomersFromServer();
+            }
+            console.log(customers);
         });
     };
-    // public forgotPassword(): void{
-    //   this.presentAlertPrompt((data, alert) =>{
-    //     if(this.utility.validateData(data)){
-    //       this.loading = this.utility.showLoading();
-    //       this.authProvider.forgotPassword(data.email)
-    //         .then((res: {success: boolean; message: string}) => {
-    //           if (res.success) {
-    //             this.loading.dismiss();
-    //             this.utility.showToast('A password reset email has been sent to your email. Check your email for further instructions', 4000, 'toast-success');
-    //             alert.dismiss();
-    //           }
-    //         })
-    //         .catch((err: HttpErrorResponse) => {
-    //           if (err.status === 404) {
-    //             this.loading.dismiss();
-    //             this.utility.showToast('A provider associated with such email doesn\'t exist, please check and try again', 3000, 'toast-danger');
-    //           }
-    //         });
-    //     }
-    //     else{
-    //       this.utility.showToast('Field must contain a valid email, and musn\'t be empty', 3000, 'toast-danger');
-    //       return false;
-    //     }~
-    //   });
-    // }
-    LoginPage.prototype.presentAlertPrompt = function (okayCallBack) {
-        console.log('Alert called');
-        var alert = this.alerter.create({
-            subTitle: 'Kindly enter your provider email to reset passsword',
-            cssClass: 'prompt-alert',
-            inputs: [
-                {
-                    name: 'email',
-                    type: 'email',
-                    placeholder: 'Provider Email'
-                }
-            ],
-            buttons: [
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    cssClass: 'secondary-button',
-                    handler: function () {
-                        console.log('Confirm Cancel');
-                    }
-                }, {
-                    text: 'Ok',
-                    cssClass: 'primary-button',
-                    handler: function (data) {
-                        var dataIsValid = okayCallBack(data, alert);
-                        if (!dataIsValid) {
-                            return false;
-                        }
-                    }
-                }
-            ]
-        });
-        alert.present();
+    CustomersPage.prototype.doRefresh = function (event) {
+        console.log("event: ", event);
+        this.getCustomersFromServer();
+        setTimeout(function () {
+            console.log('Async operation has ended');
+            event.complete();
+        }, 1000);
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('loginForm'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* NgForm */])
-    ], LoginPage.prototype, "loginForm", void 0);
-    LoginPage = __decorate([
+    CustomersPage.prototype.getCustomersFromServer = function () {
+        var _this = this;
+        var loading = this.utility.presentLoadingDefault("Fetching Customers from Server ...");
+        this.customerService.fetchCustomers()
+            .subscribe(function (response) {
+            var res = response;
+            if (res == "error") {
+                console.log("error: ", res);
+                loading.dismiss();
+                return _this.utility.showAlert("Error", "Something went wrong, Customers did not fetch from server");
+            }
+            else {
+                console.log("response: ", res);
+                loading.dismiss();
+                _this.storage.set(CUSTOMERS, res.data);
+                _this.navCtrl.push('CustomersPage');
+            }
+        }, function (error) {
+            loading.dismiss();
+            var message;
+            if (error.status === 500 || !error.error.errors) {
+                message = "There were problem, possible network or server errors, try again please.";
+            }
+            else {
+                if (error.error.errors) {
+                    message = error.error.errors[0];
+                }
+            }
+            _this.utility.showAlert("Error", message);
+        });
+    };
+    CustomersPage.prototype.openSearchInput = function () {
+        var nav = document.getElementById("searchNav");
+        var mainnav = document.getElementById("mainNav");
+        mainnav.style.display = "none";
+        nav.style.display = "block";
+    };
+    CustomersPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/login/login.html"*/'\n\n   <ion-header>\n    <ion-navbar>\n\n        <ion-icon style="width:2em" ></ion-icon>\n\n    </ion-navbar>\n  </ion-header>\n\n\n<ion-content padding class="background-image">\n    <div class="logo-wrapper animated fadeInDown">\n      <img src="assets/imgs/logo-small.png">\n    </div>\n    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">\n      <div class="hiis-inputs">\n        <ion-item>\n          <ion-input placeholder="Email" type="email" name="email" ngModel #email="ngModel" required></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input placeholder="Password" type="password" name="password" ngModel #password="ngModel" required></ion-input>\n        </ion-item>\n      </div>\n      <button  ion-button color="primary" type="submit" round outline >LOGIN</button>\n    </form>\n    <a class="forgot-password" >Forgot Password?</a>\n\n  </ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/login/login.html"*/,
+            selector: 'customers',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/customers/customers.html"*/'<ion-header>\n  <ion-navbar id="mainNav">\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Customers</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <button ion-button ion-only style="color: #CF7A7A" (click)="openSearchInput()" >\n          <ion-icon name="search"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n  <ion-navbar id="searchNav">\n      <input class="searchinput" placeholder="Search Products" type="search" name="searchProducts" [(ngModel)]="searchTerm" (input)="setFilteredItems()">\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list id="hospitals" class="hospitals">\n    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">\n      <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n    <div *ngFor="let customer of this.customers;">\n      <div class="h-listitem">\n        <img  class="hl-img" src="assets/imgs/cust.png">\n\n        <ion-item  class="hl-info"><h4>Chinedu Abalogu</h4>\n          <span style="color: #50E3C2;">08125952646</span>\n          <p>chineduabalogu@yahoo.com</p>\n          <p><span>Score: 56</span></p>\n        </ion-item>\n        <div style="clear: both"></div>\n      </div>\n    </div>\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/customers/customers.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_authprovider_authprovider__["a" /* AuthproviderProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_util_util__["a" /* UtilProvider */]])
-    ], LoginPage);
-    return LoginPage;
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__providers_util_util__["a" /* UtilProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_util_util__["a" /* UtilProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_storage__["b" /* Storage */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_customer_customer__["a" /* CustomerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_customer_customer__["a" /* CustomerService */]) === "function" && _e || Object])
+    ], CustomersPage);
+    return CustomersPage;
+    var _a, _b, _c, _d, _e;
 }());
 
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=customers.js.map
 
 /***/ })
 
