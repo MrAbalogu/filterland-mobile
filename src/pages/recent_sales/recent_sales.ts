@@ -60,18 +60,18 @@ export class RecentSalesPage {
   viewInvoice(logDetails) {
     let invoiceModal = this.modalCtrl.create(SaleInvoiceModal, logDetails);
     invoiceModal.present();
-    console.log(logDetails);
+    console.log(logDetails.customer);
   }
 
   getSalesFromStorage() {
-    var loading = this.utility.presentLoadingDefault("Fetching sales from Server ...");
+    // var loading = this.utility.presentLoadingDefault("Fetching sales from Server ...");
     this.storage.get(SALES).then((sales) => {
       if(sales){
-        loading.dismiss();
+        // loading.dismiss();
         this.sales = sales;
         this.sales_in_storage = sales;
       } else {
-        loading.dismiss();
+        // loading.dismiss();
         this.getSalesFromServer();
       }
       console.log(sales);

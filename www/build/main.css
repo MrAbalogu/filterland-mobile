@@ -51746,6 +51746,10 @@ customers :-ms-input-placeholder {
   font-size: 1em;
 }
 
+customers .back-button-icon-md, customers .back-button-icon-ios {
+  display: none;
+}
+
 customers #hospitals {
   margin-top: 5px;
 }
@@ -52643,6 +52647,10 @@ recent-sales .menu-right {
   left: 0.3rem;
 }
 
+recent-sales .back-button-icon-md, recent-sales .back-button-icon-ios {
+  display: none;
+}
+
 recent-sales ion-content {
   background-image: url("../assets/imgs/auth-bg.jpg");
   -webkit-background-image: url("../assets/imgs/auth-bg.jpg");
@@ -52739,7 +52747,7 @@ page-requests .overlay {
   color: #a4a4a4;
 }
 
-view_invoice .lc-textarea {
+sale_invoice .lc-textarea {
   margin: 12px auto;
   width: 86%;
   height: 10em;
@@ -52749,20 +52757,20 @@ view_invoice .lc-textarea {
   padding: 0.7rem .95rem;
 }
 
-view_invoice .menu-left {
+sale_invoice .menu-left {
   position: absolute;
   left: 0.3rem;
 }
 
-view_invoice .title-center {
+sale_invoice .title-center {
   text-align: center;
 }
 
-view_invoice .invoice-details {
+sale_invoice .invoice-details {
   padding: 10px;
 }
 
-view_invoice .paid {
+sale_invoice .paid {
   border: 1px solid #6DD400;
   color: #6DD400;
   border-radius: 5px;
@@ -52770,7 +52778,7 @@ view_invoice .paid {
   padding: 2px 0;
 }
 
-view_invoice .left {
+sale_invoice .left {
   border: 1px solid red;
   color: red;
   border-radius: 5px;
@@ -52779,11 +52787,11 @@ view_invoice .left {
   font-weight: 700;
 }
 
-view_invoice .save-btn {
+sale_invoice .save-btn {
   width: 100%;
 }
 
-view_invoice ion-content {
+sale_invoice ion-content {
   background-image: url("../assets/imgs/auth-bg.jpg");
   -webkit-background-image: url("../assets/imgs/auth-bg.jpg");
   background-repeat: no-repeat;

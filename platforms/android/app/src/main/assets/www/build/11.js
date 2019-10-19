@@ -1,14 +1,14 @@
 webpackJsonp([11],{
 
-/***/ 680:
+/***/ 698:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BenefitsPageModule", function() { return BenefitsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RequestsPageModule", function() { return RequestsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__benefits__ = __webpack_require__(700);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__requests__ = __webpack_require__(719);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var BenefitsPageModule = /** @class */ (function () {
-    function BenefitsPageModule() {
+var RequestsPageModule = /** @class */ (function () {
+    function RequestsPageModule() {
     }
-    BenefitsPageModule = __decorate([
+    RequestsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__benefits__["a" /* BenefitsPage */],
+                __WEBPACK_IMPORTED_MODULE_2__requests__["a" /* RequestsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__benefits__["a" /* BenefitsPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__requests__["a" /* RequestsPage */]),
             ],
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__requests__["a" /* RequestsPage */]]
         })
-    ], BenefitsPageModule);
-    return BenefitsPageModule;
+    ], RequestsPageModule);
+    return RequestsPageModule;
 }());
 
-//# sourceMappingURL=benefits.module.js.map
+//# sourceMappingURL=requests.module.js.map
 
 /***/ }),
 
-/***/ 700:
+/***/ 719:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BenefitsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RequestsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,33 +57,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var BenefitsPage = /** @class */ (function () {
-    function BenefitsPage(navCtrl, navParams, toastCtrl) {
+/**
+ * Generated class for the RequestsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var RequestsPage = /** @class */ (function () {
+    function RequestsPage(navCtrl, navParams, viewCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.toastCtrl = toastCtrl;
+        this.viewCtrl = viewCtrl;
     }
-    BenefitsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad BenefitsPage');
+    RequestsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad RequestsPage');
     };
-    BenefitsPage.prototype.showToast = function (position) {
-        var toast = this.toastCtrl.create({
-            message: 'ummm,Logout',
-            duration: 3000,
-            position: position
-        });
-        toast.present(toast);
+    RequestsPage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
     };
-    BenefitsPage = __decorate([
+    RequestsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-benefits',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/benefits/benefits.html"*/'<ion-header>\n    <ion-navbar  >\n\n      <ion-buttons class="menu-left" start >\n    <button ion-button ion-only menuToggle>\n      <ion-icon  ></ion-icon>\n    </button>\n\n\n      </ion-buttons><div class="title-center" >\n          <ion-title >Chat</ion-title>\n        </div>\n      <ion-buttons end>\n        <button ion-button ion-only style="color: #12f3bb" (click)="showToast(\'top\')">\n          <ion-icon name="log-out"></ion-icon>\n        </button>\n\n          </ion-buttons>\n</ion-navbar>\n  </ion-header>\n\n<ion-content>\n\n\n        <div class="chat-cont">\n            <div class="chat-img">\n                <img class="headimg"src="assets/imgs/head.png">\n            </div>\n            <div class="chat-box">\n            What kind of insurance do you need?\n            </div>\n            <div style="clear: both"></div>\n            <button ion-button class="chat-obj-box"><strong>Personal</strong>(Perfect for individual or family)</button>\n            <button ion-button class="chat-obj-box"><strong>Corporate</strong> (Perfect for small or big company)</button>\n            <button ion-button class="chat-obj-box"><strong>Community</strong> (Perfect for small towns)</button>\n\n            <div class="chat-resp-box">Corporate Health Insurance</div>\n</div>\n\n\n            <ion-list inset style="bottom: 0em; position: absolute; width: 90%; border: ridge;">\n\n                <ion-item>\n                  <ion-label></ion-label>\n                  <ion-input type="text" placeholder="Text Here..."></ion-input>\n                </ion-item>\n\n        </ion-list>\n\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/benefits/benefits.html"*/,
+            selector: 'page-requests',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/requests/requests.html"*/'<ion-content  class="main-view">\n\n    <div class="overlay" (click)="dismiss()"></div>\n  <ion-scroll class="modal_content" scrollY="true">\n\n\n\n       <ion-icon class="circle" name="ios-checkmark-circle-outline"></ion-icon>\n\n\n       <div class="check"><p><strong> Your Reports has been Sent</strong></p></div>\n\n       <div class="check-2"><p>Mail will be Sent to</p></div>\n       <div class="check-3"><p>chineduabalagu@nnpcgroup.com</p></div>\n       <div class="check-4"><p>with your reports</p></div>\n\n\n\n\n\n\n\n\n\n    </ion-scroll>\n\n    </ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/requests/requests.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */]])
-    ], BenefitsPage);
-    return BenefitsPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]])
+    ], RequestsPage);
+    return RequestsPage;
 }());
 
-//# sourceMappingURL=benefits.js.map
+//# sourceMappingURL=requests.js.map
 
 /***/ })
 

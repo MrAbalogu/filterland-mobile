@@ -63,7 +63,7 @@ export class InvoiceModal {
   saveLog() {
   	console.log("saving....");
     var loading = this.utility.presentLoadingDefault("Adding Sale Details ...");
-  	if (navigator.onLine) {
+  	if (!navigator.onLine) {
       console.log("there is no internet");
       this.storage.get(SALELOGS).then((logs) => {
         if (logs) {

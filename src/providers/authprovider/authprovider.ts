@@ -1,9 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { NavController, App } from 'ionic-angular';
 import { Injectable, } from '@angular/core';
-
 import { Storage } from '@ionic/storage';
-import { Constants } from '../../models/constants';
 import { UtilProvider } from '../util/util';
 
 const USER = 'user';

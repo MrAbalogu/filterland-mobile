@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 690:
+/***/ 701:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReportsPageModule", function() { return ReportsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SettingsPageModule", function() { return SettingsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reports__ = __webpack_require__(697);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__settings__ = __webpack_require__(721);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ReportsPageModule = /** @class */ (function () {
-    function ReportsPageModule() {
+var SettingsPageModule = /** @class */ (function () {
+    function SettingsPageModule() {
     }
-    ReportsPageModule = __decorate([
+    SettingsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__reports__["a" /* ReportsPage */],
+                __WEBPACK_IMPORTED_MODULE_2__settings__["a" /* SettingsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__reports__["a" /* ReportsPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__settings__["a" /* SettingsPage */]),
             ],
-            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__reports__["a" /* ReportsPage */]]
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__settings__["a" /* SettingsPage */]]
         })
-    ], ReportsPageModule);
-    return ReportsPageModule;
+    ], SettingsPageModule);
+    return SettingsPageModule;
 }());
 
-//# sourceMappingURL=reports.module.js.map
+//# sourceMappingURL=settings.module.js.map
 
 /***/ }),
 
-/***/ 694:
+/***/ 705:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,12 +62,12 @@ var TabsPage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.NavParams = NavParams;
         this.tab1Root = 'DashboardPage';
-        this.tab2Root = 'PendingLogs';
-        this.tab3Root = 'BenefitsPage';
+        this.tab2Root = 'OrdersPage';
+        this.tab3Root = 'ProfilePage';
         this.myindex = NavParams.data.tabindex;
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/tabs/tabs.html"*/'<ion-tabs [selectedIndex]="myindex" color="toolbar">\n  <ion-tab  [root]="tab1Root" tabTitle="Dashboard" tabIcon="clock" tabsHideOnSubPages="false"></ion-tab>\n  <ion-tab  [root]="tab2Root" tabTitle="Benefits" tabIcon="stats" tabsHideOnSubPages="false"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="HIIS Chatbot" tabIcon="people" tabsHideOnSubPages="false"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/tabs/tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/tabs/tabs.html"*/'<ion-tabs [selectedIndex]="myindex" color="toolbar" class="myclass">\n  <ion-tab  [root]="tab1Root" tabTitle="Home" tabIcon="home" tabsHideOnSubPages="false"></ion-tab>\n  <ion-tab  [root]="tab2Root" tabTitle="Orders" tabIcon="paper" tabsHideOnSubPages="false"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Profile" tabIcon="contact" tabsHideOnSubPages="false"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/tabs/tabs.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
     ], TabsPage);
@@ -78,64 +78,17 @@ var TabsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 695:
+/***/ 721:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RequestsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(43);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the RequestsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var RequestsPage = /** @class */ (function () {
-    function RequestsPage(navCtrl, navParams, viewCtrl) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-    }
-    RequestsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad RequestsPage');
-    };
-    RequestsPage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    RequestsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-requests',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/requests/requests.html"*/'<ion-content  class="main-view">\n\n    <div class="overlay" (click)="dismiss()"></div>\n  <ion-scroll class="modal_content" scrollY="true">\n\n\n\n       <ion-icon class="circle" name="ios-checkmark-circle-outline"></ion-icon>\n\n\n       <div class="check"><p><strong> Your Reports has been Sent</strong></p></div>\n\n       <div class="check-2"><p>Mail will be Sent to</p></div>\n       <div class="check-3"><p>chineduabalagu@nnpcgroup.com</p></div>\n       <div class="check-4"><p>with your reports</p></div>\n\n\n\n\n\n\n\n\n\n    </ion-scroll>\n\n    </ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/requests/requests.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]])
-    ], RequestsPage);
-    return RequestsPage;
-}());
-
-//# sourceMappingURL=requests.js.map
-
-/***/ }),
-
-/***/ 697:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__requests_requests__ = __webpack_require__(695);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ionic_native_social_sharing___ = __webpack_require__(354);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabs_tabs__ = __webpack_require__(694);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_util_util__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_authprovider_authprovider__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__tabs_tabs__ = __webpack_require__(705);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -149,38 +102,51 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the ReportsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ReportsPage = /** @class */ (function () {
-    function ReportsPage(navCtrl, navParams, modalCtrl) {
+
+
+var SettingsPage = /** @class */ (function () {
+    function SettingsPage(navCtrl, socialSharing, utility, auth, navParams) {
         this.navCtrl = navCtrl;
+        this.socialSharing = socialSharing;
+        this.utility = utility;
+        this.auth = auth;
         this.navParams = navParams;
-        this.modalCtrl = modalCtrl;
     }
-    ReportsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ReportsPage');
+    SettingsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad SettingsPage');
     };
-    ReportsPage.prototype.showModal = function () {
-        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_0__requests_requests__["a" /* RequestsPage */]);
-        modal.present();
+    SettingsPage.prototype.share = function () {
+        this.socialSharing.share("An Aggregator for on demand Healthcare Jobs in Nigeria. Register Now", "HealthJobber", "https://i.ibb.co/hXFNf1g/hjad.png", "https://healthjobber.herokuapp.com").then(function () {
+        }).catch(function () {
+        });
     };
-    ReportsPage.prototype.goToTabsPage = function () {
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__tabs_tabs__["a" /* TabsPage */]);
+    SettingsPage.prototype.goToUrl = function (url) {
+        window.open(url);
+        return false;
     };
-    ReportsPage = __decorate([
+    SettingsPage.prototype.goToTabsPage = function () {
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__tabs_tabs__["a" /* TabsPage */]);
+    };
+    SettingsPage.prototype.comingSoon = function () {
+        this.utility.showAlert("Coming Soon", "Feature will be shipped in Version 2 of HealthJobber");
+    };
+    SettingsPage.prototype.logout = function () {
+        this.auth.logout(this.navCtrl);
+    };
+    SettingsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-reports',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/reports/reports.html"*/'<ion-header>\n    <ion-navbar>\n      <ion-buttons class="menu-left" start>\n        <button ion-button (click)=goToTabsPage()>\n          <ion-icon name="arrow-back"></ion-icon>\n        </button>\n\n\n      </ion-buttons>\n      <div class="title-center" >\n          <ion-title >Reports</ion-title>\n        </div>\n      <ion-buttons end>\n        <button ion-button ion-only style="color: #0decc7">\n          <ion-icon name="search">\n          </ion-icon>\n\n        </button>\n\n          </ion-buttons>\n\n\n    </ion-navbar>\n  </ion-header>\n\n<ion-content>\n\n    <div style="padding-top: 10px; margin-bottom: 1.5em;" class="form-group row">\n        <ion-input class="form-control report-input col-5" type="date" name="date"></ion-input>\n        <ion-input class="form-control report-input2 col-5" type="date" name="date"></ion-input>\n\n          <button class="gender" ion-button  outline >\n              <ion-item >\n                  <ion-label class="dropdown-name">S\'ahamatu Yusuf</ion-label>\n\n                    <ion-select class="popover"  [(ngModel)]="gender" interface="popover">\n                        <ion-option class="dropdown-item" value="f">Usman Sani</ion-option>\n                        <ion-option class="dropdown-item" value="m">Ahmed Lawal</ion-option>\n                        <ion-option class="dropdown-item" value="g">Dnalama</ion-option>\n                        <ion-option class="dropdown-item" value="b">Boy</ion-option>\n\n                  </ion-select>\n                </ion-item>\n              </button>\n\n          </div>\n\n      <div class="form-group row">\n          <ion-input class="form-control report-input col-5" type="date" name=""></ion-input>\n          <ion-input class="form-control report-input2 col-5" type="date" name=""></ion-input>\n          <button class="gender" ion-button  outline>\n              <ion-item >\n                  <ion-label class="dropdown-name">S\'ahamatu Yusuf</ion-label>\n\n                    <ion-select class="popover"  [(ngModel)]="gender" interface="popover">\n                        <ion-option class="dropdown-item" value="f">Usman Sani</ion-option>\n                        <ion-option class="dropdown-item" value="m">Ahmed Lawal</ion-option>\n                        <ion-option class="dropdown-item" value="g">Dnalama</ion-option>\n                        <ion-option class="dropdown-item" value="b">Boy</ion-option>\n\n                  </ion-select>\n                </ion-item>\n              </button>\n\n\n          </div>\n\n      <p style="margin: 10px">Request more +</p>\n      <div style="text-align: center;">\n       <button ion-button id="rq-btn" class="btn green-button"  (click)="showModal()" >Request Reports</button>\n      </div>\n\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/reports/reports.html"*/,
+            selector: 'settings-page',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/settings/settings.html"*/'<ion-header>\n  <ion-navbar id="mainNav">\n    <ion-buttons class="menu-left" start>\n      <button ion-button (click)="goToTabsPage()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <div class="title-center" >\n      <ion-title >Recent Sales</ion-title>\n    </div>\n    <ion-buttons class="logout-btn" end>\n\n    </ion-buttons>\n  </ion-navbar>\n</ion-header><!-- End Header  -->\n\n<!-- COntent  -->\n<ion-content padding class="bg-green">\n  \n  <h4>Contact Us</h4>\n  <ion-card (click)="goToUrl(\'https://www.filterlandindustries.com/contact-us/\')">\n    <ion-card-header text-center>\n      Help & Support\n    </ion-card-header>\n  </ion-card>\n  <ion-card (click)="goToUrl(\'https://www.filterlandindustries.com/help-support/\')">\n    <ion-card-header text-center>\n      Contact Filterland\n    </ion-card-header>\n  </ion-card>\n\n  <!-- Others  -->\n  <ion-card>\n    <ion-item (click)="share()">\n      Share Filterland\n    </ion-item>\n    <ion-item (click)="comingSoon()">\n      Upgrade to Filterland Plus\n    </ion-item>\n  </ion-card>\n\n  <h4>Corporate</h4>\n  <ion-card>\n    <ion-card-content>\n      <ion-item (click)="goToUrl(\'https://www.filterlandindustries.com/returns-refunds/\')">\n        Returns and Refunds\n      </ion-item>\n      <ion-item (click)="goToUrl(\'https://www.filterlandindustries.com/terms-and-conditions/\')">\n        Terms & Conditions\n      </ion-item>\n    </ion-card-content>\n  </ion-card>\n\n  <!-- Logout  -->\n  <ion-card (tap)="logout()">\n    <ion-card-header text-center color="color1">\n      Logout\n    </ion-card-header>\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/settings/settings.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* ModalController */]])
-    ], ReportsPage);
-    return ReportsPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_0__ionic_native_social_sharing___["a" /* SocialSharing */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_util_util__["a" /* UtilProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_authprovider_authprovider__["a" /* AuthproviderProvider */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */]])
+    ], SettingsPage);
+    return SettingsPage;
 }());
 
-//# sourceMappingURL=reports.js.map
+//# sourceMappingURL=settings.js.map
 
 /***/ })
 

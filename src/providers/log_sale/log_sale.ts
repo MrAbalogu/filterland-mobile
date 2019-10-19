@@ -1,5 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class LogSaleService {
@@ -7,7 +7,9 @@ export class LogSaleService {
   private baseUrl: string = "http://localhost:4040/api/v1/sales_invoices";
   // private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/sales_invoices";
 
-  constructor() {}
+  constructor(
+    private http: HttpClient
+  ) {}
 
   public addSale(sale) {
   	console.log("posting to server....");
@@ -15,7 +17,11 @@ export class LogSaleService {
   }
 
   public getRecentSales(user_id) {
-    return this.http.get(`${this.baseUrl}/recent_sales/${user_id}`);
+    return this.http.get(`${this.baseUrl}/recent_sales/${user_id}`, { observe: 'response' });
+  }
+
+  public getRecentOrders(user_id) {
+    return this.http.get(`${this.baseUrl}/recent_orders/${user_id}`, { observe: 'response' });
   }
 
   public syncSalesFromStorage(sales) {

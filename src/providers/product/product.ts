@@ -1,5 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class ProductService {
@@ -7,11 +7,12 @@ export class ProductService {
   private baseUrl: string = "http://localhost:4040/api/v1/products";
   // private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/products";
 
-  constructor() {}
+  constructor(
+  	private http: HttpClient
+  ) {}
 
   public getProducts() {
-  	return this.http.get(`http://localhost:4040/api/v1/products`);
-  	return this.http.get(`${this.baseUrl}`);
+  	return this.http.get(`${this.baseUrl}`, { observe: 'response' });
   }
 
 }

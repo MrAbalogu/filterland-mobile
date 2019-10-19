@@ -17,61 +17,44 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
     <ion-list class="claims-list-cont">
 
       <ion-item class="cl-summary">
-        <p>Total Sales Today: &nbsp;&nbsp;&nbsp;&nbsp; ₦10,900</p>
-        <p>Total Sales October: &nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #50E3C2"> ₦120,000 </span></p>
+        <p>Total Sales Today: &nbsp;&nbsp;&nbsp;&nbsp; ₦{{ today_total }}</p>
+        <p>Total Sales For the week: &nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #50E3C2"> ₦{{ week_total }} </span></p>
       </ion-item>
 
       <ion-grid>
 
-        <div class="log_card">
-          <ion-row>
-            <ion-col>
-              <p>Customer Name: <b>Chinedu Abalogu</b></p>
-            </ion-col>
-          </ion-row>
+        <div *ngFor="let sale of this.sales; index as i;">
 
-          <ion-row>
-            <ion-col>
-              <p>Paid: <b>N45000</b></p>
-            </ion-col>
-          </ion-row> 
+          <div [ngClass]="getClass(i)" (click)="viewInvoice(sale)">
+            <ion-row>
+              <ion-col>
+                <p>Customer Name: <b>{{ sale.customer.name }}</b></p>
+              </ion-col>
+            </ion-row>
 
-          <ion-row>
-            <ion-col>
-              <p class="supplied">Supplied</p>
-            </ion-col>
-            <ion-col>
-              <p>Total: <b>N45000</b></p>
-            </ion-col>
-          </ion-row>
-        </div>
+            <ion-row>
+              <ion-col>
+                <p>Paid: <b>N{{ sale.paid }}</b></p>
+              </ion-col>
+            </ion-row> 
 
-        <div class="log_card_2">
-          <ion-row>
-            <ion-col>
-              <p>Customer Name: <b>Chinedu Abalogu</b></p>
-            </ion-col>
-          </ion-row>
+            <ion-row>
+              <ion-col>
+                <p class="supplied">Supplied</p>
+              </ion-col>
+              <ion-col>
+                <p>Total: <b>N{{ sale.total }}</b></p>
+              </ion-col>
+            </ion-row>
+          </div>
 
-          <ion-row>
-            <ion-col>
-              <p>Paid: <b>N45000</b></p>
-            </ion-col>
-          </ion-row> 
-
-          <ion-row>
-            <ion-col>
-              <p class="supplied">Supplied</p>
-            </ion-col>
-            <ion-col>
-              <p>Total: <b>N45000</b></p>
-            </ion-col>
-          </ion-row>
         </div>
         
       </ion-grid>

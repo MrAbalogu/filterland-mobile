@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastController, LoadingController, Loading, AlertController } from 'ionic-angular';
 
@@ -9,7 +8,6 @@ export class UtilProvider {
   private enrolleeOtp: string;
 
   constructor(
-    private http: HttpClient,
     private toaster: ToastController,
     private alerter: AlertController,
     private loadingCtrl: LoadingController) {}

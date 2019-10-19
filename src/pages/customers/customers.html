@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar id="mainNav">
       <ion-buttons class="menu-left" start>
-        <button class="start" ion-button ion-only menuToggle>
-          <ion-icon name="menu"></ion-icon>
+        <button ion-button (click)="goToTabsPage()">
+          <ion-icon name="arrow-back"></ion-icon>
         </button>
       </ion-buttons>
       <div class="home-title title-center" >
@@ -15,7 +15,7 @@
       </ion-buttons>
   </ion-navbar>
   <ion-navbar id="searchNav">
-      <input class="searchinput" placeholder="Search Products" type="search" name="searchProducts" [(ngModel)]="searchTerm" (input)="setFilteredItems()">
+      <input class="searchinput" placeholder="Search Customers" type="search" name="searchProducts" [(ngModel)]="searchTerm" (input)="setFilteredItems()">
   </ion-navbar>
 </ion-header>
 
@@ -28,9 +28,9 @@
       <div class="h-listitem">
         <img  class="hl-img" src="assets/imgs/cust.png">
 
-        <ion-item  class="hl-info"><h4>Chinedu Abalogu</h4>
-          <span style="color: #50E3C2;">08125952646</span>
-          <p>chineduabalogu@yahoo.com</p>
+        <ion-item  class="hl-info"><h4>{{ customer.name }}</h4>
+          <span style="color: #50E3C2;">{{ customer.phone }}</span>
+          <p>{{ customer.email }}</p>
           <p><span>Score: 56</span></p>
         </ion-item>
         <div style="clear: both"></div>

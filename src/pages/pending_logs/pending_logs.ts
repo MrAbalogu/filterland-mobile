@@ -120,7 +120,7 @@ export class PendingLogs {
             loading.dismiss();
             // console.log(response);
             this.storage.remove(SALELOGS);
-            this.navCtrl.push('AddCustomerPage');
+            this.navCtrl.push('PendingLogsPage');
             return this.utility.showAlert(
               "Completed and Saved",
               res.saved.length + "Logs saved"
@@ -131,7 +131,7 @@ export class PendingLogs {
             res = response;
             loading.dismiss();
             this.storage.remove(SALELOGS);
-            this.navCtrl.push('AddCustomerPage');
+            this.navCtrl.push('PendingLogsPage');
             return this.utility.showAlert(
               "Completed and saved:",
               res.saved.length + "Logs saved"

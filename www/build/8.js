@@ -7,7 +7,7 @@ webpackJsonp([8],{
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddCustomerPageModule", function() { return AddCustomerPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_customer__ = __webpack_require__(722);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -45,7 +45,7 @@ var AddCustomerPageModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -85,11 +85,11 @@ var TabsPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddCustomerPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__ = __webpack_require__(705);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_util_util__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_customer_customer__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_util_util__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_customer_customer__ = __webpack_require__(349);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -129,6 +129,7 @@ var AddCustomerPage = /** @class */ (function () {
         this.storage.get(CUSTOMERS).then(function (customers) {
             _this.customers = customers;
         });
+        this.sync_parameters = {};
         // Continously Check for Internet
         setInterval(function () {
             // The code that you want to run repeatedly
@@ -229,11 +230,12 @@ var AddCustomerPage = /** @class */ (function () {
                     loading.dismiss();
                     return _this.utility.showAlert("Error", response.body.errors);
                 }
-                else if (response.body.status == "success") {
+                else if (response.body.body.status == "success") {
                     var customer_name = response.body.data.name;
                     loading.dismiss();
                     return _this.utility.showAlert("Success", customer_name + " has been added to Filterland Server");
                 }
+                console.log(response);
                 loading.dismiss();
             }, 
             //Error
@@ -259,13 +261,13 @@ var AddCustomerPage = /** @class */ (function () {
     };
     AddCustomerPage.prototype.syncFromStorageToServer = function () {
         var _this = this;
-        // console.log(JSON.stringify(this.customers));
-        var sync_parameters;
-        // console.log(sync_parameters);
-        sync_parameters.customers_array = this.customers;
+        console.log(this.sync_parameters);
+        console.log(this.user_id);
+        console.log(this.customers);
+        this.sync_parameters.customers_array = this.customers;
         // console.log("params: ", JSON.stringify(sync_parameters));
         var loading = this.utility.presentLoadingDefault("Syncing Customers to Server ...");
-        this.customerService.syncCustomersFromStorage(JSON.stringify(sync_parameters))
+        this.customerService.syncCustomersFromStorage(JSON.stringify(this.sync_parameters))
             .subscribe(function (response) {
             if (!response.ok) {
                 var res = void 0;

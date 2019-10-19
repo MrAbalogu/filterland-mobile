@@ -11,6 +11,11 @@ recent-sales {
     position: absolute;
     left: 0.3rem;
   }
+  
+  .back-button-icon-md, .back-button-icon-ios  {
+    display: none;
+  }
+
   ion-content {
     background-image: url('../assets/imgs/auth-bg.jpg');
     -webkit-background-image: url('../assets/imgs/auth-bg.jpg');

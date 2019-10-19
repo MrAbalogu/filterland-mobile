@@ -47,14 +47,14 @@ export class ProductsPage {
   }
 
   getProductsFromStorage() {
-    var loading = this.utility.presentLoadingDefault("Fetching products from Server ...");
+    // var loading = this.utility.presentLoadingDefault("Fetching products from Server ...");
     this.storage.get(PRODUCTS).then((products) => {
       if(products){
-        loading.dismiss();
+        // loading.dismiss();
         this.products = products;
         this.products_in_storage = products;
       } else {
-        loading.dismiss();
+        // loading.dismiss();
         this.getProductsFromServer();
       }
       console.log(products);

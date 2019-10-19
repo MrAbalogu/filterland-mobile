@@ -1,14 +1,12 @@
 webpackJsonp([20],{
 
-/***/ 120:
+/***/ 153:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(43);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LogSaleService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(381);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,45 +18,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-/*
-  Generated class for the SettingsProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-var SettingsProvider = /** @class */ (function () {
-    function SettingsProvider(HttpClient) {
-        this.HttpClient = HttpClient;
-        this.theme = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["BehaviorSubject"]('dark-theme');
+var LogSaleService = /** @class */ (function () {
+    // private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/sales_invoices";
+    function LogSaleService(http) {
+        this.http = http;
+        this.baseUrl = "http://localhost:4040/api/v1/sales_invoices";
     }
-    SettingsProvider.prototype.setActiveTheme = function (val) {
-        this.theme.next(val);
+    LogSaleService.prototype.addSale = function (sale) {
+        console.log("posting to server....");
+        return this.http.post("" + this.baseUrl, sale, { headers: { 'Content-Type': 'application/json' } });
     };
-    SettingsProvider.prototype.getActiveTheme = function () {
-        return this.theme.asObservable();
+    LogSaleService.prototype.getRecentSales = function (user_id) {
+        return this.http.get(this.baseUrl + "/recent_sales/" + user_id, { observe: 'response' });
     };
-    SettingsProvider = __decorate([
+    LogSaleService.prototype.getRecentOrders = function (user_id) {
+        return this.http.get(this.baseUrl + "/recent_orders/" + user_id, { observe: 'response' });
+    };
+    LogSaleService.prototype.syncSalesFromStorage = function (sales) {
+        console.log("post request");
+        console.log("main params: ", sales);
+        return this.http.post(this.baseUrl + "/sync_from_storage", sales, { headers: { 'Content-Type': 'application/json' } });
+    };
+    LogSaleService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
-    ], SettingsProvider);
-    return SettingsProvider;
+    ], LogSaleService);
+    return LogSaleService;
 }());
 
-//# sourceMappingURL=settings.js.map
+//# sourceMappingURL=log_sale.js.map
 
 /***/ }),
 
-/***/ 155:
+/***/ 154:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthproviderProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__util_util__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__util_util__ = __webpack_require__(87);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -148,7 +149,7 @@ var AuthproviderProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 166:
+/***/ 165:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -161,11 +162,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 166;
+webpackEmptyAsyncContext.id = 165;
 
 /***/ }),
 
-/***/ 210:
+/***/ 209:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -178,11 +179,11 @@ var map = {
 		7
 	],
 	"../pages/dashboard/dashboard.module": [
-		687,
+		686,
 		19
 	],
 	"../pages/intro/intro.module": [
-		686,
+		687,
 		15
 	],
 	"../pages/invoice/invoice.module": [
@@ -261,19 +262,20 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 210;
+webpackAsyncContext.id = 209;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 348:
+/***/ 257:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(43);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(404);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -286,30 +288,150 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var CUSTOMER = 'customer';
-var CustomerService = /** @class */ (function () {
-    function CustomerService(http, storage) {
-        this.http = http;
+/*
+  Generated class for the SettingsProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var SettingsProvider = /** @class */ (function () {
+    function SettingsProvider(HttpClient) {
+        this.HttpClient = HttpClient;
+        this.theme = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["BehaviorSubject"]('dark-theme');
+    }
+    SettingsProvider.prototype.setActiveTheme = function (val) {
+        this.theme.next(val);
+    };
+    SettingsProvider.prototype.getActiveTheme = function () {
+        return this.theme.asObservable();
+    };
+    SettingsProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+    ], SettingsProvider);
+    return SettingsProvider;
+}());
+
+//# sourceMappingURL=settings.js.map
+
+/***/ }),
+
+/***/ 348:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SaleInvoiceModal; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(42);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var SaleInvoiceModal = /** @class */ (function () {
+    function SaleInvoiceModal(navParams, viewCtrl, storage) {
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
         this.storage = storage;
-        this.baseUrl = "https://filterland-api.herokuapp.com/api/v1/customers";
+        this.params = {};
+        this.indicator_classes = {
+            'onlinebg': false,
+            'offlinebg': false
+        };
+        this.saveBtnDisabled = false;
+    }
+    SaleInvoiceModal.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        console.log('ionViewDidLoad InvoiceModal');
+        this.params = this.navParams.data;
+        console.log("params ", this.params);
+        console.log("params customer ", this.params.customer);
+        this.storage.get("user").then(function (u) {
+            _this.user_id = u.data.id;
+        });
+        setInterval(function () {
+            // The code that you want to run repeatedly
+            if (!navigator.onLine) {
+                _this.indicator_classes.offlinebg = true;
+                _this.indicator_classes.onlinebg = false;
+                _this.internetIndicator.nativeElement.innerHTML = "Offline";
+            }
+            else {
+                _this.indicator_classes.offlinebg = false;
+                _this.indicator_classes.onlinebg = true;
+                _this.internetIndicator.nativeElement.innerHTML = "Online";
+            }
+        }, 2000);
+    };
+    SaleInvoiceModal.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("internet_checker_indicator"),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    ], SaleInvoiceModal.prototype, "internetIndicator", void 0);
+    SaleInvoiceModal = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'sale_invoice',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/sale_invoice/sale_invoice.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons class="menu-left" start>\n      <button ion-button (click)="dismiss()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <div class="title-center" >\n      <ion-title >View Invoice</ion-title>\n    </div>\n    <ion-buttons class="logout-btn" end>\n      <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n        <ion-spinner class="check_network_spinner"></ion-spinner>\n      </div>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-row>\n  	<ion-col>\n  	  <div class="paid">Paid: {{ params.paid }}</div>\n  	</ion-col>\n  	<ion-col>\n  	  <div class="left">left: {{ params.total - params.paid }} </div>\n  	</ion-col>\n  </ion-row>\n  <div class="invoice-details">\n  	<p>Customer Name: {{ params.customer.name }}</p>\n  	<p>Customer Address: {{ params.customer.address }} </p>\n  	<p>Customer Phone: {{ params.customer.phone }}</p>\n  	<p>Customer Email: {{ params.customer.email }}</p>\n  	<p>Date: {{ params.date }}</p>\n  </div>\n  <ion-grid *ngFor="let item of params.sales_items">\n	  <div class="log_card">\n	      <ion-row>\n	        <ion-col>\n	          <p>Product Name/#: <b>{{ item.product.name }} - {{ item.product.partnumber }}</b></p>\n	        </ion-col>\n	      </ion-row>\n\n	      <ion-row>\n	        <ion-col>\n	          <p>Quantity: <b>{{ item.quantity }}</b></p>\n	        </ion-col>\n	        <ion-col>\n	          <p>Price: <b>{{ item.price }}</b></p>\n	        </ion-col>\n	      </ion-row> \n\n	      <ion-row>\n	        <ion-col>\n	          <p>Total: <b>{{ item.quantity * item.price }}</b></p>\n	        </ion-col>\n	      </ion-row>\n	  </div>\n  </ion-grid>\n  <ion-grid>\n  	<ion-row>\n      <ion-col offset="3">\n        <p style="text-align: center;">Total: <b>{{ params.total }}</b></p>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/sale_invoice/sale_invoice.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
+    ], SaleInvoiceModal);
+    return SaleInvoiceModal;
+}());
+
+//# sourceMappingURL=sale_invoice.js.map
+
+/***/ }),
+
+/***/ 349:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CustomerService = /** @class */ (function () {
+    // private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/customers";
+    function CustomerService(http) {
+        this.http = http;
+        this.baseUrl = "http://localhost:4040/api/v1/customers";
     }
     CustomerService.prototype.addCustomer = function (customerDetails) {
         return this.http.post("" + this.baseUrl, customerDetails, { observe: 'response' });
     };
     CustomerService.prototype.fetchCustomers = function (user_id) {
         console.log("fetching customers... for ", user_id);
-        return this.http.get(this.baseUrl + "/" + user_id);
+        return this.http.get(this.baseUrl + "/my_customers/" + user_id, { observe: 'response' });
     };
     CustomerService.prototype.syncCustomersFromStorage = function (customers) {
         console.log("post request");
         console.log("main params: ", customers);
-        return this.http.post("http://localhost:4040/api/v1/customers/sync_from_storage", customers, { headers: { 'Content-Type': 'application/json' } });
-        // return this.http.post(`${this.baseUrl}/sync_from_storage`, customers, { observe: 'response' })
+        return this.http.post(this.baseUrl + "/sync_from_storage", customers, { headers: { 'Content-Type': 'application/json' } });
     };
     CustomerService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
     ], CustomerService);
     return CustomerService;
 }());
@@ -318,16 +440,14 @@ var CustomerService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 349:
+/***/ 350:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_settings_settings__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_authprovider_authprovider__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_authprovider_authprovider__ = __webpack_require__(154);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -340,16 +460,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
 var DashboardPage = /** @class */ (function () {
-    function DashboardPage(navCtrl, navParams, settings, storage, auth, AlertController) {
+    function DashboardPage(navCtrl, navParams, auth) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.settings = settings;
-        this.storage = storage;
         this.auth = auth;
-        this.AlertController = AlertController;
         this.nextPage = 'AboutPage';
     }
     DashboardPage.prototype.ionViewDidLoad = function () {
@@ -379,10 +494,7 @@ var DashboardPage = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_settings_settings__["a" /* SettingsProvider */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_authprovider_authprovider__["a" /* AuthproviderProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
+            __WEBPACK_IMPORTED_MODULE_2__providers_authprovider_authprovider__["a" /* AuthproviderProvider */]])
     ], DashboardPage);
     return DashboardPage;
 }());
@@ -391,16 +503,16 @@ var DashboardPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 350:
+/***/ 351:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InvoiceModal; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_log_sale_log_sale__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_util_util__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_log_sale_log_sale__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_util_util__ = __webpack_require__(87);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -459,7 +571,7 @@ var InvoiceModal = /** @class */ (function () {
         var _this = this;
         console.log("saving....");
         var loading = this.utility.presentLoadingDefault("Adding Sale Details ...");
-        if (navigator.onLine) {
+        if (!navigator.onLine) {
             console.log("there is no internet");
             this.storage.get(SALELOGS).then(function (logs) {
                 if (logs) {
@@ -531,30 +643,33 @@ var InvoiceModal = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("internet_checker_indicator"),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
     ], InvoiceModal.prototype, "internetIndicator", void 0);
     InvoiceModal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'invoice',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/invoice/invoice.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons class="menu-left" start>\n      <button ion-button (click)="dismiss()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <div class="title-center" >\n      <ion-title >Invoice</ion-title>\n    </div>\n    <ion-buttons class="logout-btn" end>\n      <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n        <ion-spinner class="check_network_spinner"></ion-spinner>\n      </div>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-row>\n  	<ion-col>\n  	  <div class="paid">Paid: {{ params.paid }}</div>\n  	</ion-col>\n  	<ion-col>\n  	  <div class="left">left: {{ params.total - params.paid }} </div>\n  	</ion-col>\n  </ion-row>\n  <div class="invoice-details">\n  	<p>Customer Name: {{ params.name }}</p>\n  	<p>Customer Address: {{ params.address }} </p>\n  	<p>Customer Phone: {{ params.phone }}</p>\n  	<p>Customer Email: {{ params.email }}</p>\n  	<p>Date: {{ params.date }}</p>\n  </div>\n  <ion-grid *ngFor="let item of params.items">\n	  <div class="log_card">\n	      <ion-row>\n	        <ion-col>\n	          <p>Product Name/#: <b>{{ item.name }} - {{ item.partnumber }}</b></p>\n	        </ion-col>\n	      </ion-row>\n\n	      <ion-row>\n	        <ion-col>\n	          <p>Quantity: <b>{{ item.quantity }}</b></p>\n	        </ion-col>\n	        <ion-col>\n	          <p>Price: <b>{{ item.price }}</b></p>\n	        </ion-col>\n	      </ion-row> \n\n	      <ion-row>\n	        <ion-col>\n	          <p>Total: <b>{{ item.quantity * item.price }}</b></p>\n	        </ion-col>\n	      </ion-row>\n	  </div>\n  </ion-grid>\n  <ion-grid>\n  	<ion-row>\n      <ion-col offset="3">\n        <p style="text-align: center;">Total: <b>{{ params.total }}</b></p>\n      </ion-col>\n    </ion-row>\n    <ion-row> \n      <ion-col>\n      </ion-col>\n      <ion-col>\n        <button ion-button class="save-btn" [disabled]="saveBtnDisabled" (click)="saveLog()"> Save </button>\n      </ion-col>\n      <ion-col>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/invoice/invoice.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_util_util__["a" /* UtilProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_util_util__["a" /* UtilProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_log_sale_log_sale__["a" /* LogSaleService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_log_sale_log_sale__["a" /* LogSaleService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_util_util__["a" /* UtilProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_log_sale_log_sale__["a" /* LogSaleService */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
     ], InvoiceModal);
     return InvoiceModal;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=invoice.js.map
 
 /***/ }),
 
-/***/ 351:
+/***/ 352:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewInvoiceModal; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(42);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -606,96 +721,20 @@ var ViewInvoiceModal = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("internet_checker_indicator"),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
     ], ViewInvoiceModal.prototype, "internetIndicator", void 0);
     ViewInvoiceModal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'view_invoice',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/view_invoice/view_invoice.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons class="menu-left" start>\n      <button ion-button (click)="dismiss()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <div class="title-center" >\n      <ion-title >View Invoice</ion-title>\n    </div>\n    <ion-buttons class="logout-btn" end>\n      <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n        <ion-spinner class="check_network_spinner"></ion-spinner>\n      </div>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-row>\n  	<ion-col>\n  	  <div class="paid">Paid: {{ params.paid }}</div>\n  	</ion-col>\n  	<ion-col>\n  	  <div class="left">left: {{ params.total - params.paid }} </div>\n  	</ion-col>\n  </ion-row>\n  <div class="invoice-details">\n  	<p>Customer Name: {{ params.name }}</p>\n  	<p>Customer Address: {{ params.address }} </p>\n  	<p>Customer Phone: {{ params.phone }}</p>\n  	<p>Customer Email: {{ params.email }}</p>\n  	<p>Date: {{ params.date }}</p>\n  </div>\n  <ion-grid *ngFor="let item of params.items">\n	  <div class="log_card">\n	      <ion-row>\n	        <ion-col>\n	          <p>Product Name/#: <b>{{ item.name }} - {{ item.partnumber }}</b></p>\n	        </ion-col>\n	      </ion-row>\n\n	      <ion-row>\n	        <ion-col>\n	          <p>Quantity: <b>{{ item.quantity }}</b></p>\n	        </ion-col>\n	        <ion-col>\n	          <p>Price: <b>{{ item.price }}</b></p>\n	        </ion-col>\n	      </ion-row> \n\n	      <ion-row>\n	        <ion-col>\n	          <p>Total: <b>{{ item.quantity * item.price }}</b></p>\n	        </ion-col>\n	      </ion-row>\n	  </div>\n  </ion-grid>\n  <ion-grid>\n  	<ion-row>\n      <ion-col offset="3">\n        <p style="text-align: center;">Total: <b>{{ params.total }}</b></p>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/view_invoice/view_invoice.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _d || Object])
-    ], ViewInvoiceModal);
-    return ViewInvoiceModal;
-    var _a, _b, _c, _d;
-}());
-
-//# sourceMappingURL=view_invoice.js.map
-
-/***/ }),
-
-/***/ 352:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SaleInvoiceModal; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(26);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var SaleInvoiceModal = /** @class */ (function () {
-    function SaleInvoiceModal(navParams, viewCtrl, storage) {
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.storage = storage;
-        this.params = {};
-        this.indicator_classes = {
-            'onlinebg': false,
-            'offlinebg': false
-        };
-        this.saveBtnDisabled = false;
-    }
-    SaleInvoiceModal.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        console.log('ionViewDidLoad InvoiceModal');
-        this.params = this.navParams.data;
-        console.log("params ", this.params);
-        console.log("params customer ", this.params.customer);
-        this.storage.get("user").then(function (u) {
-            _this.user_id = u.data.id;
-        });
-        setInterval(function () {
-            // The code that you want to run repeatedly
-            if (!navigator.onLine) {
-                _this.indicator_classes.offlinebg = true;
-                _this.indicator_classes.onlinebg = false;
-                _this.internetIndicator.nativeElement.innerHTML = "Offline";
-            }
-            else {
-                _this.indicator_classes.offlinebg = false;
-                _this.indicator_classes.onlinebg = true;
-                _this.internetIndicator.nativeElement.innerHTML = "Online";
-            }
-        }, 2000);
-    };
-    SaleInvoiceModal.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])("internet_checker_indicator"),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
-    ], SaleInvoiceModal.prototype, "internetIndicator", void 0);
-    SaleInvoiceModal = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'sale_invoice',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/sale_invoice/sale_invoice.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons class="menu-left" start>\n      <button ion-button (click)="dismiss()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <div class="title-center" >\n      <ion-title >View Invoice</ion-title>\n    </div>\n    <ion-buttons class="logout-btn" end>\n      <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>\n        <ion-spinner class="check_network_spinner"></ion-spinner>\n      </div>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-row>\n  	<ion-col>\n  	  <div class="paid">Paid: {{ params.paid }}</div>\n  	</ion-col>\n  	<ion-col>\n  	  <div class="left">left: {{ params.total - params.paid }} </div>\n  	</ion-col>\n  </ion-row>\n  <div class="invoice-details">\n  	<p>Customer Name: {{ params.customer.name }}</p>\n  	<p>Customer Address: {{ params.customer.address }} </p>\n  	<p>Customer Phone: {{ params.customer.phone }}</p>\n  	<p>Customer Email: {{ params.customer.email }}</p>\n  	<p>Date: {{ params.date }}</p>\n  </div>\n  <ion-grid *ngFor="let item of params.sales_items">\n	  <div class="log_card">\n	      <ion-row>\n	        <ion-col>\n	          <p>Product Name/#: <b>{{ item.name }} - {{ item.partnumber }}</b></p>\n	        </ion-col>\n	      </ion-row>\n\n	      <ion-row>\n	        <ion-col>\n	          <p>Quantity: <b>{{ item.quantity }}</b></p>\n	        </ion-col>\n	        <ion-col>\n	          <p>Price: <b>{{ item.price }}</b></p>\n	        </ion-col>\n	      </ion-row> \n\n	      <ion-row>\n	        <ion-col>\n	          <p>Total: <b>{{ item.quantity * item.price }}</b></p>\n	        </ion-col>\n	      </ion-row>\n	  </div>\n  </ion-grid>\n  <ion-grid>\n  	<ion-row>\n      <ion-col offset="3">\n        <p style="text-align: center;">Total: <b>{{ params.total }}</b></p>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/sale_invoice/sale_invoice.html"*/,
-        }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]])
-    ], SaleInvoiceModal);
-    return SaleInvoiceModal;
+    ], ViewInvoiceModal);
+    return ViewInvoiceModal;
 }());
 
-//# sourceMappingURL=sale_invoice.js.map
+//# sourceMappingURL=view_invoice.js.map
 
 /***/ }),
 
@@ -704,7 +743,8 @@ var SaleInvoiceModal = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -715,18 +755,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var ProductService = /** @class */ (function () {
     // private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/products";
-    function ProductService() {
+    function ProductService(http) {
+        this.http = http;
         this.baseUrl = "http://localhost:4040/api/v1/products";
     }
     ProductService.prototype.getProducts = function () {
-        return this.http.get("http://localhost:4040/api/v1/products");
-        return this.http.get("" + this.baseUrl);
+        return this.http.get("" + this.baseUrl, { observe: 'response' });
     };
     ProductService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [])
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
     ], ProductService);
     return ProductService;
 }());
@@ -755,24 +796,24 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(684);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(403);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_social_sharing__ = __webpack_require__(354);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_status_bar__ = __webpack_require__(346);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_splash_screen__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_settings_settings__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_http__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_authprovider_authprovider__ = __webpack_require__(155);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_util_util__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_customer_customer__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_log_sale_log_sale__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_status_bar__ = __webpack_require__(255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_splash_screen__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_settings_settings__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_http__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_authprovider_authprovider__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_util_util__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_customer_customer__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_log_sale_log_sale__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_product_product__ = __webpack_require__(353);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_storage__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_invoice_invoice__ = __webpack_require__(350);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_view_invoice_view_invoice__ = __webpack_require__(351);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_sale_invoice_sale_invoice__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_storage__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_invoice_invoice__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_view_invoice_view_invoice__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_sale_invoice_sale_invoice__ = __webpack_require__(348);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -817,8 +858,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/customers/customers.module#CustomersPageModule', name: 'CustomersPage', segment: 'customers', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/intro/intro.module#IntroPageModule', name: 'IntroPage', segment: 'intro', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/dashboard/dashboard.module#DashboardPageModule', name: 'DashboardPage', segment: 'dashboard', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/intro/intro.module#IntroPageModule', name: 'IntroPage', segment: 'intro', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/invoice/invoice.module#InvoiceModalModule', name: 'InvoiceModal', segment: 'invoice', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/log_sales/log_sales.module#LogSalesPageModule', name: 'LogSalesPage', segment: 'log_sales', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
@@ -868,142 +909,18 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 65:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UtilProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(32);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var UtilProvider = /** @class */ (function () {
-    function UtilProvider(http, toaster, alerter, loadingCtrl) {
-        this.http = http;
-        this.toaster = toaster;
-        this.alerter = alerter;
-        this.loadingCtrl = loadingCtrl;
-    }
-    UtilProvider.prototype.showToast = function (message, duration, typeClass) {
-        typeClass = 'hiis-toast ' + typeClass;
-        var toast = this.toaster.create({
-            message: message,
-            duration: duration,
-            position: 'top',
-            cssClass: typeClass
-        });
-        toast.present();
-    };
-    UtilProvider.prototype.showAlert = function (title, message) {
-        var alert = this.alerter.create({
-            title: title,
-            subTitle: message,
-            buttons: ["OK"]
-        });
-        alert.present();
-    };
-    UtilProvider.prototype.showLoading = function () {
-        var loading = this.loadingCtrl.create({
-            content: "<div class=\"spinner\">\n                  <div class=\"cube1\"></div>\n                  <div class=\"cube2\"></div>\n                </div>"
-        });
-        loading.present();
-        return loading;
-    };
-    UtilProvider.prototype.presentLoadingDefault = function (message) {
-        var loading = this.loadingCtrl.create({
-            content: message
-        });
-        loading.present();
-        return loading;
-        // setTimeout(() => {
-        //   loading.dismiss();
-        // }, 5000);
-    };
-    UtilProvider.prototype.presentAlertConfirm = function (title, message, okayCallBack) {
-        var alert = this.alerter.create({
-            title: title,
-            message: message,
-            buttons: [
-                {
-                    text: 'No',
-                    role: 'cancel',
-                    cssClass: 'secondary-button',
-                    handler: function (blah) {
-                        console.log('Confirm Cancel: blah');
-                    }
-                }, {
-                    text: 'Yes',
-                    cssClass: 'primary-button',
-                    handler: function () {
-                        console.log('Confirm Okay');
-                        okayCallBack();
-                    }
-                }
-            ]
-        });
-        alert.present();
-    };
-    UtilProvider.prototype.validateData = function (data) {
-        if (data) {
-            if (data.email) {
-                if (!this.validateEmail(data.email)) {
-                    return false;
-                }
-                return true;
-            }
-        }
-        return false;
-    };
-    UtilProvider.prototype.setEnrolleeOtp = function (otp) {
-        this.enrolleeOtp = otp;
-    };
-    UtilProvider.prototype.getEnrolleeOtp = function () {
-        return this.enrolleeOtp;
-    };
-    UtilProvider.prototype.compareEnrolleeOtp = function (otpProvided) {
-        return this.enrolleeOtp == otpProvided;
-    };
-    UtilProvider.prototype.validateEmail = function (email) {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    };
-    UtilProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */]])
-    ], UtilProvider);
-    return UtilProvider;
-}());
-
-//# sourceMappingURL=util.js.map
-
-/***/ }),
-
-/***/ 684:
+/***/ 403:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(346);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(347);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_settings_settings__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_dashboard_dashboard__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_settings_settings__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_dashboard_dashboard__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(42);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1116,12 +1033,13 @@ var MyApp = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 88:
+/***/ 87:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LogSaleService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UtilProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1132,31 +1050,106 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var LogSaleService = /** @class */ (function () {
-    // private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/sales_invoices";
-    function LogSaleService() {
-        this.baseUrl = "http://localhost:4040/api/v1/sales_invoices";
+
+var UtilProvider = /** @class */ (function () {
+    function UtilProvider(toaster, alerter, loadingCtrl) {
+        this.toaster = toaster;
+        this.alerter = alerter;
+        this.loadingCtrl = loadingCtrl;
     }
-    LogSaleService.prototype.addSale = function (sale) {
-        console.log("posting to server....");
-        return this.http.post("" + this.baseUrl, sale, { headers: { 'Content-Type': 'application/json' } });
+    UtilProvider.prototype.showToast = function (message, duration, typeClass) {
+        typeClass = 'hiis-toast ' + typeClass;
+        var toast = this.toaster.create({
+            message: message,
+            duration: duration,
+            position: 'top',
+            cssClass: typeClass
+        });
+        toast.present();
     };
-    LogSaleService.prototype.getRecentSales = function (user_id) {
-        return this.http.get(this.baseUrl + "/recent_sales/" + user_id);
+    UtilProvider.prototype.showAlert = function (title, message) {
+        var alert = this.alerter.create({
+            title: title,
+            subTitle: message,
+            buttons: ["OK"]
+        });
+        alert.present();
     };
-    LogSaleService.prototype.syncSalesFromStorage = function (sales) {
-        console.log("post request");
-        console.log("main params: ", sales);
-        return this.http.post(this.baseUrl + "/sync_from_storage", sales, { headers: { 'Content-Type': 'application/json' } });
+    UtilProvider.prototype.showLoading = function () {
+        var loading = this.loadingCtrl.create({
+            content: "<div class=\"spinner\">\n                  <div class=\"cube1\"></div>\n                  <div class=\"cube2\"></div>\n                </div>"
+        });
+        loading.present();
+        return loading;
     };
-    LogSaleService = __decorate([
+    UtilProvider.prototype.presentLoadingDefault = function (message) {
+        var loading = this.loadingCtrl.create({
+            content: message
+        });
+        loading.present();
+        return loading;
+        // setTimeout(() => {
+        //   loading.dismiss();
+        // }, 5000);
+    };
+    UtilProvider.prototype.presentAlertConfirm = function (title, message, okayCallBack) {
+        var alert = this.alerter.create({
+            title: title,
+            message: message,
+            buttons: [
+                {
+                    text: 'No',
+                    role: 'cancel',
+                    cssClass: 'secondary-button',
+                    handler: function (blah) {
+                        console.log('Confirm Cancel: blah');
+                    }
+                }, {
+                    text: 'Yes',
+                    cssClass: 'primary-button',
+                    handler: function () {
+                        console.log('Confirm Okay');
+                        okayCallBack();
+                    }
+                }
+            ]
+        });
+        alert.present();
+    };
+    UtilProvider.prototype.validateData = function (data) {
+        if (data) {
+            if (data.email) {
+                if (!this.validateEmail(data.email)) {
+                    return false;
+                }
+                return true;
+            }
+        }
+        return false;
+    };
+    UtilProvider.prototype.setEnrolleeOtp = function (otp) {
+        this.enrolleeOtp = otp;
+    };
+    UtilProvider.prototype.getEnrolleeOtp = function () {
+        return this.enrolleeOtp;
+    };
+    UtilProvider.prototype.compareEnrolleeOtp = function (otpProvided) {
+        return this.enrolleeOtp == otpProvided;
+    };
+    UtilProvider.prototype.validateEmail = function (email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    };
+    UtilProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [])
-    ], LogSaleService);
-    return LogSaleService;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
+    ], UtilProvider);
+    return UtilProvider;
 }());
 
-//# sourceMappingURL=log_sale.js.map
+//# sourceMappingURL=util.js.map
 
 /***/ })
 

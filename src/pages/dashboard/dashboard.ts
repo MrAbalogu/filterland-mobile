@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, NavParams, ToastController, AlertController } from 'ionic-angular';
-import { SettingsProvider } from '../../providers/settings/settings';
+import { NavController, IonicPage, NavParams } from 'ionic-angular';
 import { PendingLogs } from '../pending_logs/pending_logs';
 import { LogSalesPage } from '../log_sales/log_sales';
 import { ProductsPage } from '../products/products';
 import { AddCustomerPage } from '../add_customer/add_customer';
-import { Storage } from '@ionic/storage';
 import { AuthproviderProvider } from './../../providers/authprovider/authprovider';
 
 @IonicPage()
@@ -21,10 +19,7 @@ export class DashboardPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private settings: SettingsProvider,
-    private storage: Storage,
     private auth: AuthproviderProvider,
-    private AlertController:AlertController,
     ) {
   }
 
@@ -55,7 +50,5 @@ export class DashboardPage {
   public logout(): void {
     this.auth.logout(this.navCtrl);
   }
-
-
 
 }

@@ -13,6 +13,10 @@ customers {
     font-size: 1em;
   }
 
+  .back-button-icon-md, .back-button-icon-ios  {
+    display: none;
+  }
+
   #hospitals {
     margin-top: 5px;
   }

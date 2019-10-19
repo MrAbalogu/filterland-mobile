@@ -7,7 +7,7 @@ webpackJsonp([12],{
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RecentSalesPageModule", function() { return RecentSalesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__recent_sales__ = __webpack_require__(718);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -45,11 +45,11 @@ var RecentSalesPageModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecentSalesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_log_sale_log_sale__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_util_util__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__sale_invoice_sale_invoice__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_log_sale_log_sale__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_util_util__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__sale_invoice_sale_invoice__ = __webpack_require__(348);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -140,19 +140,19 @@ var RecentSalesPage = /** @class */ (function () {
     RecentSalesPage.prototype.viewInvoice = function (logDetails) {
         var invoiceModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__sale_invoice_sale_invoice__["a" /* SaleInvoiceModal */], logDetails);
         invoiceModal.present();
-        console.log(logDetails);
+        console.log(logDetails.customer);
     };
     RecentSalesPage.prototype.getSalesFromStorage = function () {
         var _this = this;
-        var loading = this.utility.presentLoadingDefault("Fetching sales from Server ...");
+        // var loading = this.utility.presentLoadingDefault("Fetching sales from Server ...");
         this.storage.get(SALES).then(function (sales) {
             if (sales) {
-                loading.dismiss();
+                // loading.dismiss();
                 _this.sales = sales;
                 _this.sales_in_storage = sales;
             }
             else {
-                loading.dismiss();
+                // loading.dismiss();
                 _this.getSalesFromServer();
             }
             console.log(sales);
@@ -217,7 +217,7 @@ var RecentSalesPage = /** @class */ (function () {
     };
     RecentSalesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'recent-sales',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/recent_sales/recent_sales.html"*/'<ion-header>\n  <ion-navbar id="mainNav">\n    <ion-buttons class="menu-left" start>\n      <button ion-button (click)="goToTabsPage()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <div class="title-center" >\n      <ion-title >Recent Sales</ion-title>\n    </div>\n    <ion-buttons class="logout-btn" end>\n      <button ion-button ion-only style="color: #CF7A7A" (click)="openSearchInput()" >\n        <ion-icon name="search"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-navbar id="searchNav">\n      <input class="searchinput" placeholder="Search Products" type="search" name="searchProducts" [(ngModel)]="searchTerm" (input)="setFilteredItems()">\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n\n  <ion-grid>\n\n    <div *ngFor="let sale of this.sales; index as i;">\n      <div [ngClass]="getClass(i)" (click)="viewInvoice(sale)">\n        <ion-row>\n          <ion-col>\n            <p>Customer Name: <b>{{ sale.customer.name }}</b></p>\n          </ion-col>\n        </ion-row>\n\n        <ion-row>\n          <ion-col>\n            <p>Paid: <b>N{{ sale.paid }}</b></p>\n          </ion-col>\n        </ion-row> \n\n        <ion-row>\n          <ion-col>\n            <p class="supplied">Supplied</p>\n          </ion-col>\n          <ion-col>\n            <p>Total: <b>N{{ sale.total }}</b></p>\n          </ion-col>\n        </ion-row>\n      </div>\n    </div>\n  \n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/recent_sales/recent_sales.html"*/,
+            selector: 'recent-sales',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/recent_sales/recent_sales.html"*/'<ion-header>\n  <ion-navbar id="mainNav">\n    <ion-buttons class="menu-left" start>\n      <button ion-button (click)="goToTabsPage()">\n        <ion-icon name="arrow-back"></ion-icon>\n      </button>\n    </ion-buttons>\n    <div class="title-center" >\n      <ion-title >Recent Sales</ion-title>\n    </div>\n    <ion-buttons class="logout-btn" end>\n      <button ion-button ion-only style="color: #CF7A7A" (click)="openSearchInput()" >\n        <ion-icon name="search"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-navbar id="searchNav">\n      <input class="searchinput" placeholder="Search Sales" type="search" name="searchProducts" [(ngModel)]="searchTerm" (input)="setFilteredItems()">\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n\n  <ion-grid>\n\n    <div *ngFor="let sale of this.sales; index as i;">\n      <div [ngClass]="getClass(i)" (click)="viewInvoice(sale)">\n        <ion-row>\n          <ion-col>\n            <p>Customer Name: <b>{{ sale.customer.name }}</b></p>\n          </ion-col>\n        </ion-row>\n\n        <ion-row>\n          <ion-col>\n            <p>Paid: <b>N{{ sale.paid }}</b></p>\n          </ion-col>\n        </ion-row> \n\n        <ion-row>\n          <ion-col>\n            <p class="supplied">Supplied</p>\n          </ion-col>\n          <ion-col>\n            <p>Total: <b>N{{ sale.total }}</b></p>\n          </ion-col>\n        </ion-row>\n      </div>\n    </div>\n  \n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/recent_sales/recent_sales.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],

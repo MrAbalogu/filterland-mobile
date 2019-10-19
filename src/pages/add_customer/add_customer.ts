@@ -4,7 +4,6 @@ import { NgForm } from "@angular/forms";
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { TabsPage } from '../tabs/tabs';
-import { Customer } from '../../models/customer';
 import { AddCustomer } from '../../models/customer';
 import { UtilProvider } from './../../providers/util/util';
 import { CustomerService } from './../../providers/customer/customer'; 
@@ -29,6 +28,7 @@ export class AddCustomerPage {
   user_id: any;
   customers: any;
   disableSyncButton: boolean = true;
+  sync_parameters: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -47,6 +47,8 @@ export class AddCustomerPage {
     this.storage.get(CUSTOMERS).then((customers) => {
       this.customers = customers;
     });
+
+    this.sync_parameters = {};
 
     // Continously Check for Internet
     setInterval(() => { 
@@ -169,7 +171,7 @@ export class AddCustomerPage {
                 response.body.errors
               );
             }  
-            else if (response.body.status == "success"){
+            else if (response.body.body.status == "success"){
               var customer_name = response.body.data.name
               loading.dismiss();
               return this.utility.showAlert(
@@ -177,6 +179,7 @@ export class AddCustomerPage {
                  customer_name + " has been added to Filterland Server"
               );
             }  
+            console.log(response);
             loading.dismiss();
           },
           //Error
@@ -203,13 +206,13 @@ export class AddCustomerPage {
   }
 
   syncFromStorageToServer() {
-    // console.log(JSON.stringify(this.customers));
-    let sync_parameters: any;
-    // console.log(sync_parameters);
-    sync_parameters.customers_array = this.customers;
+    console.log(this.sync_parameters);
+    console.log(this.user_id);
+    console.log(this.customers);
+    this.sync_parameters.customers_array = this.customers;
     // console.log("params: ", JSON.stringify(sync_parameters));
     var loading = this.utility.presentLoadingDefault("Syncing Customers to Server ...");
-    this.customerService.syncCustomersFromStorage(JSON.stringify(sync_parameters))
+    this.customerService.syncCustomersFromStorage(JSON.stringify(this.sync_parameters))
       .subscribe(
         (response: HttpResponse<any>) => {
           if (!response.ok) {

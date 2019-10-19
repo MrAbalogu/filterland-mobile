@@ -48,14 +48,14 @@ export class CustomersPage {
   }
 
   getCustomersFromStorage() {
-    var loading = this.utility.presentLoadingDefault("Fetching Customers from Server ...");
+    // var loading = this.utility.presentLoadingDefault("Fetching Customers from Server ...");
     this.storage.get(CUSTOMERS).then((customers) => {
       if(customers){
-        loading.dismiss();
+        // loading.dismiss();
         this.customers = customers;
         this.customers_in_storage = customers;
       } else {
-        loading.dismiss();
+        // loading.dismiss();
         this.getCustomersFromServer();
       }
       console.log(customers);
@@ -79,7 +79,7 @@ export class CustomersPage {
         async (response: HttpResponse<any>) => {
           var res = await response.body;
           if (res.status === "error") {
-            console.log("error: ", res);
+            console.log("error: ", response);
             loading.dismiss();
             return this.utility.showAlert(
               "Error",
@@ -89,7 +89,7 @@ export class CustomersPage {
           else {
             console.log("response: ", res);
             loading.dismiss();
-            this.storage.set(CUSTOMERS, res["data"]);
+            this.storage.set(CUSTOMERS, res.data);
             this.navCtrl.push('CustomersPage');
           } 
         },

@@ -7,7 +7,7 @@ webpackJsonp([7],{
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomersPageModule", function() { return CustomersPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customers__ = __webpack_require__(706);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -45,7 +45,7 @@ var CustomersPageModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -84,10 +84,10 @@ var TabsPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomersPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_customer_customer__ = __webpack_require__(348);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_util_util__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_customer_customer__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_util_util__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__tabs_tabs__ = __webpack_require__(705);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -170,15 +170,15 @@ var CustomersPage = /** @class */ (function () {
     };
     CustomersPage.prototype.getCustomersFromStorage = function () {
         var _this = this;
-        var loading = this.utility.presentLoadingDefault("Fetching Customers from Server ...");
+        // var loading = this.utility.presentLoadingDefault("Fetching Customers from Server ...");
         this.storage.get(CUSTOMERS).then(function (customers) {
             if (customers) {
-                loading.dismiss();
+                // loading.dismiss();
                 _this.customers = customers;
                 _this.customers_in_storage = customers;
             }
             else {
-                loading.dismiss();
+                // loading.dismiss();
                 _this.getCustomersFromServer();
             }
             console.log(customers);
@@ -204,14 +204,14 @@ var CustomersPage = /** @class */ (function () {
                     case 1:
                         res = _a.sent();
                         if (res.status === "error") {
-                            console.log("error: ", res);
+                            console.log("error: ", response);
                             loading.dismiss();
                             return [2 /*return*/, this.utility.showAlert("Error", "Something went wrong, Customers did not fetch from server")];
                         }
                         else {
                             console.log("response: ", res);
                             loading.dismiss();
-                            this.storage.set(CUSTOMERS, res["data"]);
+                            this.storage.set(CUSTOMERS, res.data);
                             this.navCtrl.push('CustomersPage');
                         }
                         return [2 /*return*/];
@@ -239,7 +239,7 @@ var CustomersPage = /** @class */ (function () {
     };
     CustomersPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'customers',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/customers/customers.html"*/'<ion-header>\n  <ion-navbar id="mainNav">\n      <ion-buttons class="menu-left" start>\n        <button class="start" ion-button ion-only menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Customers</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <button ion-button ion-only style="color: #CF7A7A" (click)="openSearchInput()" >\n          <ion-icon name="search"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n  <ion-navbar id="searchNav">\n      <input class="searchinput" placeholder="Search Products" type="search" name="searchProducts" [(ngModel)]="searchTerm" (input)="setFilteredItems()">\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list id="hospitals" class="hospitals">\n    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">\n      <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n    <div *ngFor="let customer of this.customers;">\n      <div class="h-listitem">\n        <img  class="hl-img" src="assets/imgs/cust.png">\n\n        <ion-item  class="hl-info"><h4>Chinedu Abalogu</h4>\n          <span style="color: #50E3C2;">08125952646</span>\n          <p>chineduabalogu@yahoo.com</p>\n          <p><span>Score: 56</span></p>\n        </ion-item>\n        <div style="clear: both"></div>\n      </div>\n    </div>\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/customers/customers.html"*/,
+            selector: 'customers',template:/*ion-inline-start:"/Users/chineduabalogu/work/filterland-app/src/pages/customers/customers.html"*/'<ion-header>\n  <ion-navbar id="mainNav">\n      <ion-buttons class="menu-left" start>\n        <button ion-button (click)="goToTabsPage()">\n          <ion-icon name="arrow-back"></ion-icon>\n        </button>\n      </ion-buttons>\n      <div class="home-title title-center" >\n        <ion-title >Customers</ion-title>\n      </div>\n      <ion-buttons class="logout-btn" end>\n        <button ion-button ion-only style="color: #CF7A7A" (click)="openSearchInput()" >\n          <ion-icon name="search"></ion-icon>\n        </button>\n      </ion-buttons>\n  </ion-navbar>\n  <ion-navbar id="searchNav">\n      <input class="searchinput" placeholder="Search Customers" type="search" name="searchProducts" [(ngModel)]="searchTerm" (input)="setFilteredItems()">\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list id="hospitals" class="hospitals">\n    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">\n      <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n    <div *ngFor="let customer of this.customers;">\n      <div class="h-listitem">\n        <img  class="hl-img" src="assets/imgs/cust.png">\n\n        <ion-item  class="hl-info"><h4>{{ customer.name }}</h4>\n          <span style="color: #50E3C2;">{{ customer.phone }}</span>\n          <p>{{ customer.email }}</p>\n          <p><span>Score: 56</span></p>\n        </ion-item>\n        <div style="clear: both"></div>\n      </div>\n    </div>\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"/Users/chineduabalogu/work/filterland-app/src/pages/customers/customers.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
