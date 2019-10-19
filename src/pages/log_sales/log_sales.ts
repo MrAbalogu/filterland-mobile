@@ -1,6 +1,6 @@
-import { Component, Pipe, PipeTransform } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { IonicPage, NavParams, ModalController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { InvoiceModal } from '../invoice/invoice';
 

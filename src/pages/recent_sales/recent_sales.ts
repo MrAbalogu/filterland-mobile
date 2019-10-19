@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from "@angular/common/http";
 import { Storage } from '@ionic/storage';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { LogSaleService } from './../../providers/log_sale/log_sale'; 
 import { UtilProvider } from './../../providers/util/util';
 import { TabsPage } from '../tabs/tabs';
+import { SaleInvoiceModal } from '../sale_invoice/sale_invoice';
 
 const SALES = "sales";
 
@@ -23,6 +24,7 @@ export class RecentSalesPage {
     public navParams: NavParams,
     private utility: UtilProvider,
     private storage: Storage,
+    private modalCtrl: ModalController,
     private saleService: LogSaleService
     ) {
   }
@@ -45,6 +47,20 @@ export class RecentSalesPage {
       console.log(sale);
       return sale.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
     });
+  }
+
+  getClass(i) {
+    if (i % 2 === 0){
+      return 'log_card';
+    } else {
+      return 'log_card_2';
+    }
+  }
+
+  viewInvoice(logDetails) {
+    let invoiceModal = this.modalCtrl.create(SaleInvoiceModal, logDetails);
+    invoiceModal.present();
+    console.log(logDetails);
   }
 
   getSalesFromStorage() {
@@ -76,9 +92,9 @@ export class RecentSalesPage {
     var loading = this.utility.presentLoadingDefault("Fetching sales from Server ...");
     this.saleService.getRecentSales(this.user_id)
       .subscribe(
-        (response: HttpResponse<any>) => {
-          var res = response
-          if (res == "error") {
+        async (response: HttpResponse<any>) => {
+          var res = await response.body;
+          if (res.status === "error") {
             console.log("error: ", res);
             loading.dismiss();
             return this.utility.showAlert(

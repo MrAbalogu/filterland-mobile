@@ -75,9 +75,11 @@ export class ProductsPage {
     var loading = this.utility.presentLoadingDefault("Fetching products from Server ...");
     this.productService.getProducts()
       .subscribe(
-        (response: HttpResponse<any>) => {
-          var res = response;
-          if (res == "error") {
+        async (response: HttpResponse<any>) => {
+          var res = await response.body;
+          console.log("res ",response);
+          console.log("myres ",res);
+          if (res.status === "error") {
             console.log("error: ", res);
             loading.dismiss();
             return this.utility.showAlert(
@@ -88,7 +90,7 @@ export class ProductsPage {
           else {
             console.log("response: ", res);
             loading.dismiss();
-            this.storage.set(PRODUCTS, res.data);
+            this.storage.set(PRODUCTS, res["data"]);
             this.navCtrl.push('ProductsPage');
           } 
         },
@@ -105,7 +107,7 @@ export class ProductsPage {
           }
           this.utility.showAlert( "Error", message );
         }
-      );
+      )
   }
 
   openSearchInput() {

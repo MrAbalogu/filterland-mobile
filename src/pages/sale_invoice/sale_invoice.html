@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons class="menu-left" start>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <div class="title-center" >
+      <ion-title >View Invoice</ion-title>
+    </div>
+    <ion-buttons class="logout-btn" end>
+      <div class="indicator" [ngClass]="indicator_classes" #internet_checker_indicator>
+        <ion-spinner class="check_network_spinner"></ion-spinner>
+      </div>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+  	<ion-col>
+  	  <div class="paid">Paid: {{ params.paid }}</div>
+  	</ion-col>
+  	<ion-col>
+  	  <div class="left">left: {{ params.total - params.paid }} </div>
+  	</ion-col>
+  </ion-row>
+  <div class="invoice-details">
+  	<p>Customer Name: {{ params.customer.name }}</p>
+  	<p>Customer Address: {{ params.customer.address }} </p>
+  	<p>Customer Phone: {{ params.customer.phone }}</p>
+  	<p>Customer Email: {{ params.customer.email }}</p>
+  	<p>Date: {{ params.date }}</p>
+  </div>
+  <ion-grid *ngFor="let item of params.sales_items">
+	  <div class="log_card">
+	      <ion-row>
+	        <ion-col>
+	          <p>Product Name/#: <b>{{ item.name }} - {{ item.partnumber }}</b></p>
+	        </ion-col>
+	      </ion-row>
+
+	      <ion-row>
+	        <ion-col>
+	          <p>Quantity: <b>{{ item.quantity }}</b></p>
+	        </ion-col>
+	        <ion-col>
+	          <p>Price: <b>{{ item.price }}</b></p>
+	        </ion-col>
+	      </ion-row> 
+
+	      <ion-row>
+	        <ion-col>
+	          <p>Total: <b>{{ item.quantity * item.price }}</b></p>
+	        </ion-col>
+	      </ion-row>
+	  </div>
+  </ion-grid>
+  <ion-grid>
+  	<ion-row>
+      <ion-col offset="3">
+        <p style="text-align: center;">Total: <b>{{ params.total }}</b></p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

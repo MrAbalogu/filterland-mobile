@@ -74,11 +74,11 @@ export class CustomersPage {
 
   getCustomersFromServer() {
     var loading = this.utility.presentLoadingDefault("Fetching Customers from Server ...");
-    this.customerService.fetchCustomers()
+    this.customerService.fetchCustomers(this.user_id)
       .subscribe(
-        (response: HttpResponse<any>) => {
-          var res = response;
-          if (res == "error") {
+        async (response: HttpResponse<any>) => {
+          var res = await response.body;
+          if (res.status === "error") {
             console.log("error: ", res);
             loading.dismiss();
             return this.utility.showAlert(
@@ -89,7 +89,7 @@ export class CustomersPage {
           else {
             console.log("response: ", res);
             loading.dismiss();
-            this.storage.set(CUSTOMERS, res.data);
+            this.storage.set(CUSTOMERS, res["data"]);
             this.navCtrl.push('CustomersPage');
           } 
         },

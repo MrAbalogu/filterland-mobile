@@ -34,7 +34,7 @@ export class MyApp {
   selectedTheme: String;  //Themeoption
   activepage: any;
 
-  pages: Array<{ title: string, component: string, icon: string, index:number }>  ;
+  pages: Array<{ title: string, component: string, icon: string, index:number, method: any }>  ;
   public onlineOffline: boolean = navigator.onLine;
   // navCtrl: any;
 
@@ -54,15 +54,18 @@ export class MyApp {
     });
 
     this.pages =  [
-      { title:'Pending Supplies', component:'PendingSuppliesPage',  icon:'ios-timer', index:0.2, },
-      { title:'Recent Sales', component:'RecentSalesPage', icon:'ios-list-box', index:0.2, },
-      { title:'Customers', component:'CustomersPage', icon:'ios-list', index:0.2, },
-      { title:'Newsletters', component:'NewslettersPage', icon:'ios-albums', index:0.2, },
-      { title:'Spreadsheets', component:'', icon:'ios-document', index:0.2, },
-      { title:'Share', component:'', icon:'ios-share', index:0.2, },
-      { title:'Settings', component:'SettingsPage', icon:'ios-settings', index:0.2, },
+      { title:'Pending Supplies', component:'PendingSuppliesPage', icon:'ios-timer', index:0.2, method:'',},
+      { title:'Recent Sales', component:'RecentSalesPage', icon:'ios-list-box', index:0.2, method:'',},
+      { title:'Customers', component:'CustomersPage', icon:'ios-list', index:0.2, method:'',},
+      { title:'Newsletters', component:'NewslettersPage', icon:'ios-albums', index:0.2, method:'',},
+      { title:'Settings', component:'SettingsPage', icon:'ios-settings', index:0.2, method:'',},
     ];
     this.activepage = this.pages[0];
+  }
+
+  goToGoogleSheets(){
+    console.log('gotcha');
+    // goToUrl('https://healthjobber.herokuapp.com/contact-us');
   }
 
   // Run when the device is ready

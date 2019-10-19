@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicApp, IonicModule, IonicErrorHandler, } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,12 +18,14 @@ import { IonicStorageModule } from '@ionic/storage';
 import { IntroPage } from '../pages/intro/intro';
 import { InvoiceModal } from '../pages/invoice/invoice';
 import { ViewInvoiceModal } from '../pages/view_invoice/view_invoice';
+import { SaleInvoiceModal } from '../pages/sale_invoice/sale_invoice';
 
 @NgModule({
   declarations: [
     MyApp,
     InvoiceModal,
-    ViewInvoiceModal
+    ViewInvoiceModal,
+    SaleInvoiceModal
   ],
   imports: [
     BrowserModule,
@@ -37,11 +40,13 @@ import { ViewInvoiceModal } from '../pages/view_invoice/view_invoice';
   entryComponents: [
     MyApp,
     InvoiceModal,
-    ViewInvoiceModal
+    ViewInvoiceModal,
+    SaleInvoiceModal
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SettingsProvider,
     UtilProvider,

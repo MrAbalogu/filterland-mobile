@@ -21,6 +21,7 @@ export class CustomerService {
   }
 
   public fetchCustomers(user_id) {
+    console.log("fetching customers... for ", user_id);
     return this.http.get(`${this.baseUrl}/${user_id}`);
   }
 

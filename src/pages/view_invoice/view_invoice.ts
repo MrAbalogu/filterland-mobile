@@ -1,11 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { HttpResponse, HttpErrorResponse } from "@angular/common/http";
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavParams, ViewController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { LogSaleService } from './../../providers/log_sale/log_sale'; 
-import { UtilProvider } from './../../providers/util/util';
-
-const SALELOGS = "salelogs";
 
 @IonicPage()
 @Component({
@@ -25,8 +20,6 @@ export class ViewInvoiceModal {
   constructor(
   	public navParams: NavParams,
   	public viewCtrl: ViewController,
-    private utility: UtilProvider,
-  	private logSaleService: LogSaleService,
     private storage: Storage
   	) {
   }

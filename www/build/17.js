@@ -1,14 +1,14 @@
 webpackJsonp([17],{
 
-/***/ 685:
+/***/ 699:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InvoiceModalModule", function() { return InvoiceModalModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SaleInvoiceModalModule", function() { return SaleInvoiceModalModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__invoice__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sale_invoice__ = __webpack_require__(352);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,24 +18,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var InvoiceModalModule = /** @class */ (function () {
-    function InvoiceModalModule() {
+var SaleInvoiceModalModule = /** @class */ (function () {
+    function SaleInvoiceModalModule() {
     }
-    InvoiceModalModule = __decorate([
+    SaleInvoiceModalModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__invoice__["a" /* InvoiceModal */],
+                __WEBPACK_IMPORTED_MODULE_2__sale_invoice__["a" /* SaleInvoiceModal */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__invoice__["a" /* InvoiceModal */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__sale_invoice__["a" /* SaleInvoiceModal */]),
             ],
-            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__invoice__["a" /* InvoiceModal */]]
+            entryComponents: [__WEBPACK_IMPORTED_MODULE_2__sale_invoice__["a" /* SaleInvoiceModal */]]
         })
-    ], InvoiceModalModule);
-    return InvoiceModalModule;
+    ], SaleInvoiceModalModule);
+    return SaleInvoiceModalModule;
 }());
 
-//# sourceMappingURL=invoice.module.js.map
+//# sourceMappingURL=sale_invoice.module.js.map
 
 /***/ })
 

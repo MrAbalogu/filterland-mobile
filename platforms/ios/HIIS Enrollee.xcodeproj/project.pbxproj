@@ -26,6 +26,10 @@
 		8E53A5FFD28A440283D659F4 /* SQLitePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF0B31EDBA9468F87B38938 /* SQLitePlugin.m */; };
 		75B7E429EAA2406C8AEB8AB0 /* PSPDFThreadSafeMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F4C5E72D3A7482B9E42E1DF /* PSPDFThreadSafeMutableDictionary.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		FDFC3F14AFAA4CDB9D5B631F /* sqlite3.c in Resources */ = {isa = PBXBuildFile; fileRef = 350ADF38FA644D379AF51527 /* sqlite3.c */; settings = {COMPILER_FLAGS = "-w -DSQLITE_THREADSAFE=1 -DSQLITE_DEFAULT_SYNCHRONOUS=3 -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_OMIT_DECLTYPE -DSQLITE_OMIT_DEPRECATED -DSQLITE_OMIT_PROGRESS_CALLBACK -DSQLITE_OMIT_SHARED_CACHE -DSQLITE_TEMP_STORE=2 -DSQLITE_OMIT_LOAD_EXTENSION -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_RTREE -DSQLITE_DEFAULT_PAGE_SIZE=4096"; }; };
+		4B1B158DC39148EAAF494B41 /* NSString+SSURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2D58B26EAC4AE2BF058DCD /* NSString+SSURLEncoding.m */; };
+		0A9FA5809FB543D8BB91B84E /* SocialSharing.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A9535B29F92433E8A667808 /* SocialSharing.m */; };
+		74A8AD84087F4E298B830CB8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9BC0CE8E834526AAFB63CF /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C70C9EDD8F0C4B578627A7C1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05144E17DA0C498BBA20FEA3 /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +102,12 @@
 		D9B54C44890348C79727C85D /* SQLitePlugin.h */ = {isa = PBXFileReference; name = "SQLitePlugin.h"; path = "cordova-sqlite-storage/SQLitePlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		1FEC58BB0674417883F357C2 /* PSPDFThreadSafeMutableDictionary.h */ = {isa = PBXFileReference; name = "PSPDFThreadSafeMutableDictionary.h"; path = "cordova-sqlite-storage/PSPDFThreadSafeMutableDictionary.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		C7CAF3D8BD5945928E6ED828 /* sqlite3.h */ = {isa = PBXFileReference; name = "sqlite3.h"; path = "cordova-sqlite-storage/sqlite3.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		7B2D58B26EAC4AE2BF058DCD /* NSString+SSURLEncoding.m */ = {isa = PBXFileReference; name = "NSString+SSURLEncoding.m"; path = "cordova-plugin-x-socialsharing/NSString+SSURLEncoding.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		1A9535B29F92433E8A667808 /* SocialSharing.m */ = {isa = PBXFileReference; name = "SocialSharing.m"; path = "cordova-plugin-x-socialsharing/SocialSharing.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		7ABAEFC0C62F4A3DB9BF8910 /* NSString+SSURLEncoding.h */ = {isa = PBXFileReference; name = "NSString+SSURLEncoding.h"; path = "cordova-plugin-x-socialsharing/NSString+SSURLEncoding.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		85AEFFE5BF1E41AF9BFBC127 /* SocialSharing.h */ = {isa = PBXFileReference; name = "SocialSharing.h"; path = "cordova-plugin-x-socialsharing/SocialSharing.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		4D9BC0CE8E834526AAFB63CF /* Social.framework */ = {isa = PBXFileReference; name = "Social.framework"; path = "System/Library/Frameworks/Social.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		05144E17DA0C498BBA20FEA3 /* MessageUI.framework */ = {isa = PBXFileReference; name = "MessageUI.framework"; path = "System/Library/Frameworks/MessageUI.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +117,8 @@
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				F3E16F4DEC21434ABC52EAF1 /* WebKit.framework in Frameworks */,
+				74A8AD84087F4E298B830CB8 /* Social.framework in Frameworks */,
+				C70C9EDD8F0C4B578627A7C1 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				CB29819CF8AB442B9CFFE737 /* WebKit.framework */,
+				4D9BC0CE8E834526AAFB63CF /* Social.framework */,
+				05144E17DA0C498BBA20FEA3 /* MessageUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -228,6 +242,10 @@
 				D9B54C44890348C79727C85D /* SQLitePlugin.h */,
 				1FEC58BB0674417883F357C2 /* PSPDFThreadSafeMutableDictionary.h */,
 				C7CAF3D8BD5945928E6ED828 /* sqlite3.h */,
+				7B2D58B26EAC4AE2BF058DCD /* NSString+SSURLEncoding.m */,
+				1A9535B29F92433E8A667808 /* SocialSharing.m */,
+				7ABAEFC0C62F4A3DB9BF8910 /* NSString+SSURLEncoding.h */,
+				85AEFFE5BF1E41AF9BFBC127 /* SocialSharing.h */,
 			);
 			name = Plugins;
 			path = "HIIS Enrollee/Plugins";
@@ -364,6 +382,8 @@
 				8E53A5FFD28A440283D659F4 /* SQLitePlugin.m in Sources */,
 				75B7E429EAA2406C8AEB8AB0 /* PSPDFThreadSafeMutableDictionary.m in Sources */,
 				FDFC3F14AFAA4CDB9D5B631F /* sqlite3.c in Resources */,
+				4B1B158DC39148EAAF494B41 /* NSString+SSURLEncoding.m in Sources */,
+				0A9FA5809FB543D8BB91B84E /* SocialSharing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

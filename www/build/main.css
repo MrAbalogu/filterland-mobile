@@ -52440,6 +52440,10 @@ page-products :-ms-input-placeholder {
   font-size: 1.3em;
 }
 
+page-products .back-button-icon-md, page-products .back-button-icon-ios {
+  display: none;
+}
+
 page-products #hospitals {
   margin-top: 5px;
 }
@@ -52735,25 +52739,63 @@ page-requests .overlay {
   color: #a4a4a4;
 }
 
-settings-page .title-center {
+view_invoice .lc-textarea {
+  margin: 12px auto;
+  width: 86%;
+  height: 10em;
+  color: white;
+  border: 1px solid #50E3C2;
+  background-color: white;
+  padding: 0.7rem .95rem;
+}
+
+view_invoice .menu-left {
+  position: absolute;
+  left: 0.3rem;
+}
+
+view_invoice .title-center {
   text-align: center;
 }
 
-settings-page .menu-left {
-  position: absolute;
-  left: 0.3rem;
+view_invoice .invoice-details {
+  padding: 10px;
 }
 
-settings-page .menu-right {
-  position: absolute;
-  left: 0.3rem;
+view_invoice .paid {
+  border: 1px solid #6DD400;
+  color: #6DD400;
+  border-radius: 5px;
+  text-align: center;
+  padding: 2px 0;
 }
 
-settings-page ion-content {
+view_invoice .left {
+  border: 1px solid red;
+  color: red;
+  border-radius: 5px;
+  text-align: center;
+  padding: 2px 0;
+  font-weight: 700;
+}
+
+view_invoice .save-btn {
+  width: 100%;
+}
+
+view_invoice ion-content {
   background-image: url("../assets/imgs/auth-bg.jpg");
   -webkit-background-image: url("../assets/imgs/auth-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+settings-page .bg-green {
+  background-color: #CF7A7A !important;
+}
+
+settings-page h4 {
+  color: #e9e9e9 !important;
 }
 
 view_invoice .lc-textarea {
