@@ -19,10 +19,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var LogSaleService = /** @class */ (function () {
-    // private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/sales_invoices";
     function LogSaleService(http) {
         this.http = http;
-        this.baseUrl = "http://localhost:4040/api/v1/sales_invoices";
+        // private baseUrl: string = "http://localhost:4040/api/v1/sales_invoices";
+        this.baseUrl = "https://filterland-api.herokuapp.com/api/v1/sales_invoices";
     }
     LogSaleService.prototype.addSale = function (sale) {
         console.log("posting to server....");
@@ -41,9 +41,10 @@ var LogSaleService = /** @class */ (function () {
     };
     LogSaleService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
     ], LogSaleService);
     return LogSaleService;
+    var _a;
 }());
 
 //# sourceMappingURL=log_sale.js.map
@@ -227,11 +228,11 @@ var map = {
 		12
 	],
 	"../pages/requests/requests.module": [
-		698,
+		699,
 		11
 	],
 	"../pages/sale_invoice/sale_invoice.module": [
-		699,
+		698,
 		17
 	],
 	"../pages/sales_today/sales_today.module": [
@@ -412,10 +413,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var CustomerService = /** @class */ (function () {
-    // private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/customers";
     function CustomerService(http) {
         this.http = http;
-        this.baseUrl = "http://localhost:4040/api/v1/customers";
+        // private baseUrl: string = "http://localhost:4040/api/v1/customers";
+        this.baseUrl = "https://filterland-api.herokuapp.com/api/v1/customers";
     }
     CustomerService.prototype.addCustomer = function (customerDetails) {
         return this.http.post("" + this.baseUrl, customerDetails, { observe: 'response' });
@@ -431,9 +432,10 @@ var CustomerService = /** @class */ (function () {
     };
     CustomerService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
     ], CustomerService);
     return CustomerService;
+    var _a;
 }());
 
 //# sourceMappingURL=customer.js.map
@@ -757,19 +759,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ProductService = /** @class */ (function () {
-    // private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/products";
     function ProductService(http) {
         this.http = http;
-        this.baseUrl = "http://localhost:4040/api/v1/products";
+        // private baseUrl: string = "http://localhost:4040/api/v1/products";
+        this.baseUrl = "https://filterland-api.herokuapp.com/api/v1/products";
     }
     ProductService.prototype.getProducts = function () {
         return this.http.get("" + this.baseUrl, { observe: 'response' });
     };
     ProductService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
     ], ProductService);
     return ProductService;
+    var _a;
 }());
 
 //# sourceMappingURL=product.js.map
@@ -870,8 +873,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/products/products.module#ProductsPageModule', name: 'ProductsPage', segment: 'products', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#IndexPageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/recent_sales/recent_sales.module#RecentSalesPageModule', name: 'RecentSalesPage', segment: 'recent_sales', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/requests/requests.module#RequestsPageModule', name: 'RequestsPage', segment: 'requests', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/sale_invoice/sale_invoice.module#SaleInvoiceModalModule', name: 'SaleInvoiceModal', segment: 'sale_invoice', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/requests/requests.module#RequestsPageModule', name: 'RequestsPage', segment: 'requests', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/sales_today/sales_today.module#SalesTodayPageModule', name: 'SalesTodayPage', segment: 'sales_today', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/settings/settings.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tabs/tabs.module#TabsPageModule', name: 'TabsPage', segment: 'tabs', priority: 'low', defaultHistory: [] },

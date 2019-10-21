@@ -5,8 +5,8 @@ import { AddCustomer } from "../../models/customer";
 @Injectable()
 export class CustomerService {
 
-  private baseUrl: string = "http://localhost:4040/api/v1/customers";
-  // private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/customers";
+  // private baseUrl: string = "http://localhost:4040/api/v1/customers";
+  private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/customers";
 
   constructor(
     private http: HttpClient
