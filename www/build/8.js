@@ -1,6 +1,6 @@
 webpackJsonp([8],{
 
-/***/ 704:
+/***/ 705:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddCustomerPageModule", function() { return AddCustomerPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_customer__ = __webpack_require__(722);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_customer__ = __webpack_require__(723);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -39,7 +39,7 @@ var AddCustomerPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 705:
+/***/ 706:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78,7 +78,7 @@ var TabsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 722:
+/***/ 723:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87,9 +87,10 @@ var TabsPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__ = __webpack_require__(705);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_util_util__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_customer_customer__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__tabs_tabs__ = __webpack_require__(706);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_util_util__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_customer_customer__ = __webpack_require__(349);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -106,14 +107,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CUSTOMERS = 'unsynced_customers';
 var AddCustomerPage = /** @class */ (function () {
-    function AddCustomerPage(navCtrl, navParams, utility, customerService, storage) {
+    function AddCustomerPage(navCtrl, navParams, utility, customerService, storage, network) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.utility = utility;
         this.customerService = customerService;
         this.storage = storage;
+        this.network = network;
         this.indicator_classes = {
             'onlinebg': false,
             'offlinebg': false
@@ -122,7 +125,7 @@ var AddCustomerPage = /** @class */ (function () {
     }
     AddCustomerPage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        console.log('ionViewDidLoad AddCustomerPage');
+        console.log('ionViewDidLoad AddCustomerPage yeh');
         this.storage.get("user").then(function (u) {
             _this.user_id = u.data.id;
         });
@@ -131,6 +134,12 @@ var AddCustomerPage = /** @class */ (function () {
         });
         this.sync_parameters = {};
         // Continously Check for Internet
+        this.network.onConnect().subscribe(function (data) {
+            console.log(data);
+        }, function (error) { return console.error(error); });
+        this.network.onDisconnect().subscribe(function (data) {
+            console.log(data);
+        }, function (error) { return console.error(error); });
         setInterval(function () {
             // The code that you want to run repeatedly
             if (!navigator.onLine) {
@@ -158,7 +167,11 @@ var AddCustomerPage = /** @class */ (function () {
         }
     };
     AddCustomerPage.prototype.goToTabsPage = function () {
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__tabs_tabs__["a" /* TabsPage */]);
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__tabs_tabs__["a" /* TabsPage */]);
+    };
+    AddCustomerPage.prototype.displayNetworkUpdate = function (connectionState) {
+        var networkType = this.network.type;
+        this.utility.showToast("You are now " + connectionState + " via " + networkType, 3000, 'toast-danger');
     };
     AddCustomerPage.prototype.addCustomer = function (form) {
         var _this = this;
@@ -321,9 +334,10 @@ var AddCustomerPage = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_util_util__["a" /* UtilProvider */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_customer_customer__["a" /* CustomerService */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]])
+            __WEBPACK_IMPORTED_MODULE_6__providers_util_util__["a" /* UtilProvider */],
+            __WEBPACK_IMPORTED_MODULE_7__providers_customer_customer__["a" /* CustomerService */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */]])
     ], AddCustomerPage);
     return AddCustomerPage;
 }());

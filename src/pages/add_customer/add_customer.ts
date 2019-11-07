@@ -3,6 +3,7 @@ import { HttpResponse, HttpErrorResponse } from "@angular/common/http";
 import { NgForm } from "@angular/forms";
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { Network } from '@ionic-native/network';
 import { TabsPage } from '../tabs/tabs';
 import { AddCustomer } from '../../models/customer';
 import { UtilProvider } from './../../providers/util/util';
@@ -35,12 +36,13 @@ export class AddCustomerPage {
     public navParams: NavParams,  
     private utility: UtilProvider,
     private customerService: CustomerService,
-    private storage: Storage
+    private storage: Storage, 
+    private network: Network
     ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddCustomerPage');
+    console.log('ionViewDidLoad AddCustomerPage yeh');
     this.storage.get("user").then((u) => {
       this.user_id = u.data.id;
     });
@@ -51,6 +53,14 @@ export class AddCustomerPage {
     this.sync_parameters = {};
 
     // Continously Check for Internet
+    this.network.onConnect().subscribe(data => {
+      console.log(data);
+    }, error => console.error(error));
+   
+    this.network.onDisconnect().subscribe(data => {
+      console.log(data);
+    }, error => console.error(error));
+
     setInterval(() => { 
       // The code that you want to run repeatedly
       if (!navigator.onLine) {
@@ -80,6 +90,11 @@ export class AddCustomerPage {
 
   goToTabsPage() {
     this.navCtrl.setRoot(TabsPage)
+  }
+
+  displayNetworkUpdate(connectionState: string){
+    let networkType = this.network.type;
+    this.utility.showToast(`You are now ${connectionState} via ${networkType}`, 3000, 'toast-danger');
   }
 
   addCustomer(form: NgForm): Promise<any> {

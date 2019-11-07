@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class LogSaleService {
 
-  // private baseUrl: string = "http://localhost:4040/api/v1/sales_invoices";
-  private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/sales_invoices";
+  private baseUrl: string = "http://localhost:4040/api/v1/sales_invoices";
+  // private baseUrl: string = "https://filterland-api.herokuapp.com/api/v1/sales_invoices";
 
   constructor(
     private http: HttpClient

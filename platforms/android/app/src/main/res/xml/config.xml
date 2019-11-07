@@ -21,6 +21,9 @@
     <feature name="SocialSharing">
         <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
     </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
     <allow-navigation href="http://localhost/*" />
     <allow-navigation href="https://localhost/*" />
     <allow-navigation href="ionic://*" />
@@ -30,8 +33,8 @@
     <feature name="CDVIonicKeyboard">
         <param name="android-package" onload="true" value="io.ionic.keyboard.CDVIonicKeyboard" />
     </feature>
-    <name>HIIS Enrollee</name>
-    <description> Latest happening aroundb the world </description>
+    <name>Filterland Sales</name>
+    <description> Sales Tracking System </description>
     <author email="ukaemmanuel2000@gmail.com" href="http://inshorts.com/">Bitly Sabp Team</author>
     <content src="index.html" />
     <access origin="*" />

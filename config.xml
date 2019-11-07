@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HIIS Enrollee</name>
-    <description> Latest happening aroundb the world </description>
+    <name>Filterland Sales</name>
+    <description> Sales Tracking System </description>
     <author email="ukaemmanuel2000@gmail.com" href="http://inshorts.com/">Bitly Sabp Team</author>
     <content src="index.html" />
     <access origin="*" />

@@ -1,5 +1,5 @@
 {
-  "name": "Filterland",
+  "name": "Filterland-Sales",
   "version": "0.0.1",
   "author": "Bitly Sabp Team",
   "homepage": "https://devstack.ng/",
@@ -20,13 +20,15 @@
     "@angular/http": "5.2.11",
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
-    "@ionic-native/core": "~4.20.0",
+    "@ionic-native/core": "^4.20.0",
+    "@ionic-native/network": "^4.20.0",
+    "@ionic-native/social-sharing": "^4.20.0",
     "@ionic-native/splash-screen": "~4.20.0",
     "@ionic-native/status-bar": "~4.20.0",
-    "@ionic-native/social-sharing": "^4.20.0",
     "@ionic/storage": "^2.2.0",
     "cordova-android": "^8.0.0",
     "cordova-ios": "^5.0.1",
+    "cordova-plugin-network-information": "^2.0.1",
     "cordova-sqlite-storage": "^3.2.1",
     "ionic-angular": "3.9.5",
     "ionicons": "3.0.0",
@@ -56,7 +58,8 @@
       },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-sqlite-storage": {},
-      "cordova-plugin-x-socialsharing": {}
+      "cordova-plugin-x-socialsharing": {},
+      "cordova-plugin-network-information": {}
     },
     "platforms": [
       "ios",
